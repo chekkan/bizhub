@@ -1,0 +1,41 @@
+<template>
+
+    <require from="./new-timesheet-entry-form.css"></require>
+
+    <form>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <label for="employer">Employer</label>
+                <input type="text" class="form-control" id="employer" placeholder="Employer" /> 
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="office">Office</label>
+                <input type="text" class="form-control" id="office" placeholder="Office" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <label for="start-time">Start Time</label>
+                <input type="datetime" class="form-control" id="start-time" />
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="end-time">Finish Time</label>
+                <input type="datetime"" class="form-control" id="end-time" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <label for="break">Hours of break</label>
+                <input type="number" class="form-control" id="break" />
+            </div>
+            <div class="form-group col-xs-6">
+                <label for="rate-per-hour">Rate per hour</label>
+                <input type="number" class="form-control" id="rate-per-hour" />
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-default">Cancel</button>
+    </form>
+
+</template>
