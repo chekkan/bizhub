@@ -25,11 +25,13 @@
         <div class="row">
             <div class="form-group col-sm-6">
                 <label for="start-time">Start Time</label>
-                <input type="datetime" class="form-control" id="start-time" value.bind="startTime" />
+                <input type="datetime-local" class="form-control" id="start-time" 
+                    value.bind="startTime | dateFormat:'YYYY-MM-DD[T]HH:mm'" />
             </div>
             <div class="form-group col-sm-6">
                 <label for="end-time">Finish Time</label>
-                <input type="datetime" class="form-control" id="end-time" value.bind="endTime" />
+                <input type="datetime-local" class="form-control" id="end-time" 
+                    value.bind="endTime | dateFormat:'YYYY-MM-DD[T]HH:mm'" />
             </div>
         </div>
         <div class="row">

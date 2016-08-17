@@ -38,7 +38,7 @@ export class NewTimesheetEntryForm {
 
     getRecommendedStarTime() {
         var now = new Date();
-        var lastHour = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), 0, 0, 0);
-        return new Date(lastHour - 24 * 60 * 60 * 1000);
+        var morning = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0, 0, 0);
+        return new Date(morning - 24 * 60 * 60 * 1000);
     }
 }
