@@ -6,8 +6,11 @@
         <div class="row">
             <div class="form-group col-sm-6">
                 <label for="employer">Employer</label>
-                <select class="form-control" id="employer">
-                    <option repeat.for="employer of employers">${employer.name}</option>
+                <select class="form-control" id="employer" 
+                    value.bind="employer" change.delegate="selectEmployer(employer)">
+                    <option repeat.for="employer of employers" model.bind="employer">
+                        ${employer.name}
+                    </option>
                 </select> 
             </div>
             <div class="form-group col-sm-6">
@@ -22,21 +25,21 @@
         <div class="row">
             <div class="form-group col-sm-6">
                 <label for="start-time">Start Time</label>
-                <input type="datetime" class="form-control" id="start-time" />
+                <input type="datetime" class="form-control" id="start-time" value.bind="startTime" />
             </div>
             <div class="form-group col-sm-6">
                 <label for="end-time">Finish Time</label>
-                <input type="datetime"" class="form-control" id="end-time" />
+                <input type="datetime" class="form-control" id="end-time" value.bind="endTime" />
             </div>
         </div>
         <div class="row">
             <div class="form-group col-xs-6">
                 <label for="break">Hours of break</label>
-                <input type="number" class="form-control" id="break" />
+                <input type="number" class="form-control" id="break" value.bind="break" />
             </div>
             <div class="form-group col-xs-6">
                 <label for="rate-per-hour">Rate per hour</label>
-                <input type="number" class="form-control" id="rate-per-hour" />
+                <input type="number" class="form-control" id="rate-per-hour" value.bind="ratePerHour" />
             </div>
         </div>
         <div class="form-group">
