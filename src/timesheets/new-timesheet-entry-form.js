@@ -12,6 +12,7 @@ export class NewTimesheetEntryForm {
         this.orgOfficeService = orgOfficeService;
         this.timesheetEntryService = timesheetEntryService;
         this.ea = ea;
+        
         this.employers = [];
         this.offices = [];
         this.employer = {};

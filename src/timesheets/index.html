@@ -1,14 +1,13 @@
 <template>
     <require from="./new-timesheet-entry-form"></require>
+    <require from="./timesheet-entry-list"></require>
     
     <div class="panel">
         <new-timesheet-entry-form></new-timesheet-entry-form>
     </div>
 
     <div class="panel">
-        <div repeat.for="entry of timesheetEntries">
-            ${entry.id} | ${entry.start} | ${entry.end} | ${entry.break} | ${entry.ratePerHour}
-        </div>
+        <timesheet-entry-list></timesheet-entry-list>
     </div>
 
 </template>
