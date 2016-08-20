@@ -5,9 +5,6 @@ export class NewTimesheetEntryForm {
     static inject() { return [OrganizationService, OrganizationOfficeService] };
 
     constructor(orgService, orgOfficeServie){
-        var addHours = function(datetime, h) {    
-            datetime.setTime(datetime.getTime() + (h*60*60*1000)); 
-        }
         this.orgService = orgService;
         this.orgOfficeServie = orgOfficeServie;
         this.employers = [];
