@@ -5,7 +5,7 @@ export class App {
   constructor() {
   }
 
-  configureRouter(config: RouterConfiguration, router: Router) {
+  configureRouter(config, router) {
     this.router = router;
 
     config.title = 'Bizhub';

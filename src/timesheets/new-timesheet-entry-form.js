@@ -1,15 +1,18 @@
 import {OrganizationService} from './../services/organization-service';
 import {OrganizationOfficeService} from './../services/organization-office-service';
+import {TimesheetEntryService} from './../services/timesheet-entry-service';
+import {EventAggregator} from 'aurelia-event-aggregator';
+import {TimesheetEntryCreated} from './../messages'
 
 export class NewTimesheetEntryForm {
-    static inject() { return [OrganizationService, OrganizationOfficeService] };
+    static inject() { return [OrganizationService, OrganizationOfficeService, TimesheetEntryService, EventAggregator] };
 
-    constructor(orgService, orgOfficeServie){
-        var addHours = function(datetime, h) {    
-            datetime.setTime(datetime.getTime() + (h*60*60*1000)); 
-        }
+    constructor(orgService, orgOfficeService, timesheetEntryService, ea){
         this.orgService = orgService;
-        this.orgOfficeServie = orgOfficeServie;
+        this.orgOfficeService = orgOfficeService;
+        this.timesheetEntryService = timesheetEntryService;
+        this.ea = ea;
+        
         this.employers = [];
         this.offices = [];
         this.employer = {};
@@ -28,11 +31,25 @@ export class NewTimesheetEntryForm {
 
     selectEmployer(employer) {
         this.employer = employer;
-        this.orgOfficeServie.getByOrganizationId(employer.id).then(offices => {
+        this.orgOfficeService.getByOrganizationId(employer.id).then(offices => {
             this.offices = offices;
             if (this.offices.length > 0) {
                 this.office = this.offices[0];
             }
+        });
+    }
+
+    save() {
+        this.timesheetEntryService.create({
+            start: this.startTime,
+            end: this.endTime,
+            break: this.break,
+            ratePerHour: this.ratePerHour,
+            employerOffice: {
+                id: this.office.id
+            }
+        }).then((entry) => {
+            this.ea.publish(new TimesheetEntryCreated(entry));
         });
     }
 

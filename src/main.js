@@ -1,4 +1,5 @@
 import environment from './environment';
+import 'bootstrap/dist/css/bootstrap.css';
 
 //Configure Bluebird Promises.
 //Note: You may want to use environment-specific configuration.
@@ -18,7 +19,7 @@ export function configure(aurelia) {
   }
 
   if (environment.testing) {
-    aurelia.use.plugin('aurelia-testing');
+    //aurelia.use.plugin('aurelia-testing');
   }
 
   aurelia.start().then(() => aurelia.setRoot());
