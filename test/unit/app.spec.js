@@ -1,7 +1,61 @@
 import {App} from '../../src/app';
 
-describe('the app', () => {
-  it('says hello', () => {
-    expect(new App().message).toBe('Hello World!');
-  });
+class RouterStub {
+    constructor() {
+        this.options = {};
+    }
+
+    configure(handler) {
+        handler(this);
+    }
+
+    map(routes) {
+        this.routes = routes;
+    }
+
+    mapUnknownRoutes(route) {
+        this.unKnownRoute = route;
+    }
+}
+
+describe('the App module', () => {
+    var sut;
+    var mockedRouter;
+
+    beforeEach(() => {
+        mockedRouter = new RouterStub();
+        sut = new App();
+        sut.configureRouter(mockedRouter, mockedRouter);
+    });
+
+    it('contains a router property', () => {
+        expect(sut.router).toBeDefined();
+    });
+
+    it('configures the router title', () => {
+        expect(sut.router.title).toEqual('Bizhub');
+    });
+
+    it('should have a home route', () => {
+        expect(sut.router.routes).toContain({ 
+            route: ['', 'home'], 
+            name: 'home',  
+            moduleId: 'home/index'
+        });
+    });
+
+    it('should have a timesheets route', () => {
+        expect(sut.router.routes).toContain({ 
+            route: 'timesheets', 
+            name: 'timesheets', 
+            moduleId: 'timesheets/index', 
+            nav: true, 
+            title: 'Timesheets' 
+        });
+    });
+
+    it('should have a not-found route', () => {
+        expect(sut.router.unKnownRoute).toEqual('not-found');
+    });
+
 });
