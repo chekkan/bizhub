@@ -1,5 +1,31 @@
-<template>
-    <div repeat.for="entry of timesheetEntries">
-        ${entry.id} | ${entry.start} | ${entry.end} | ${entry.break} | ${entry.ratePerHour}
+<template class="list-group">
+    <div class="list-group-item row" repeat.for="entry of timesheetEntries">
+        <span>
+            <input type="checkbox"/>
+        </span>
+        <span>
+            <span class="heading">#</span>
+            <span>${entry.id}</span>
+        </span>
+        <span>
+            <span class="heading">Date</span>
+            <span>${entry.date}</span>
+        </span>
+        <span>
+            <span class="heading">Time</span>
+            <span>${entry.time}</span>
+        </span>
+        <span>
+            <span class="heading">Hours</span>
+            <span>${entry.hours}</span>
+        </span>
+        <span>
+            <span class="heading">Break</span>
+            <span>${entry.break}</span>
+        </span>
+        <span>
+            <span class="heading">Rate</span>
+            <span>${entry.ratePerHour} per hour</span>
+        </span>
     </div>
 </template>

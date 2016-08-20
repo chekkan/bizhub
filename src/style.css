@@ -31,3 +31,8 @@ body {
 .panel {
     padding: 1em;
 }
+
+span.heading {
+    font-weight: bold;
+    color: #999;
+}

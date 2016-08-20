@@ -21,7 +21,7 @@ export class TimesheetEntryService {
             setTimeout(() => {
                 let results = timesheetEntries.map(x =>  { return {
                     id:x.id,
-                    start: x.start,
+                    start: new Date(x.start),
                     end: x.end,
                     break: x.break,
                     ratePerHour: x.ratePerHour
