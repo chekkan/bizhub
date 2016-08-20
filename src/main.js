@@ -1,4 +1,5 @@
 import environment from './environment';
+import 'bootstrap/dist/css/bootstrap.css';
 
 //Configure Bluebird Promises.
 //Note: You may want to use environment-specific configuration.
