@@ -5,4 +5,10 @@
         <new-timesheet-entry-form></new-timesheet-entry-form>
     </div>
 
+    <div class="panel">
+        <div repeat.for="entry of timesheetEntries">
+            ${entry.id} | ${entry.start} | ${entry.end} | ${entry.break} | ${entry.ratePerHour}
+        </div>
+    </div>
+
 </template>
