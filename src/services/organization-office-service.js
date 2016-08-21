@@ -40,7 +40,7 @@ let offices = [
         postcode: "SE11 2AP",
         organization: {
             id: 2,
-            name: "NHS"
+            name: "Hitachi Consulting"
         }
     },
     {
@@ -51,7 +51,7 @@ let offices = [
         postcode: "WC2H 8AG",
         organization: {
             id: 3,
-            name: "NHS"
+            name: "Google"
         }
     }
 ]
@@ -74,6 +74,26 @@ export class OrganizationOfficeService {
                 }});
                 resolve(results);
             }, latency);
+        });
+    }
+
+    getById(id) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                let found = offices.filter(x => x.id == id)[0];
+                resolve({
+                    id: found.id,
+                    addressLine1: found.address_line_1,
+                    addressLine2: found.addressLine2,
+                    townOrCity: found.town_or_city,
+                    country: found.country,
+                    postcode: found.postcode,
+                    organization: {
+                        id: found.organization.id,
+                        name: found.organization.name
+                    }
+                });
+            }, latency)
         });
     }
 }
