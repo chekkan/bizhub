@@ -1,8 +1,18 @@
 <template>
     <require from="./new-timesheet-entry-form"></require>
     <require from="./timesheet-entry-list"></require>
-    
+
     <div class="panel">
+      <h2>Timesheet Entries</h2>
+      <div>
+        <button class="btn btn-primary ${addFormEnabled ? 'active' : ''}" click.delegate="toggleAddForm()"
+          >
+          Add
+        </button>
+        <button class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+    <div class="panel" show.bind="addFormEnabled">
         <new-timesheet-entry-form></new-timesheet-entry-form>
     </div>
 
