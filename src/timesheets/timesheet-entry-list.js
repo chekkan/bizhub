@@ -1,6 +1,6 @@
 import {TimesheetEntryService} from '../services/timesheet-entry-service';
 import {EventAggregator} from 'aurelia-event-aggregator';
-import {TimesheetEntryCreated} from './../messages';
+import {TimesheetEntryCreated, TimesheetEntryDeleted} from './../messages';
 import {bindable} from 'aurelia-framework';
 
 export class TimesheetEntryList {
@@ -18,6 +18,10 @@ export class TimesheetEntryList {
 
         ea.subscribe(TimesheetEntryCreated, msg => {
             this.populateTimesheetEntries();
+        });
+
+        ea.subscribe(TimesheetEntryDeleted, msg => {
+          this.populateTimesheetEntries();
         });
 
         this.populateTimesheetEntries();

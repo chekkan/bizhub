@@ -35,7 +35,7 @@ export class TimesheetEntryService {
     getAll() {
         return new Promise(resolve => {
             setTimeout(() => {
-                let results = timesheetEntries.map(x =>  { 
+                let results = timesheetEntries.map(x =>  {
                     return {
                         id:x.id,
                         start: new Date(x.start),
@@ -72,11 +72,26 @@ export class TimesheetEntryService {
                         town_or_city: o.townOrCity,
                         organization: o.organization
                     };
-                    timesheetEntries.push(instance);  
-                    resolve(instance);                                      
+                    timesheetEntries.push(instance);
+                    resolve(instance);
                 });
             }
         }, latency);
         });
+    }
+
+    delete(id) {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          let index = timesheetEntries.map((x) => x.id).indexOf(id);
+
+          if (index < 0) {
+            reject(new Error('not found'));
+          } else {
+            timesheetEntries.splice(index, 1);
+            resolve();
+          }
+        });
+      });
     }
 }

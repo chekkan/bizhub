@@ -3,3 +3,9 @@ export class TimesheetEntryCreated {
         this.entry = entry;
     }
 }
+
+export class TimesheetEntryDeleted {
+  constructor(entry) {
+    this.entry = entry;
+  }
+}

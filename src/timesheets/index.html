@@ -9,7 +9,7 @@
         click.delegate="toggleAddForm()">Add</button>
         <button
           class="btn btn-danger ${selectedItems.length === 0 ? 'disabled' : ''}"
-          >Delete</button>
+          click.delegate="deleteSelectedItems()">Delete</button>
       </div>
     </div>
     <div class="panel" show.bind="addFormEnabled">
