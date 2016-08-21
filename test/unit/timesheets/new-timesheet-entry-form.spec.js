@@ -28,7 +28,9 @@ describe('the NewTimesheetEntryForm module', () => {
         expect(sut.startTime.getMinutes()).toEqual(0);
     });
 
-    it('endTime is 8 hours after startTime when there are no timesheet history', () => {
-        expect(sut.endTime).toEqual(new Date(sut.startTime.getTime() + 8 * 60 * 60 * 1000));
+    it('endTime is 8 hours after startTime when there are no timesheet history',
+      () => {
+        expect(sut.endTime).toEqual(
+          new Date(sut.startTime.getTime() + 8 * 60 * 60 * 1000));
     });
 });

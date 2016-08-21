@@ -74,7 +74,7 @@ switch (ENV) {
 
       require('@easy-webpack/config-env-production')
         ({compress: true}),
-        
+
       require('@easy-webpack/config-aurelia')
         ({root: rootDir, src: srcDir, title: title, baseUrl: baseUrl}),
 
@@ -101,7 +101,7 @@ switch (ENV) {
         ({debug: false})
     );
     break;
-  
+
   case 'test':
     config = generateConfig(
       baseConfig,
@@ -127,7 +127,7 @@ switch (ENV) {
       require('@easy-webpack/config-test-coverage-istanbul')()
     );
     break;
-  
+
   default:
   case 'development':
     process.env.NODE_ENV = 'development';
