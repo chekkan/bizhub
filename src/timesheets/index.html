@@ -5,11 +5,11 @@
     <div class="panel">
       <h2>Timesheet Entries</h2>
       <div>
-        <button class="btn btn-primary ${addFormEnabled ? 'active' : ''}" click.delegate="toggleAddForm()"
-          >
-          Add
-        </button>
-        <button class="btn btn-danger">Delete</button>
+        <button class="btn btn-primary ${addFormEnabled ? 'active' : ''}"
+        click.delegate="toggleAddForm()">Add</button>
+        <button
+          class="btn btn-danger ${selectedItems.length === 0 ? 'disabled' : ''}"
+          >Delete</button>
       </div>
     </div>
     <div class="panel" show.bind="addFormEnabled">
@@ -17,7 +17,8 @@
     </div>
 
     <div class="panel">
-        <timesheet-entry-list></timesheet-entry-list>
+        <timesheet-entry-list selected-items.two-way="selectedItems">
+        </timesheet-entry-list>
     </div>
 
 </template>

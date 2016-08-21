@@ -1,12 +1,16 @@
 import {TimesheetEntryService} from '../services/timesheet-entry-service';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {TimesheetEntryCreated} from './../messages';
+import {bindable} from 'aurelia-framework';
 
 export class TimesheetEntryList {
     static inject() { return [
       TimesheetEntryService,
       EventAggregator
     ] };
+
+    // TODO: is there a static way to do this?
+    @bindable selectedItems;
 
     constructor(timesheetEntryService, ea) {
         this.timesheetEntryService = timesheetEntryService;
@@ -39,5 +43,10 @@ export class TimesheetEntryList {
                 };
             });
         });
+    }
+
+    printSelectedItems() {
+      console.log(this.selectedItems);
+      return true;
     }
 }

@@ -1,12 +1,16 @@
-<template class="list-group">
+<template class="list-group" bindable="selectedItems">
     <div class="list-item row" repeat.for="entry of timesheetEntries">
         <div class="attach-right">
-            <input type="checkbox" />
+            <input type="checkbox" model.bind="entry"
+              checked.bind="selectedItems" click.delegate="printSelectedItems()"/>
         </div>
         <div>
             <div>
                 <span>${entry.date | dateFormat:'Do MMMM YYYY'}</span>
-                <span class="pull-right">${entry.employerOffice.organization.name}, ${entry.employerOffice.townOrCity}</span>
+                <span class="pull-right">
+                  ${entry.employerOffice.organization.name},
+                  ${entry.employerOffice.townOrCity}
+                </span>
             </div>
             <span>
                 <span class="heading">Time: </span>
