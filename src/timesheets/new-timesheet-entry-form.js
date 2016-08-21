@@ -5,14 +5,19 @@ import {EventAggregator} from 'aurelia-event-aggregator';
 import {TimesheetEntryCreated} from './../messages'
 
 export class NewTimesheetEntryForm {
-    static inject() { return [OrganizationService, OrganizationOfficeService, TimesheetEntryService, EventAggregator] };
+    static inject() { return [
+      OrganizationService,
+      OrganizationOfficeService,
+      TimesheetEntryService,
+      EventAggregator
+    ] };
 
     constructor(orgService, orgOfficeService, timesheetEntryService, ea){
         this.orgService = orgService;
         this.orgOfficeService = orgOfficeService;
         this.timesheetEntryService = timesheetEntryService;
         this.ea = ea;
-        
+
         this.employers = [];
         this.offices = [];
         this.employer = {};
@@ -55,7 +60,8 @@ export class NewTimesheetEntryForm {
 
     getRecommendedStarTime() {
         var now = new Date();
-        var morning = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0, 0, 0);
+        var morning = new Date(now.getFullYear(), now.getMonth(), now.getDate(),
+          9, 0, 0, 0);
         return new Date(morning - 24 * 60 * 60 * 1000);
     }
 }
