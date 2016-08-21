@@ -36,3 +36,22 @@ span.heading {
     font-weight: bold;
     color: #999;
 }
+
+.list-item.row>div{
+    padding: 1em;
+}
+.list-item.row div>span {
+    padding-right: 1em;
+}
+
+.list-item.row div .pull-right {
+    text-align: right;
+    padding-right: 0;
+}
+
+div.attach-right {
+    width: 20px;
+    float: left;
+    margin-right: 12px;
+    margin-top: 8px;
+}

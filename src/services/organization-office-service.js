@@ -14,7 +14,8 @@ let offices = [
         country: "United Kingdom",
         postcode: "BL2 2JW",
         organization: {
-            id: 1
+            id: 1,
+            name: "NHS"
         }
     },
     {
@@ -25,7 +26,8 @@ let offices = [
         country: "United Kingdom",
         postcode: "NW11 2AP",
         organization: {
-            id: 1
+            id: 1,
+            name: "NHS"
         }
     },
     {
@@ -37,7 +39,8 @@ let offices = [
         country: "United Kingdom",
         postcode: "SE11 2AP",
         organization: {
-            id: 2
+            id: 2,
+            name: "NHS"
         }
     },
     {
@@ -47,7 +50,8 @@ let offices = [
         country: "United Kingdom",
         postcode: "WC2H 8AG",
         organization: {
-            id: 3
+            id: 3,
+            name: "NHS"
         }
     }
 ]
@@ -64,7 +68,8 @@ export class OrganizationOfficeService {
                     country: x.country,
                     postcode: x.postcode,
                     organization: {
-                        id: x.organization.id
+                        id: x.organization.id,
+                        name: x.organization.name
                     }
                 }});
                 resolve(results);

@@ -1,31 +1,30 @@
 <template class="list-group">
-    <div class="list-group-item row" repeat.for="entry of timesheetEntries">
-        <span>
-            <input type="checkbox"/>
-        </span>
-        <span>
-            <span class="heading">#</span>
-            <span>${entry.id}</span>
-        </span>
-        <span>
-            <span class="heading">Date</span>
-            <span>${entry.date}</span>
-        </span>
-        <span>
-            <span class="heading">Time</span>
-            <span>${entry.time}</span>
-        </span>
-        <span>
-            <span class="heading">Hours</span>
-            <span>${entry.hours}</span>
-        </span>
-        <span>
-            <span class="heading">Break</span>
-            <span>${entry.break}</span>
-        </span>
-        <span>
-            <span class="heading">Rate</span>
-            <span>${entry.ratePerHour} per hour</span>
-        </span>
+    <h2>Timesheet Entries</h2>
+    <div class="list-item row" repeat.for="entry of timesheetEntries">
+        <div class="attach-right">
+            <input type="checkbox" />
+        </div>
+        <div>
+            <div>
+                <span>${entry.date | dateFormat:'DD/MM/YYYY'}</span>
+                <span class="pull-right">${entry.employerOffice.organization.name}, ${entry.employerOffice.townOrCity}</span>
+            </div>
+            <span>
+                <span class="heading">Time: </span>
+                <span>${entry.time}</span>
+            </span>
+            <span>
+                <span class="heading">Hours: </span>
+                <span>${entry.hours}</span>
+            </span>
+            <span>
+                <span class="heading">Break: </span>
+                <span>${entry.break}</span>
+            </span>
+            <span>
+                <span class="heading sr-only">Rate</span>
+                <span class="pull-right">&pound;${entry.ratePerHour}/hr</span>
+            </span>
+        </div>
     </div>
 </template>
