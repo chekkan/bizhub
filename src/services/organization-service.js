@@ -1,35 +1,23 @@
-let latency = 200;
-let id = 0;
-
-function getId(){
-  return ++id;
-}
-
-let organizations = [
-    {
-        id: getId(),
-        name: "NHS"
-    },
-    {
-        id: getId(),
-        name: "Hitachi Consulting"
-    },
-    {
-        id: getId(),
-        name: "Google"
-    }
-]
+import {HttpClient} from 'aurelia-fetch-client';
 
 export class OrganizationService {
-    getAll() {
-        return new Promise(resolve => {
-            setTimeout(() => {
-                let results = organizations.map(x =>  { return {
-                    id:x.id,
-                    name:x.name
-                }});
-                resolve(results);
-            }, latency);
+
+  static inject() {
+    return [
+      HttpClient
+    ]
+  };
+
+  constructor(httpClient) {
+    this.httpClient = httpClient;
+  }
+
+  getAll() {
+      return this.httpClient.fetch('/organizations')
+        .then(response => response.json())
+        .then(data => {
+          console.log(data[0]);
+          return data;
         });
-    }
+  }
 }

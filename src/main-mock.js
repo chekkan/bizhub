@@ -1,7 +1,9 @@
 import environment from './environment';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
-import {HttpClient} from 'aurelia-fetch-client';
+
+import {MockedOrganizationService} from './mocks/organization-service';
+import {OrganizationService} from './services/organization-service';
 
 //Configure Bluebird Promises.
 //Note: You may want to use environment-specific configuration.
@@ -30,11 +32,6 @@ export function configure(aurelia) {
 }
 
 function configureContainer(container) {
-  let http = new HttpClient();
-  http.configure(config => {
-    config
-      .useStandardConfiguration()
-      .withBaseUrl('http://localhost:5000');
-  });
-  container.registerInstance(HttpClient, http);
+  let orgSvcMock = new MockedOrganizationService();
+  container.registerInstance(OrganizationService, orgSvcMock);
 }

@@ -8,7 +8,8 @@ const easyWebpack = require('@easy-webpack/core');
 const generateConfig = easyWebpack.default;
 const get = easyWebpack.get;
 const path = require('path');
-const ENV = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() || 'development';
+const ENV = process.env.NODE_ENV
+  && process.env.NODE_ENV.toLowerCase() || 'development';
 let config;
 
 // basic configuration:
@@ -27,7 +28,8 @@ const coreBundles = {
     'regenerator-runtime',
     'bluebird'
   ],
-  // these will be included in the 'aurelia' bundle (except for the above bootstrap packages)
+  // these will be included in the 'aurelia' bundle (except for the above
+  // bootstrap packages)
   aurelia: [
     'aurelia-bootstrapper-webpack',
     'aurelia-binding',
@@ -59,7 +61,8 @@ const baseConfig = {
   entry: {
     'app': [/* this is filled by the aurelia-webpack-plugin */],
     'aurelia-bootstrap': coreBundles.bootstrap,
-    'aurelia': coreBundles.aurelia.filter(pkg => coreBundles.bootstrap.indexOf(pkg) === -1)
+    'aurelia': coreBundles.aurelia.filter(
+      pkg => coreBundles.bootstrap.indexOf(pkg) === -1)
   },
   output: {
     path: outDir,
