@@ -3,7 +3,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 
 import {MockedOrganizationService} from './mocks/organization-service';
+import {MockedOrganizationOfficeService} from './mocks/organization-office-service';
 import {OrganizationService} from './services/organization-service';
+import {OrganizationOfficeService} from './services/organization-office-service';
 
 //Configure Bluebird Promises.
 //Note: You may want to use environment-specific configuration.
@@ -34,4 +36,6 @@ export function configure(aurelia) {
 function configureContainer(container) {
   let orgSvcMock = new MockedOrganizationService();
   container.registerInstance(OrganizationService, orgSvcMock);
+  let orgOfficeSvcMock = new MockedOrganizationOfficeService();
+  container.registerInstance(OrganizationOfficeService, orgOfficeSvcMock);
 }

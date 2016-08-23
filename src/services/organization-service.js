@@ -14,10 +14,6 @@ export class OrganizationService {
 
   getAll() {
       return this.httpClient.fetch('/organizations')
-        .then(response => response.json())
-        .then(data => {
-          console.log(data[0]);
-          return data;
-        });
+        .then(response => response.json());
   }
 }
