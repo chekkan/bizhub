@@ -34,9 +34,9 @@ export class OrganizationOfficeService {
     transformData(data) {
         return {
             id: data.id,
-            addressLine1: data.address_line_1,
+            addressLine1: data.addressLine1,
             addressLine2: data.addressLine2,
-            townOrCity: data.town_or_city,
+            townOrCity: data.townOrCity,
             country: data.country,
             postcode: data.postcode,
             organization: {

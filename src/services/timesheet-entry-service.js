@@ -1,83 +1,33 @@
-let latency = 200;
-let id = 0;
-
-function getId(){
-  return ++id;
-}
-
-let timesheetEntries = [
-    {
-        id: getId(),
-        start: '2016-05-29T14:25:00.000Z',
-        end: '2016-05-29T20:30:00.000Z',
-        break: 1,
-        ratePerHour: 8.5,
-        employer_office: {
-            id: 1,
-            address_line_1: '2 Simple Street',
-            town_or_city: 'Bolton',
-            organization: {
-                id: 1,
-                name: 'Hitachi Consulting'
-            }
-        }
-    }
-]
-
+import {HttpClient, json} from 'aurelia-fetch-client';
 import {OrganizationOfficeService} from './organization-office-service';
 
 export class TimesheetEntryService {
-    static inject() { return [OrganizationOfficeService] };
+    static inject() { return [OrganizationOfficeService, HttpClient] };
 
-    constructor(orgOfficeService) {
+    constructor(orgOfficeService, httpClient) {
         this.orgOfficeService = orgOfficeService;
+        this.httpClient = httpClient;
     }
+
     getAll() {
-        return new Promise(resolve => {
-            setTimeout(() => {
-                let results = timesheetEntries.map(x =>  {
-                    return {
-                        id:x.id,
-                        start: new Date(x.start),
-                        end: x.end,
-                        break: x.break,
-                        ratePerHour: x.ratePerHour,
-                        employerOffice: {
-                            id: x.employer_office.id,
-                            addressLine1: x.employer_office.address_line_1,
-                            townOrCity: x.employer_office.town_or_city,
-                            organization: x.employer_office.organization
-                        }
-                    }
-                });
-                resolve(results);
-            }, latency);
-        });
+        return this.httpClient.fetch('/timesheet-entries')
+            .then(response => response.json())
+            .then(data => {
+                if (data.length < 1) {
+                    return data;
+                }
+                return data.map(x => this.transformData(x));
+            });
     }
 
     create(timesheetEntry) {
-        return new Promise(resolve => {
-        setTimeout(() => {
-            let instance = JSON.parse(JSON.stringify(timesheetEntry));
-            let found = timesheetEntries.filter(x => x.id == timesheetEntry.id)[0];
-
-            if(found){
-                reject(new Error('already exist'));
-            } else {
-                instance.id = getId();
-                this.orgOfficeService.getById(instance.employerOffice.id).then((o) => {
-                    instance.employer_office = {
-                        id: o.id,
-                        address_line_1: o.addressLine1,
-                        town_or_city: o.townOrCity,
-                        organization: o.organization
-                    };
-                    timesheetEntries.push(instance);
-                    resolve(instance);
-                });
-            }
-        }, latency);
-        });
+        console.log(timesheetEntry);
+        return this.httpClient.fetch('/timesheet-entries', {
+            method: 'post',
+            body: json(timesheetEntry)
+        })
+        .then(response => response.json())
+        .then(data => this.transformData(data));
     }
 
     delete(id) {
@@ -93,5 +43,21 @@ export class TimesheetEntryService {
           }
         });
       });
+    }
+
+    transformData(data) {
+        return {
+            id:data.id,
+            start: new Date(data.start),
+            end: data.end,
+            break: data.break,
+            ratePerHour: data.ratePerHour,
+            employerOffice: {
+                id: data.employerOffice.id,
+                addressLine1: data.employerOffice.addressLine1,
+                townOrCity: data.employerOffice.townOrCity,
+                organization: data.employerOffice.organization
+            }
+        }
     }
 }
