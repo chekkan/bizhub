@@ -21,7 +21,6 @@ export class TimesheetEntryService {
     }
 
     create(timesheetEntry) {
-        console.log(timesheetEntry);
         return this.httpClient.fetch('/timesheet-entries', {
             method: 'post',
             body: json(timesheetEntry)
@@ -31,18 +30,9 @@ export class TimesheetEntryService {
     }
 
     delete(id) {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          let index = timesheetEntries.map((x) => x.id).indexOf(id);
-
-          if (index < 0) {
-            reject(new Error('not found'));
-          } else {
-            timesheetEntries.splice(index, 1);
-            resolve();
-          }
+        return this.httpClient.fetch('/timesheet-entries/'+id, {
+            method: 'delete'
         });
-      });
     }
 
     transformData(data) {
