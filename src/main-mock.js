@@ -1,6 +1,6 @@
-import environment from './environment';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
+import config from 'config';
 
 import {MockedOrganizationService} from './mocks/organization-service';
 import {MockedOrganizationOfficeService} from './mocks/organization-office-service';
@@ -22,11 +22,11 @@ export function configure(aurelia) {
     .standardConfiguration()
     .feature('resources');
 
-  if (environment.debug) {
+  if (config.debug) {
     aurelia.use.developmentLogging();
   }
 
-  if (environment.testing) {
+  if (config.testing) {
     //aurelia.use.plugin('aurelia-testing');
   }
 
