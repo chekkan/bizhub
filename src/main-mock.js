@@ -40,6 +40,6 @@ function configureContainer(container) {
   container.registerInstance(OrganizationService, orgSvcMock);
   let orgOfficeSvcMock = new MockedOrganizationOfficeService();
   container.registerInstance(OrganizationOfficeService, orgOfficeSvcMock);
-  let timesheetEntrySvcMock = new MockedTimesheetEntryService();
+  let timesheetEntrySvcMock = new MockedTimesheetEntryService(orgOfficeSvcMock);
   container.registerInstance(TimesheetEntryService, timesheetEntrySvcMock);
 }

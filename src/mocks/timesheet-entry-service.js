@@ -27,7 +27,7 @@ let timesheetEntries = [
 import {MockedOrganizationOfficeService} from './organization-office-service';
 
 export class MockedTimesheetEntryService {
-    static inject() { return [OrganizationOfficeService] };
+    static inject() { return [MockedOrganizationOfficeService] };
 
     constructor(orgOfficeService) {
         this.orgOfficeService = orgOfficeService;
