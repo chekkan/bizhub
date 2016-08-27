@@ -1,8 +1,7 @@
-import environment from './environment';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 import {HttpClient} from 'aurelia-fetch-client';
-var config = require('config');
+import config from 'config';
 
 //Configure Bluebird Promises.
 //Note: You may want to use environment-specific configuration.
@@ -17,11 +16,11 @@ export function configure(aurelia) {
     .standardConfiguration()
     .feature('resources');
 
-  if (environment.debug) {
+  if (config.debug) {
     aurelia.use.developmentLogging();
   }
 
-  if (environment.testing) {
+  if (config.testing) {
     //aurelia.use.plugin('aurelia-testing');
   }
 
