@@ -2,6 +2,7 @@ import environment from './environment';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 import {HttpClient} from 'aurelia-fetch-client';
+var config = require('config');
 
 //Configure Bluebird Promises.
 //Note: You may want to use environment-specific configuration.
@@ -31,10 +32,10 @@ export function configure(aurelia) {
 
 function configureContainer(container) {
   let http = new HttpClient();
-  http.configure(config => {
-    config
+  http.configure(conf => {
+    conf
       .useStandardConfiguration()
-      .withBaseUrl('http://localhost:5000');
+      .withBaseUrl(config.apiBaseUrl);
   });
   container.registerInstance(HttpClient, http);
 }
