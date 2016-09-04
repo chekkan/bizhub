@@ -1,0 +1,16 @@
+div.login-form {
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.btn-google-plus {
+    background-color: #4285f4;
+    color: white;
+    font-weight: bold;
+}
+
+.login-form .btn-google-plus:hover {
+    background-color: #2f5bb7;
+    color: white;
+}

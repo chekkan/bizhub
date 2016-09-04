@@ -41,6 +41,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "aurelia-authentication": "^3.0.0-rc10",
     "aurelia-bootstrapper-webpack": "^1.0.0",
     "aurelia-event-aggregator": "^1.0.0",
     "aurelia-fetch-client": "^1.0.0",
