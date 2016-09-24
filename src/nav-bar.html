@@ -22,7 +22,11 @@
       </ul>
 
         <ul if.bind="!authenticated" class="nav navbar-nav navbar-right">
-            <li><a href="/login">Login / Register</a></li>
+            <li><a href="/login">Login</a></li>
+        </ul>
+
+        <ul if.bind="!authenticated" class="nav navbar-nav navbar-right">
+            <li><a href="/register">Register</a></li>
         </ul>
 
         <ul if.bind="authenticated" class="nav navbar-nav navbar-right">

@@ -36,6 +36,12 @@ export class App {
                 title: 'Login'
             },
             {
+                route: 'register',
+                name: 'register',
+                moduleId: 'account/register',
+                title: 'Register'
+            },
+            {
                 route: 'logout',
                 name: 'logout',
                 moduleId: 'account/logout',
