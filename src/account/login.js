@@ -12,10 +12,19 @@ export class Login {
         this.authService = authService;
     };
 
-    authenticate(name) {
-        return this.authService.authenticate(name)
-        .then(() => {
-            console.log("auth response " + this.authService.authenticated);
+    login() {
+        return this.authService.login({
+            username: this.email,
+            password: this.password,
+            grant_type: 'password'
+        }, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(response => {
+                console.log('success logged ' + response);
+        }).catch(err => {
+                console.log('login failure');
         });
     }
 

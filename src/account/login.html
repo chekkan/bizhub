@@ -2,10 +2,23 @@
 
     <div class="panel login-form">
         <h2>Login</h2>
-        
-        <button class="btn btn-block btn-google-plus" click.delegate="authenticate('google')">
-            <span class="ion-social-googleplus"></span>Sign in with Google
-        </button>
+
+        <form submit.delegate="login()">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control"
+                    value.bind="email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control"
+                    value.bind="password">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                or <a href="/register">Register</a>
+            </div>
+        </form>
     </div>
 
 </template>

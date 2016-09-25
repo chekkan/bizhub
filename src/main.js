@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
+import {AuthService} from 'aurelia-authentication';
 import {HttpClient} from 'aurelia-fetch-client';
 import config from 'config';
 
@@ -37,7 +38,15 @@ function configureContainer(container) {
   http.configure(conf => {
     conf
       .useStandardConfiguration()
-      .withBaseUrl(config.apiBaseUrl);
+      .withBaseUrl(config.apiBaseUrl)
+      .withInterceptor({
+          request(request) {
+            let authService = container.get(AuthService);
+            let authHeader = 'Bearer ' + authService.getAccessToken();
+            request.headers.append('Authorization', authHeader);
+            return request;
+          }
+      });
   });
   container.registerInstance(HttpClient, http);
 }
