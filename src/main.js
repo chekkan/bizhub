@@ -20,17 +20,17 @@ export function configure(aurelia) {
     })
     .feature('resources');
 
-  if (config.debug) {
-    aurelia.use.developmentLogging();
-  }
+    if (config.debug) {
+        aurelia.use.developmentLogging();
+    }
 
-  if (config.testing) {
-    //aurelia.use.plugin('aurelia-testing');
-  }
+    if (config.testing) {
+        //aurelia.use.plugin('aurelia-testing');
+    }
 
-  configureContainer(aurelia.container);
+    configureContainer(aurelia.container);
 
-  aurelia.start().then(() => aurelia.setRoot());
+    aurelia.start().then(() => aurelia.setRoot());
 }
 
 function configureContainer(container) {
