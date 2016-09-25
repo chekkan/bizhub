@@ -42,7 +42,11 @@ function configureContainer(container) {
       .withInterceptor({
           request(request) {
             let authService = container.get(AuthService);
-            let authHeader = 'Bearer ' + authService.getAccessToken();
+            let accessToken = authService.getAccessToken();
+            if(accessToken === undefined) {
+                return request;
+            }
+            let authHeader = 'Bearer ' + accessToken;
             request.headers.append('Authorization', authHeader);
             return request;
           }
