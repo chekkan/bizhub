@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 import {AuthService} from 'aurelia-authentication';
 import {HttpClient} from 'aurelia-fetch-client';
-import config from 'config';
+import {Configure} from 'aurelia-configuration';
 
 //Configure Bluebird Promises.
 //Note: You may want to use environment-specific configuration.
@@ -15,30 +15,39 @@ Promise.config({
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
+    .plugin('aurelia-configuration', config => {
+        config.setEnvironments({
+            development: ['localhost'],
+            production: ['bizhub.io']
+        });
+    })
     .plugin('aurelia-authentication', baseConfig => {
-        baseConfig.configure(config);
+        let configInstance = aurelia.container.get(Configure);
+        baseConfig.configure(configInstance);
     })
     .feature('resources');
 
-    if (config.debug) {
+    let configInstance = aurelia.container.get(Configure);
+
+    if (configInstance.get('debug')) {
         aurelia.use.developmentLogging();
     }
 
-    if (config.testing) {
+    if (configInstance.get('testing')) {
         //aurelia.use.plugin('aurelia-testing');
     }
 
-    configureContainer(aurelia.container);
+    configureContainer(aurelia.container, configInstance);
 
     aurelia.start().then(() => aurelia.setRoot());
 }
 
-function configureContainer(container) {
+function configureContainer(container, configInstance) {
   let http = new HttpClient();
   http.configure(conf => {
     conf
       .useStandardConfiguration()
-      .withBaseUrl(config.apiBaseUrl)
+      .withBaseUrl(configInstance.apiBaseUrl)
       .withInterceptor({
           request(request) {
             let authService = container.get(AuthService);

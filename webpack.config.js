@@ -54,6 +54,7 @@ const coreBundles = {
     'aurelia-templating-binding',
     'aurelia-templating-router',
     'aurelia-templating-resources',
+    'aurelia-configuration',
     'aurelia-authentication'
   ]
 }
@@ -107,7 +108,7 @@ switch (ENV) {
         ({appChunkName: 'app', firstChunk: 'aurelia-bootstrap'}),
 
       require('@easy-webpack/config-uglify')
-        ({debug: false})
+        ({debug: true})
     );
     break;
 

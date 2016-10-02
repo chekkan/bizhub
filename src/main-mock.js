@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
-import config from 'config';
 
 import {MockedOrganizationService} from './mocks/organization-service';
 import {MockedOrganizationOfficeService} from './mocks/organization-office-service';
@@ -20,13 +19,21 @@ Promise.config({
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
+    .plugin('aurelia-configuration', config => {
+        config.setEnvironments({
+            development: ['localhost'],
+            production: ['bizhub.io']
+        });
+    })
     .feature('resources');
 
-  if (config.debug) {
+    let configInstance = aurelia.container.get(Configure);
+
+  if (configInstance.get('debug')) {
     aurelia.use.developmentLogging();
   }
 
-  if (config.testing) {
+  if (configInstance.get('testing')) {
     //aurelia.use.plugin('aurelia-testing');
   }
 
