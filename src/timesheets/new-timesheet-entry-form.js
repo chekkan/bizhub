@@ -27,7 +27,6 @@ export class NewTimesheetEntryForm {
         this.break = 1;
         this.ratePerHour = 8;
         this.orgService.getAll().then(employers => {
-          console.log(employers);
             this.employers = employers;
             if (employers.length > 0) {
                 this.selectEmployer(this.employers[0]);

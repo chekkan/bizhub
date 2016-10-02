@@ -1,5 +1,6 @@
 export default {
-  debug: false,
-  testing: false,
-  apiBaseUrl: "http://bizhub-api.us-west-2.elasticbeanstalk.com"
-};
+    loginUrl: "/oauth/token",
+    debug: false,
+    testing: false,
+    apiBaseUrl: "http://bizhub-api.us-west-2.elasticbeanstalk.com"
+}
