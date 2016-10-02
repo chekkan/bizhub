@@ -53,9 +53,9 @@ const coreBundles = {
     'aurelia-templating',
     'aurelia-templating-binding',
     'aurelia-templating-router',
-    'aurelia-templating-resources'
+    'aurelia-templating-resources',
     // 'aurelia-configuration'
-    // 'aurelia-authentication'
+    'aurelia-authentication'
   ]
 }
 
@@ -68,6 +68,11 @@ const baseConfig = {
     },
     output: {
         path: outDir,
+    },
+    resolve: {
+        alias: {
+            config: path.join(__dirname, 'config', process.env.NODE_ENV)
+        }
     }
 }
 
@@ -103,7 +108,7 @@ switch (ENV) {
         ({appChunkName: 'app', firstChunk: 'aurelia-bootstrap'}),
 
       require('@easy-webpack/config-uglify')
-        ({debug: true})
+        ({debug: false})
     );
     break;
 
