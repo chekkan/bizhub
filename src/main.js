@@ -11,18 +11,10 @@ Bluebird.config({ warnings: false });
 export async function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
-    // .plugin('aurelia-configuration', config => {
-    //     config.setEnvironments({
-    //         development: ['localhost'],
-    //         production: ['bizhub.io']
-    //     });
-    // })
     .plugin('aurelia-authentication', baseConfig => {
         baseConfig.configure(configuration);
     })
     .feature('resources');
-
-    // let configInstance = aurelia.container.get(Configure);
 
     if (configuration.debug) {
         aurelia.use.developmentLogging();
