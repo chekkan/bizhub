@@ -8,38 +8,29 @@ import {OrganizationService} from './services/organization-service';
 import {OrganizationOfficeService} from './services/organization-office-service';
 import {TimesheetEntryService} from './services/timesheet-entry-service';
 
-//Configure Bluebird Promises.
-//Note: You may want to use environment-specific configuration.
-Promise.config({
-  warnings: {
-    wForgottenReturn: false
-  }
-});
+import configuration from 'config';
 
-export function configure(aurelia) {
+// comment out if you don't want a Promise polyfill (remove also from webpack.common.js)
+import * as Bluebird from 'bluebird';
+Bluebird.config({ warnings: false });
+
+export async function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
-    .plugin('aurelia-configuration', config => {
-        config.setEnvironments({
-            development: ['localhost'],
-            production: ['bizhub.io']
-        });
-    })
     .feature('resources');
 
-    let configInstance = aurelia.container.get(Configure);
+    if (configuration.debug) {
+        aurelia.use.developmentLogging();
+    }
 
-  if (configInstance.get('debug')) {
-    aurelia.use.developmentLogging();
-  }
+    if (configuration.testing) {
+        //aurelia.use.plugin('aurelia-testing');
+    }
 
-  if (configInstance.get('testing')) {
-    //aurelia.use.plugin('aurelia-testing');
-  }
+    configureContainer(aurelia.container);
 
-  configureContainer(aurelia.container);
-
-  aurelia.start().then(() => aurelia.setRoot());
+    await aurelia.start();
+    aurelia.setRoot();
 }
 
 function configureContainer(container) {
