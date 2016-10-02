@@ -53,26 +53,21 @@ const coreBundles = {
     'aurelia-templating',
     'aurelia-templating-binding',
     'aurelia-templating-router',
-    'aurelia-templating-resources',
-    'aurelia-configuration',
-    'aurelia-authentication'
+    'aurelia-templating-resources'
+    // 'aurelia-configuration'
+    // 'aurelia-authentication'
   ]
 }
 
 const baseConfig = {
-  entry: {
-    'app': [/* this is filled by the aurelia-webpack-plugin */],
-    'aurelia-bootstrap': coreBundles.bootstrap,
-    'aurelia': coreBundles.aurelia.filter(
-      pkg => coreBundles.bootstrap.indexOf(pkg) === -1)
-  },
-  output: {
-    path: outDir,
-},
-    resolve: {
-        alias: {
-            config: path.join(__dirname, 'config', process.env.NODE_ENV)
-        }
+    entry: {
+        'app': [/* this is filled by the aurelia-webpack-plugin */],
+        'aurelia-bootstrap': coreBundles.bootstrap,
+        'aurelia': coreBundles.aurelia.filter(
+            pkg => coreBundles.bootstrap.indexOf(pkg) === -1)
+    },
+    output: {
+        path: outDir,
     }
 }
 
