@@ -47,6 +47,7 @@ const coreBundles = {
     'aurelia-pal-browser',
     'aurelia-path',
     'aurelia-polyfills',
+    'whatwg-fetch',
     'aurelia-route-recognizer',
     'aurelia-router',
     'aurelia-task-queue',

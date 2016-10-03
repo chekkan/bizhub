@@ -61,7 +61,8 @@
     "font-awesome": "^4.6.3",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.1.0",
-    "moment": "^2.14.1"
+    "moment": "^2.14.1",
+    "whatwg-fetch": "^1.0.0"
   },
   "peerDependencies": {},
   "devDependencies": {
