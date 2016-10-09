@@ -18,6 +18,7 @@ deploy:
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   skip_cleanup: true
   bucket: bizhub.io
+  region: $AWS_DEFAULT_REGION
   local_dir: dist
   on:
     branch: master
