@@ -17,7 +17,7 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY_ID
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   skip_cleanup: true
-  bucket: bizhub.io
+  bucket: www.bizhub.io
   local_dir: dist
   on:
     branch: master
