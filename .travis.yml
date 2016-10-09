@@ -1,0 +1,24 @@
+branches:
+  only:
+  - master
+  - travis-ci
+language: node_js
+node_js:
+- '6.1'
+before_install:
+- export CHROME_BIN=chromium-browser
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+script:
+- npm test
+- npm run build:prod
+deploy:
+  provider: s3
+  access_key_id: AKIAJOGS52GK7QGVEQBQ
+  secret_access_key:
+    secure: LFiSUWJ0vi1R2SrXCxUYQSpSVkJsudFPTFLOkoxsYOyX+ktXUgjxby1IdUC+C1o/h16wsg8UDxLCigZtEzTRkc86hh6s/MzOJQkJjTZKhzQIOGeIQjarzBKEtqkJXT2NwxeEvxyJnYd7BR2zw9YTOQBzE0GGabC3UbC1VeoPTxQEQUmyf6kBPG8aPGqNd87/0DnCJfyY1ANbvsm6fOTrKo+WKw7WPmhrbRrzfHXmyW1vLk+yRp2dj0tRCCWsAHkRFQFDoBy92Zo1gwX8YOK6kJL2HxPDRD6UK5jhvOPh/tU4kq/zxuc5aySKiBQclAoTYvdPsmdvByucu/GZ2mXmE/M+uSLuS40tre5/yFL4/S4EIZIK8DgaMIpKC8MKVOYxtxZGuB9USs2wbYRxZ6vR45qMEvU5zXI0QFMFAmt7aXvQMbp5eVy0E82vs2oq4YVQJyoJG+2BVVGReGwx9ct5DlqPwhwa2wd+wjxf8Jth0lPBsoOcq9i4H2Er0jlVF6/n7n3hGRrC7kHupVFbZhKFwfZcxrm/DTB7APQX8MgnJRp75cSPDTSf9xatpWMRyPtFyNJN0/FlMm8SNBi0+aZeB8EGi25+sp+qqhBAsyWYtzQU52tII2f0eaKXyLFe2GYLHB+a1gegMXKgmzS/eOzXRda35gkmzW4dJN9DJjbXX6A=
+  skip_cleanup: true
+  bucket: bizhub.io
+  local_dir: dist
+  on:
+    branch: master
