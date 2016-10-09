@@ -42,6 +42,7 @@ describe('the App module', () => {
         expect(sut.router.routes).toContain({
             route: ['', 'home'],
             name: 'home',
+            title: 'Home',
             moduleId: 'home/index'
         });
     });

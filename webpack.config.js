@@ -56,7 +56,8 @@ const coreBundles = {
     'aurelia-templating-router',
     'aurelia-templating-resources',
     // 'aurelia-configuration'
-    'aurelia-authentication'
+    'aurelia-authentication',
+    'aurelia-google-analytics'
   ]
 }
 

@@ -19,6 +19,7 @@ export class App {
             {
                 route: ['', 'home'],
                 name: 'home',
+                title: 'Home',
                 moduleId: 'home/index'
             },
             {

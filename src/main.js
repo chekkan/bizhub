@@ -14,6 +14,10 @@ export async function configure(aurelia) {
     .plugin('aurelia-authentication', baseConfig => {
         baseConfig.configure(configuration);
     })
+    .plugin('aurelia-google-analytics', config => {
+        config.init(configuration.googleAnalytics.trackingId);
+        config.attach(configuration.googleAnalytics.config);
+    })
     .feature('resources');
 
     if (configuration.debug) {
