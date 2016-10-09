@@ -1,7 +1,6 @@
 branches:
   only:
   - master
-  - travis-ci
 language: node_js
 node_js:
 - '6.1'
