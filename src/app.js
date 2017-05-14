@@ -31,6 +31,18 @@ export class App {
                 auth: true
             },
             {
+                route: 'organizations',
+                name: 'organizations',
+                moduleId: 'organizations/index',
+                title: 'Organizations',
+                nav: true
+            },
+            {
+              route: 'organizations/:id',
+              name: 'organizationDetail',
+              moduleId: 'organizations/detail'
+            },
+            {
                 route: 'login',
                 name: 'login',
                 moduleId: 'account/login',

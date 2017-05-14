@@ -1,0 +1,14 @@
+<template bindable="organizationId">
+
+  <h2>Offices</h2>
+
+  <ul class="list-group">
+    <div show.bind="offices.length === 0">
+      <p class="text-center">No offices to display ${organizationId}.<p>
+    </div>
+      <li class="list-group-item" repeat.for="office of offices">
+        ${office.addressLine1}
+      </li>
+  </ul>
+
+</template>

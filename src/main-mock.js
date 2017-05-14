@@ -5,7 +5,7 @@ import {MockedOrganizationService} from './mocks/organization-service';
 import {MockedOrganizationOfficeService} from './mocks/organization-office-service';
 import {MockedTimesheetEntryService} from './mocks/timesheet-entry-service';
 import {OrganizationService} from './services/organization-service';
-import {OrganizationOfficeService} from './services/organization-office-service';
+import {OfficeService} from './services/office-service';
 import {TimesheetEntryService} from './services/timesheet-entry-service';
 
 import configuration from 'config';

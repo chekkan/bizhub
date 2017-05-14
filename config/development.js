@@ -2,7 +2,7 @@ export default {
     loginUrl: "/oauth/token",
     debug: true,
     testing: true,
-    apiBaseUrl: "http://localhost:5000",
+    apiBaseUrl: "http://localhost:3000",
     googleAnalytics: {
         trackingId: "UA-82866053-1",
         config: {

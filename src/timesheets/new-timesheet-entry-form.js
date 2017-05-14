@@ -1,5 +1,5 @@
 import {OrganizationService} from './../services/organization-service';
-import {OrganizationOfficeService} from './../services/organization-office-service';
+import {OfficeService} from './../services/office-service';
 import {TimesheetEntryService} from './../services/timesheet-entry-service';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {TimesheetEntryCreated} from './../messages'
@@ -7,14 +7,14 @@ import {TimesheetEntryCreated} from './../messages'
 export class NewTimesheetEntryForm {
     static inject() { return [
       OrganizationService,
-      OrganizationOfficeService,
+      OfficeService,
       TimesheetEntryService,
       EventAggregator
     ] };
 
-    constructor(orgService, orgOfficeService, timesheetEntryService, ea){
+    constructor(orgService, officeService, timesheetEntryService, ea){
         this.orgService = orgService;
-        this.orgOfficeService = orgOfficeService;
+        this.officeService = officeService;
         this.timesheetEntryService = timesheetEntryService;
         this.ea = ea;
 
@@ -36,7 +36,7 @@ export class NewTimesheetEntryForm {
 
     selectEmployer(employer) {
         this.employer = employer;
-        this.orgOfficeService.getByOrganizationId(employer.id).then(offices => {
+        this.officeService.getByOrganizationId(employer.id).then(offices => {
             this.offices = offices;
             if (this.offices.length > 0) {
                 this.office = this.offices[0];

@@ -16,4 +16,9 @@ export class OrganizationService {
       return this.httpClient.fetch('/organizations')
         .then(response => response.json());
   }
+
+  getById(id) {
+    return this.httpClient.fetch('/organizations/' + id)
+      .then(response => response.json());
+  }
 }

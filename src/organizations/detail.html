@@ -1,0 +1,10 @@
+<template>
+  <require from="./offices-list"></require>
+
+  <div class="page-header">
+    <h1>${organization.name}</h1>
+  </div>
+
+  <offices-list organization-id.bind="organization._id"></offices-list>
+
+</template>

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%- webpackConfig.metadata.title %></title>
-    <base href="<%- webpackConfig.metadata.baseUrl %>" />
+    <title><%- htmlWebpackPlugin.options.metadata.title %></title>
+    <base href="<%- htmlWebpackPlugin.options.metadata.baseUrl %>" />
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
   </head>
 
   <body aurelia-app="main">
-    <% if (webpackConfig.metadata.ENV === 'development') { %>
+    <% if (htmlWebpackPlugin.options.metadata.ENV === 'development') { %>
     <!-- Webpack Dev Server reload -->
     <script src="/webpack-dev-server.js"></script>
     <% } %>
