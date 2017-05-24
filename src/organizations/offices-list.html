@@ -4,7 +4,7 @@
 
   <ul class="list-group">
     <div show.bind="offices.length === 0">
-      <p class="text-center">No offices to display ${organizationId}.<p>
+      <p class="text-center">No offices to display.<p>
     </div>
       <li class="list-group-item" repeat.for="office of offices">
         ${office.addressLine1}
