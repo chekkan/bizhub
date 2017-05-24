@@ -14,7 +14,7 @@ export class OfficeService {
 
   getByOrganizationId(orgId) {
     return this.httpClient
-      .fetch('/organizations/'+orgId+'/offices')
+      .fetch('/offices?filter[organization][id]='+orgId)
       .then(response => response.json())
       .then(data => {
         if(data.length < 1) {
