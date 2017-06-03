@@ -38,6 +38,11 @@ export class App {
                 nav: true
             },
             {
+              route: 'organizations/new',
+              name: 'organizationNew',
+              moduleId: 'organizations/new'
+            },
+            {
               route: 'organizations/:id',
               name: 'organizationDetail',
               moduleId: 'organizations/detail'

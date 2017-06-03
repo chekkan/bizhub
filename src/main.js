@@ -41,16 +41,16 @@ function configureContainer(container) {
       .useStandardConfiguration()
       .withBaseUrl(configuration.apiBaseUrl)
       .withInterceptor({
-          request(request) {
-            let authService = container.get(AuthService);
-            let accessToken = authService.getAccessToken();
-            if(accessToken === undefined) {
-               return request;
-            }
-            let authHeader = 'Bearer ' + accessToken;
-            request.headers.append('Authorization', authHeader);
+        request(request) {
+          let authService = container.get(AuthService);
+          let accessToken = authService.getAccessToken();
+          if (accessToken === undefined) {
             return request;
           }
+          let authHeader = 'Bearer ' + accessToken;
+          request.headers.append('Authorization', authHeader);
+          return request;
+        }
       });
   });
   container.registerInstance(HttpClient, http);

@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-framework';
-import {OrganizationService} from '../services/organization-service'; 
+import {OrganizationService} from '../services/organization-service';
 
 @inject(OrganizationService)
 export class Index {
@@ -14,7 +14,8 @@ export class Index {
   getOrganizations() {
     this.organizationService.getAll()
     .then((orgs) => {
-      this.organizations = orgs;
+        this.totalSize = orgs.totalSize;
+        this.organizations = orgs.content;
     })
   }
 
