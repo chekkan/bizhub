@@ -12,8 +12,10 @@ export class OrganizationService {
         this.httpClient = httpClient;
     }
 
-    getAll() {
-        return this.httpClient.fetch('/organizations')
+    getAll(limit = 10, offset = 0) {
+        const params = { limit, offset };
+        const urlParams = new URLSearchParams(Object.entries(params));
+        return this.httpClient.fetch('/organizations?' + urlParams)
         .then(response => response.json());
     }
 

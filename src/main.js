@@ -1,5 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap';
 import {AuthService} from 'aurelia-authentication';
 import {HttpClient} from 'aurelia-fetch-client';
 import configuration from 'config';
