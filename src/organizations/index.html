@@ -1,5 +1,7 @@
 <template>
 
+    <require from="./pagination"></require>
+
     <div class="page-header">
         <h1>Organizations</h1>
     </div>
@@ -20,19 +22,6 @@
         </div>
     </div>
 
-    <nav aria-label="pagination">
-        <ul class="pagination justify-content-center">
-            <li class="page-item ${currentPage - 1 == 0 ? 'disabled' : ''}">
-                <a class="page-link" click.delegate="previousPage()" tabindex="-1" href="#">Previous</a>
-            </li>
-            <li repeat.for="i of lastPage" class="page-item ${i == (currentPage - 1) ? 'active' : ''}">
-                <a href="#" click.delegate="changePage(i + 1)" class="page-link">${i+1} <span
-                    if.bind="i == currentPage" class="sr-only">(current)</span></a>
-            </li>
-            <li class="page-item ${currentPage == lastPage ? 'disabled' : ''}">
-                <a class="page-link" click.delegate="nextPage()" href="#">Next</a>
-            </li>
-        </ul>
-    </nav>
+    <pagination router.bind="router" current-page.bind="currentPage" last-page.bind="lastPage" />
 
 </template>

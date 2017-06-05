@@ -6,18 +6,21 @@ import {OrganizationService} from '../services/organization-service';
 @inject(Router, OrganizationService)
 export class Index {
 
+    currentPage = 1;
+    lastPage = 1; 
+    organizations = [];
+    totalSize = 0;
+
     constructor(router, organizationService) {
         this.router = router;
         this.organizationService = organizationService;
-        this.organizations = [];
-        this.currentPage = 1;
-        this.lastPage = 1;
     }
 
     activate(params) {
-        console.log(params);
-        const offset = (+params.page - 1) * 10;
-        console.log(offset);
+        if(params.page) {
+            this.currentPage = +params.page;
+        }
+        const offset = (this.currentPage - 1) * 10;
         return this.getOrganizations(10, offset);
     }
 
@@ -33,17 +36,5 @@ export class Index {
             this.lastPage = Math.ceil(this.totalSize / limit);
             this.organizations = orgs.content;
         });
-    }
-
-    changePage(page) {
-        this.router.navigateToRoute(this.router.currentInstruction.config.name, { page: page });
-    }
-
-    nextPage() {
-        this.router.navigateToRoute(this.router.currentInstruction.config.name, { page: this.currentPage + 1 });
-    }
-
-    previousPage() {
-        this.router.navigateToRoute(this.router.currentInstruction.config.name, { page: this.currentPage - 1 });
     }
 }
