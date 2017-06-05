@@ -74,7 +74,10 @@ const coreBundles = {
 let config = generateConfig(
     {
         entry: {
-            'app': ['./src/main' /* this is filled by the aurelia-webpack-plugin */],
+            'app': ['./src/main',
+                /* this is filled by the aurelia-webpack-plugin */
+                './src/scss/main.scss'
+            ],
             'aurelia-bootstrap': coreBundles.bootstrap,
             'aurelia': coreBundles.aurelia.filter(pkg => coreBundles.bootstrap.indexOf(pkg) === -1)
         },
@@ -104,7 +107,6 @@ let config = generateConfig(
 
     babel({ options: { /* uses settings from .babelrc */ } }),
     html(),
-    css({ filename: 'styles.css', allChunks: true, sourceMap: false }),
     fontAndImages(),
     globalBluebird(),
     globalJquery(),
@@ -120,7 +122,25 @@ let config = generateConfig(
     ]),
 
     ENV === 'production' ?
-    uglify({debug: false, mangle: { except: ['cb', '__webpack_require__'] }}) : {}
+    uglify({debug: false, mangle: { except: ['cb', '__webpack_require__'] }}) : {},
+    {
+        module: {
+            rules: [{
+                test: /\.scss$/,
+                use: [{
+                    loader: "style-loader"
+                }, {
+                    loader: "css-loader", options: {
+                        sourceMap: true
+                    }
+                }, {
+                    loader: "sass-loader", options: {
+                        sourceMap: true
+                    }
+                }]
+            }]
+        }
+    }
 )
 
 module.exports = stripMetadata(config)

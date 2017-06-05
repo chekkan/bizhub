@@ -20,7 +20,7 @@ export class OfficeService {
         if(data.length < 1) {
           return data;
         }
-        return data.map(x => this.transformData(x));
+        return data.content.map(x => this.transformData(x));
       });
   }
 

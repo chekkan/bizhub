@@ -15,4 +15,8 @@ export class Detail {
       this.organization = org;
     });
   }
+
+  delete() {
+      this.organizationService.delete(this.organization.id);
+  }
 }
