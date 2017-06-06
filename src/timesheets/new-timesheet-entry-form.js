@@ -1,19 +1,15 @@
-import {OrganizationService} from './../services/organization-service';
+import {inject, Factor} from 'aurelia-framework';
+import {ApiService} from './../services/api-service';
 import {OfficeService} from './../services/office-service';
 import {TimesheetEntryService} from './../services/timesheet-entry-service';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {TimesheetEntryCreated} from './../messages'
 
+@inject(Factory.of(ApiService), OfficeService, TimesheetEntryService, EventAggregator)
 export class NewTimesheetEntryForm {
-    static inject() { return [
-      OrganizationService,
-      OfficeService,
-      TimesheetEntryService,
-      EventAggregator
-    ] };
 
-    constructor(orgService, officeService, timesheetEntryService, ea){
-        this.orgService = orgService;
+    constructor(apiService, officeService, timesheetEntryService, ea){
+        this.orgService = apiService('organizations');
         this.officeService = officeService;
         this.timesheetEntryService = timesheetEntryService;
         this.ea = ea;

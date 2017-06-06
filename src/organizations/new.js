@@ -1,11 +1,11 @@
-import {inject} from 'aurelia-framework';
-import {OrganizationService} from '../services/organization-service';
+import {inject, Factory} from 'aurelia-framework';
+import {ApiService} from '../services/api-service';
 
-@inject(OrganizationService)
+@inject(ApiService)
 export class New {
 
-  constructor(orgService) {
-    this.orgService = orgService;
+  constructor(apiService) {
+    this.orgService = apiService('organizations');
   }
 
   create() {

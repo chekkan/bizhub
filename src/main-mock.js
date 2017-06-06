@@ -1,10 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 
-import {MockedOrganizationService} from './mocks/organization-service';
 import {MockedOrganizationOfficeService} from './mocks/organization-office-service';
 import {MockedTimesheetEntryService} from './mocks/timesheet-entry-service';
-import {OrganizationService} from './services/organization-service';
 import {OfficeService} from './services/office-service';
 import {TimesheetEntryService} from './services/timesheet-entry-service';
 
@@ -34,8 +32,6 @@ export async function configure(aurelia) {
 }
 
 function configureContainer(container) {
-  let orgSvcMock = new MockedOrganizationService();
-  container.registerInstance(OrganizationService, orgSvcMock);
   let orgOfficeSvcMock = new MockedOrganizationOfficeService();
   container.registerInstance(OrganizationOfficeService, orgOfficeSvcMock);
   let timesheetEntrySvcMock = new MockedTimesheetEntryService(orgOfficeSvcMock);

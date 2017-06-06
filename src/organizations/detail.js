@@ -1,11 +1,11 @@
-import {inject} from 'aurelia-framework';
-import {OrganizationService} from '../services/organization-service';
+import {inject, Factory} from 'aurelia-framework';
+import {ApiService} from '../services/api-service';
 
-@inject(OrganizationService)
+@inject(Factory.of(ApiService))
 export class Detail {
 
-  constructor(organizationService) {
-    this.organizationService = organizationService;
+  constructor(apiService) {
+    this.organizationService = apiService('organizations');
     this.organization = {};
   }
 
@@ -17,7 +17,7 @@ export class Detail {
   }
 
   delete() {
-      this.organizationService.delete(this.organization._id)
+      this.organizationService.delete(this.organization.id)
       .then(() => this.router.navigateToRoute('organizations'));
   }
 }

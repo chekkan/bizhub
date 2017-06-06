@@ -1,9 +1,9 @@
-import {inject} from 'aurelia-framework';
+import {inject, Factory} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 import {activationStrategy} from 'aurelia-router';
-import {OrganizationService} from '../services/organization-service';
+import {ApiService} from '../services/api-service';
 
-@inject(Router, OrganizationService)
+@inject(Router, Factory.of(ApiService))
 export class Index {
 
     currentPage = 1;
@@ -11,9 +11,9 @@ export class Index {
     organizations = [];
     totalSize = 0;
 
-    constructor(router, organizationService) {
+    constructor(router, apiService) {
         this.router = router;
-        this.organizationService = organizationService;
+        this.organizationService = apiService('organizations');
     }
 
     activate(params) {
