@@ -15,7 +15,7 @@
             <div show.bind="organizations.length === 0">
                 <p class="text-center">No organizations to display.<p>
                 </div>
-                <a href="/organizations/${org._id}" class="list-group-item" repeat.for="org of organizations">
+                <a href="/organizations/${org.id}" class="list-group-item" repeat.for="org of organizations">
                     ${org.name}
                 </a>
             </div>

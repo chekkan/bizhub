@@ -17,6 +17,7 @@ export class Detail {
   }
 
   delete() {
-      this.organizationService.delete(this.organization.id);
+      this.organizationService.delete(this.organization._id)
+      .then(() => this.router.navigateToRoute('organizations'));
   }
 }

@@ -107,6 +107,7 @@ let config = generateConfig(
 
     babel({ options: { /* uses settings from .babelrc */ } }),
     html(),
+    css({ filename: 'styles.css', allChunks: true, sourceMap: false }),
     fontAndImages(),
     globalBluebird(),
     globalJquery(),

@@ -33,4 +33,10 @@ export class OrganizationService {
             console.log(response);
         });
     }
+
+    delete(id) {
+        return this.httpClient.fetch('/organizations/' + id, {
+            method: 'delete'
+        });
+    }
 }
