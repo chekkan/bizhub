@@ -1,6 +1,6 @@
 import {bindable} from 'aurelia-framework';
 
-export class PaginationCustomElement {
+export class PagerCustomElement {
     @bindable() router;
     @bindable() currentPage;
     @bindable() lastPage;

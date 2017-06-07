@@ -1,7 +1,5 @@
 <template>
 
-    <require from="./pagination"></require>
-
     <div class="page-header">
         <h1>Organizations</h1>
     </div>
@@ -22,6 +20,6 @@
         </div>
     </div>
 
-    <pagination router.bind="router" current-page.bind="currentPage" last-page.bind="lastPage" />
+    <pager router.bind="router" current-page.bind="currentPage" last-page.bind="lastPage" />
 
 </template>
