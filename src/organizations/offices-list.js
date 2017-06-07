@@ -1,20 +1,20 @@
-import {inject, bindable} from 'aurelia-framework';
-import {OfficeService} from '../services/office-service';
+import {inject, bindable, Factory} from 'aurelia-framework';
+import {ApiService} from '../services/api-service';
 
-@inject(OfficeService)
+@inject(Factory.of(ApiService))
 export class OfficesList {
 
   @bindable organizationId;
 
-  constructor(officeService) {
-    this.officeService = officeService;
+  constructor(apiService) {
+    this.orgService = apiService('organization');
     this.offices = [];
   }
 
   organizationIdChanged() {
-    return this.officeService.getByOrganizationId(this.organizationId)
-    .then((offices) => {
-      this.offices = offices;
+    return this.orgService.getChild(this.organizationId, 'offices')
+    .then((data) => {
+      this.offices = data.content;
     });
   }
 

@@ -13,7 +13,7 @@ export class Index {
 
     constructor(router, apiService) {
         this.router = router;
-        this.organizationService = apiService('organizations');
+        this.organizationService = apiService('organization');
     }
 
     activate(params) {

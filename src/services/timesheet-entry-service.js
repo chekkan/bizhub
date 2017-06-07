@@ -1,11 +1,9 @@
 import {HttpClient, json} from 'aurelia-fetch-client';
-import {OfficeService} from './office-service';
 
 export class TimesheetEntryService {
-    static inject() { return [OfficeService, HttpClient] };
+    static inject() { return [HttpClient] };
 
     constructor(officeService, httpClient) {
-        this.officeService = officeService;
         this.httpClient = httpClient;
     }
 

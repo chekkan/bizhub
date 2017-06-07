@@ -1,16 +1,14 @@
 import {inject, Factor} from 'aurelia-framework';
 import {ApiService} from './../services/api-service';
-import {OfficeService} from './../services/office-service';
 import {TimesheetEntryService} from './../services/timesheet-entry-service';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {TimesheetEntryCreated} from './../messages'
 
-@inject(Factory.of(ApiService), OfficeService, TimesheetEntryService, EventAggregator)
+@inject(Factory.of(ApiService), TimesheetEntryService, EventAggregator)
 export class NewTimesheetEntryForm {
 
-    constructor(apiService, officeService, timesheetEntryService, ea){
+    constructor(apiService, timesheetEntryService, ea){
         this.orgService = apiService('organizations');
-        this.officeService = officeService;
         this.timesheetEntryService = timesheetEntryService;
         this.ea = ea;
 
@@ -32,10 +30,10 @@ export class NewTimesheetEntryForm {
 
     selectEmployer(employer) {
         this.employer = employer;
-        this.officeService.getByOrganizationId(employer.id).then(offices => {
+        this.orgService.getChild(employer.id, 'offices').then(offices => {
             this.offices = offices;
-            if (this.offices.length > 0) {
-                this.office = this.offices[0];
+            if (this.offices.totalSize > 0) {
+                this.office = this.offices.content[0];
             }
         });
     }

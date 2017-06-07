@@ -5,7 +5,7 @@ import {ApiService} from '../services/api-service';
 export class Detail {
 
   constructor(apiService) {
-    this.organizationService = apiService('organizations');
+    this.organizationService = apiService('organization');
     this.organization = {};
   }
 

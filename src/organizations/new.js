@@ -1,11 +1,11 @@
 import {inject, Factory} from 'aurelia-framework';
 import {ApiService} from '../services/api-service';
 
-@inject(ApiService)
+@inject(Factory.of(ApiService))
 export class New {
 
   constructor(apiService) {
-    this.orgService = apiService('organizations');
+    this.orgService = apiService('organization');
   }
 
   create() {
