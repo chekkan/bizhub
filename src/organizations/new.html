@@ -1,13 +1,7 @@
 <template>
 
-  <form submit.delegate="create()">
-    <div>
-      <label for="name">Name</label>
-      <input type="text" id="name" value.bind="name" class="form-control" />
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-    </div>
-  </form>
+    <create-form submit.delegate="create()" 
+        schema.bind="schema"
+        model.bind="model" />
 
 </template>

@@ -6,11 +6,19 @@ export class New {
 
   constructor(apiService) {
     this.orgService = apiService('organization');
+    this.schema = {
+        properties: {
+            name: {
+                type: "string",
+                title: "Name",
+                required: true
+            }
+        }
+    }
+    this.model = {}
   }
 
   create() {
-    this.orgService.create({
-      name: this.name,
-    });
+    this.orgService.create(this.model);
   }
 }
