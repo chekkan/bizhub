@@ -1,9 +1,9 @@
 <template>
 
   <form>
-    <div repeat.for="key of schema.properties | keys">
-      <label for="${key}">${schema.properties[key].title}</label>
-      <input type="text" id="${key}" value.bind="model[key]" class="form-control" />
+    <div repeat.for="elem of formElements">
+      <label for="${elem.id}">${elem.title}</label>
+      <input type="text" id="${elem.id}" value.bind="model[elem.id]" class="form-control" />
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>

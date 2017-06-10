@@ -1,11 +1,11 @@
 export class TimesheetEntryCreated {
     constructor(entry) {
-        this.entry = entry;
+        this.entry = entry
     }
 }
 
 export class TimesheetEntryDeleted {
-  constructor(entry) {
-    this.entry = entry;
-  }
+    constructor(entry) {
+        this.entry = entry
+    }
 }

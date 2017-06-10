@@ -1,5 +1,5 @@
 export class KeysValueConverter {
-  toView(obj) {
-    return Reflect.ownKeys(obj);
-  }
+    static toView(obj) {
+        return Reflect.ownKeys(obj)
+    }
 }

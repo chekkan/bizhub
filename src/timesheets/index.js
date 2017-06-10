@@ -1,35 +1,34 @@
-import {TimesheetEntryService} from './../services/timesheet-entry-service';
-import {EventAggregator} from 'aurelia-event-aggregator';
-import {TimesheetEntryDeleted} from './../messages';
+import { EventAggregator } from "aurelia-event-aggregator"
+import { TimesheetEntryService } from "./../services/timesheet-entry-service"
+import { TimesheetEntryDeleted } from "./../messages"
 
 export class Index {
 
-  static inject() {
-    return [
-      TimesheetEntryService,
-      EventAggregator
-    ];
-  }
+    static inject() {
+        return [
+            TimesheetEntryService,
+            EventAggregator,
+        ]
+    }
 
-  constructor(timesheetEntryService, ea) {
-    this.timesheetEntryService = timesheetEntryService;
-    this.ea = ea;
+    constructor(timesheetEntryService, ea) {
+        this.timesheetEntryService = timesheetEntryService
+        this.ea = ea
 
-    this.addFormEnabled = false;
-    this.selectedItems = [];
-  }
+        this.addFormEnabled = false
+        this.selectedItems = []
+    }
 
-  toggleAddForm() {
-    this.addFormEnabled = !this.addFormEnabled;
-  }
+    toggleAddForm() {
+        this.addFormEnabled = !this.addFormEnabled
+    }
 
-  deleteSelectedItems() {
-    this.selectedItems.forEach((item) => {
-      let self = this;
-      this.timesheetEntryService.delete(item.id).then(function() {
-        console.log('deleted item with id ' + item.id);
-        self.ea.publish(new TimesheetEntryDeleted(item));
-      });
-    });
-  }
+    deleteSelectedItems() {
+        this.selectedItems.forEach((item) => {
+            const self = this
+            this.timesheetEntryService.delete(item.id).then(() => {
+                self.ea.publish(new TimesheetEntryDeleted(item))
+            })
+        })
+    }
 }

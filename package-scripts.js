@@ -1,11 +1,15 @@
 module.exports = {
     scripts: {
-        default: 'nps webpack',
+        default: "nps webpack",
         webpack: {
-            default: 'nps webpack.server',
+            default: "nps webpack.server",
             server: {
-                default: `webpack-dev-server -d --devtool '#source-map' --inline --env.server`
-            }
-        }
-    }
+                default: "webpack-dev-server -d --devtool '#source-map' --inline --env.server",
+            },
+        },
+        lint: {
+            default: "eslint src",
+            fix: "eslint src --fix",
+        },
+    },
 }

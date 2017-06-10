@@ -1,18 +1,18 @@
-import {AuthService} from 'aurelia-authentication';
+import { AuthService } from "aurelia-authentication"
 
 export class Logout {
 
     static inject() {
         return [
-            AuthService
-        ];
+            AuthService,
+        ]
     }
 
     constructor(authService) {
-        this.authService = authService;
+        this.authService = authService
     }
 
     activate() {
-        this.authService.logout();
+        this.authService.logout()
     }
 }

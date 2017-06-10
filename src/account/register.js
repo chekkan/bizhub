@@ -1,29 +1,29 @@
-import {Router} from 'aurelia-router';
-import {AccountService} from '../services/account-service'
+import { Router } from "aurelia-router"
+import { AccountService } from "../services/account-service"
 
 export class Register {
 
     static inject() {
-      return [
-        AccountService,
-        Router
-      ]
-    };
+        return [
+            AccountService,
+            Router,
+        ]
+    }
 
     constructor(accountService, router) {
-        this.accountService = accountService;
-        this.router = router;
-    };
+        this.accountService = accountService
+        this.router = router
+    }
 
     register() {
-        var self = this;
+        const self = this
         this.accountService.create({
             email: this.email,
             password: this.password,
             givenName: this.firstName,
-            surname: this.lastName
-        }).then(function(){
-            self.router.navigateToRoute('login');
-        });
+            surname: this.lastName,
+        }).then(() => {
+            self.router.navigateToRoute("login")
+        })
     }
 }
