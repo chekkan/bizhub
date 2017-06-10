@@ -12,7 +12,7 @@
 
         <div class="collapse navbar-collapse" id="bizhub-navbar-collapse">
             <ul class="navbar-nav">
-                <li repeat.for="row of router.navigation | authFilter: authenticated"
+                <li repeat.for="row of router.navigation"
                 class="nav-item ${row.isActive ? 'active' : ''}">
                     <a class="nav-link" data-toggle="collapse" data-target="#bizhub-navbar-collapse.in"
                     href.bind="row.href">${row.title}</a>

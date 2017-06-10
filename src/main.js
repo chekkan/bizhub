@@ -1,6 +1,8 @@
 import {AuthService} from 'aurelia-authentication';
 import {HttpClient} from 'aurelia-fetch-client';
-import configuration from 'config';
+import 'babel-polyfill';
+import { PLATFORM } from 'aurelia-pal';
+// import configuration from 'config';
 
 // comment out if you don't want a Promise polyfill (remove also from webpack.common.js)
 import * as Bluebird from 'bluebird';
@@ -9,27 +11,24 @@ Bluebird.config({ warnings: false });
 export async function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
-    .plugin('aurelia-authentication', baseConfig => {
-        baseConfig.configure(configuration);
-    })
-    .plugin('aurelia-google-analytics', config => {
-        config.init(configuration.googleAnalytics.trackingId);
-        config.attach(configuration.googleAnalytics.config);
-    })
-    .feature('resources');
+    // .plugin('aurelia-google-analytics', config => {
+    //     config.init(configuration.googleAnalytics.trackingId);
+    //     config.attach(configuration.googleAnalytics.config);
+    // })
+    .feature(PLATFORM.moduleName('resources/index'));
 
-    if (configuration.debug) {
+    // if (configuration.debug) {
         aurelia.use.developmentLogging();
-    }
+    // }
 
-    if (configuration.testing) {
+    // if (configuration.testing) {
         //aurelia.use.plugin('aurelia-testing');
-    }
+    // }
 
     configureContainer(aurelia.container);
 
     await aurelia.start();
-    aurelia.setRoot();
+    await aurelia.setRoot(PLATFORM.moduleName('app'));
 }
 
 function configureContainer(container) {
@@ -37,7 +36,7 @@ function configureContainer(container) {
   http.configure(conf => {
     conf
       .useStandardConfiguration()
-      .withBaseUrl(configuration.apiBaseUrl)
+      .withBaseUrl("http://localhost:3000")
       .withInterceptor({
         request(request) {
           let authService = container.get(AuthService);

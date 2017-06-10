@@ -1,14 +1,16 @@
+import {PLATFORM} from 'aurelia-pal'
+
 export default [
     {
         route: ['', 'home'],
         name: 'home',
         title: 'Home',
-        moduleId: 'home/index'
+        moduleId: PLATFORM.moduleName('home/index')
     },
     {
         route: 'timesheets',
         name: 'timesheets',
-        moduleId: 'timesheets/index',
+        moduleId: PLATFORM.moduleName('timesheets/index'),
         title: 'Timesheets',
         nav: true,
         auth: true
@@ -16,36 +18,36 @@ export default [
     {
         route: 'organizations',
         name: 'organizations',
-        moduleId: 'organizations/index',
+        moduleId: PLATFORM.moduleName('organizations/index'),
         title: 'Organizations',
         nav: true
     },
     {
         route: 'organizations/new',
         name: 'organizationNew',
-        moduleId: 'organizations/new'
+        moduleId: PLATFORM.moduleName('organizations/new')
     },
     {
         route: 'organizations/:id',
         name: 'organizationDetail',
-        moduleId: 'organizations/detail'
+        moduleId: PLATFORM.moduleName('organizations/detail')
     },
     {
         route: 'login',
         name: 'login',
-        moduleId: 'account/login',
+        moduleId: PLATFORM.moduleName('account/login'),
         title: 'Login'
     },
     {
         route: 'register',
         name: 'register',
-        moduleId: 'account/register',
+        moduleId: PLATFORM.moduleName('account/register'),
         title: 'Register'
     },
     {
         route: 'logout',
         name: 'logout',
-        moduleId: 'account/logout',
+        moduleId: PLATFORM.moduleName('account/logout'),
         title: 'Logout'
     }
 ]
