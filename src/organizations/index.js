@@ -3,7 +3,7 @@ import { activationStrategy, Router } from "aurelia-router"
 import { ApiService } from "../services/api-service"
 
 @inject(Router, Factory.of(ApiService))
-export class Index {
+export class OrganizationsIndex {
 
     currentPage = 1;
     lastPage = 1;
