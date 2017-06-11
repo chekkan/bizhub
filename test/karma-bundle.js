@@ -1,40 +1,41 @@
-/**
- * Inspired by @AngularClass
- * https://github.com/AngularClass/angular2-webpack-starter
- */
+import "babel-polyfill"
+import "aurelia-polyfills"
+import "aurelia-loader-webpack"
+// import { install as installJasmineAsync } from "jest-jasmine2/jasmine-async"
 
-/*
- * When testing with webpack and ES6, we have to do some extra
- * things get testing to work right. Because we are gonna write tests
- * in Babel/TS, we have to compile those as well. That's handled in
- * karma.conf.js with the karma-webpack plugin. This is the entry
- * file for webpack test. Just like webpack will create a bundle.js
- * file for our client, when we run test, it well compile and bundle them
- * all here! Crazy huh. So we need to do some setup
- */
-Error.stackTraceLimit = Infinity;
+// disable stacktrace limit so we do not loose any error information
+Error.stackTraceLimit = Infinity
 
-require('aurelia-bootstrapper-webpack');
+function loadTestModules() {
+    const srcContext = require.context(
+        // directory:
+        "../src",
+        // recursive:
+        true,
+        // tests in /src folder regex:
+        /\.spec\.[tj]s$/igm,
+    )
 
-/*
- * Ok, this is kinda crazy. We can use the the context method on
- * require that webpack created in order to tell webpack
- * what files we actually want to require or import.
- * Below, context will be an function/object with file names as keys.
- * using that regex we are saying look in ./src/app and ./test then find
- * any file that ends with spec.js and get its path. By passing in true
- * we say do this recursively
- */
-var testContext = require.context('./unit', true, /\.spec\.(ts|js)/);
+    const testContext = require.context(
+        // directory:
+        "./unit",
+        // recursive:
+        true,
+        // tests in ./unit folder regex:
+        /\.spec\.[tj]s$/igm,
+    )
 
-/*
- * get all the files, for each file, call the context function
- * that will require the file and load it up here. Context will
- * loop and require those spec files here
- */
-function requireAll(requireContext) {
-  return requireContext.keys().map(requireContext);
+    return [srcContext, testContext]
 }
 
-// requires and returns all modules that match
-var modules = requireAll(testContext);
+function requireAllInContext(requireContext) {
+    return requireContext.keys().map(requireContext)
+}
+
+function runTests(contexts) {
+    contexts.forEach(requireAllInContext)
+}
+
+// load and run tests:
+const testModuleContexts = loadTestModules()
+runTests(testModuleContexts)

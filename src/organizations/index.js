@@ -15,8 +15,8 @@ export class Index {
         this.organizationService = apiService("organization")
     }
 
-    activate(params) {
-        if (params.page) {
+    async activate(params) {
+        if (params && params.page) {
             this.currentPage = +params.page
         }
         const offset = (this.currentPage - 1) * 10
