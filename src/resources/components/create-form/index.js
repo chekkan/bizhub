@@ -39,7 +39,6 @@ export class CreateFormCustomElement {
     validate() {
         this.controller.validate({ object: this.model, rules: this.rules })
         .then((result) => {
-            debugger;
             if (result.valid) {
                 this.element.dispatchEvent(new Event("submit", {
                     bubbles: true,
