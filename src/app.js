@@ -1,7 +1,7 @@
 import { AuthenticateStep } from "aurelia-authentication"
 import routes from "./routes"
 
-export default class App {
+export class App {
 
     configureRouter(config, router) {
         this.router = router

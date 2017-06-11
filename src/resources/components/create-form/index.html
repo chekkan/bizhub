@@ -1,9 +1,14 @@
 <template>
 
   <form>
+    <ul if.bind="controller.errors">
+        <li repeat.for="error of controller.errors">
+        ${error.message}
+        </li>
+    </ul>
     <div repeat.for="elem of formElements">
       <label for="${elem.id}">${elem.title}</label>
-      <input type="text" id="${elem.id}" value.bind="model[elem.id]" class="form-control" />
+      <input type="text" id="${elem.id}" value.bind="model[elem.id] & validate:rules" class="form-control" />
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>

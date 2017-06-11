@@ -19,6 +19,7 @@ function configureContainer(container) {
 export async function configure(aurelia) { // eslint-disable-line import/prefer-default-export
     aurelia.use
     .standardConfiguration()
+    .plugin(PLATFORM.moduleName("aurelia-validation"))
     .feature(PLATFORM.moduleName("resources/index"))
     .developmentLogging()
 
