@@ -9,6 +9,7 @@ module.exports = {
                 default: series(
                     rimraf("test/coverage-karma"),
                     "karma start test/karma.conf.js"),
+                debug: "karma start test/karma.conf.js --auto-watch --no-single-run --debug",
             },
         },
         webpack: {
