@@ -20,5 +20,8 @@ export class New {
 
     create() {
         this.orgService.create(this.model)
+        .then(() => {
+            this.router.navigateToRoute("organizations")
+        })
     }
 }

@@ -2,7 +2,7 @@ import { inject, Factory } from "aurelia-framework"
 import { activationStrategy, Router } from "aurelia-router"
 import { ApiService } from "../services/api-service"
 
-@inject(Router, Factory.of(ApiService))
+@inject(Router, activationStrategy, Factory.of(ApiService))
 export class OrganizationsIndex {
 
     currentPage = 1;
@@ -10,8 +10,9 @@ export class OrganizationsIndex {
     organizations = [];
     totalSize = 0;
 
-    constructor(router, apiService) {
+    constructor(router, actStrategy, apiService) {
         this.router = router
+        this.activationStrategy = actStrategy
         this.organizationService = apiService("organization")
     }
 
@@ -23,8 +24,8 @@ export class OrganizationsIndex {
         return this.getOrganizations(10, offset)
     }
 
-    static determineActivationStrategy() {
-        return activationStrategy.invokeLifecycle
+    determineActivationStrategy() {
+        return this.activationStrategy.invokeLifecycle
     }
 
     getOrganizations(limit, offset) {
