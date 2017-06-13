@@ -58,6 +58,7 @@
     "babel-preset-env": "next",
     "babel-register": "next",
     "copy-webpack-plugin": "4.0.1",
+    "coveralls": "^2.13.1",
     "cross-env": "4.0.0",
     "css-loader": "0.28.1",
     "eslint": "3.19.0",
