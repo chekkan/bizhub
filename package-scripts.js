@@ -8,8 +8,8 @@ module.exports = {
             karma: {
                 default: series(
                     rimraf("test/coverage-karma"),
-                    "karma start test/karma.conf.js"),
-                debug: "karma start test/karma.conf.js --auto-watch --no-single-run --debug",
+                    crossEnv("NODE_ENV=development karma start test/karma.conf.js")),
+                debug: crossEnv("NODE_ENV=development karma start test/karma.conf.js --auto-watch --no-single-run --debug"),
             },
         },
         build: "nps webpack.build",
