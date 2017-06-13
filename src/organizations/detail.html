@@ -1,11 +1,16 @@
 <template>
-  <require from="./offices-list"></require>
+    <require from="./offices-list"></require>
 
-  <div class="page-header">
-    <h1>${organization.name}</h1>
-    <a class="btn-delete" click.delegate="delete()" href="#">Delete</a>
-  </div>
+    <div class="page-header">
+        <h1>${organization.name}</h1>
+    </div>
 
-  <offices-list organization-id.bind="organization.id"></offices-list>
+    <div class="resource-actions-bar">
+        <a class="btn-delete" click.delegate="delete()" href="#">Delete</a>
+    </div>
+
+    <div class="child-resource-list">
+        <offices-list organization-id.bind="organization.id"></offices-list>
+    </div>
 
 </template>

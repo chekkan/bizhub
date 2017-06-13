@@ -8,14 +8,6 @@ export default [
         moduleId: PLATFORM.moduleName("home/index"),
     },
     {
-        route: "timesheets",
-        name: "timesheets",
-        moduleId: PLATFORM.moduleName("timesheets/index"),
-        title: "Timesheets",
-        nav: true,
-        auth: true,
-    },
-    {
         route: "organizations",
         name: "organizations",
         moduleId: PLATFORM.moduleName("organizations/index"),
@@ -36,23 +28,5 @@ export default [
         route: "offices/new",
         name: "officeNew",
         moduleId: PLATFORM.moduleName("offices/new"),
-    },
-    {
-        route: "login",
-        name: "login",
-        moduleId: PLATFORM.moduleName("account/login"),
-        title: "Login",
-    },
-    {
-        route: "register",
-        name: "register",
-        moduleId: PLATFORM.moduleName("account/register"),
-        title: "Register",
-    },
-    {
-        route: "logout",
-        name: "logout",
-        moduleId: PLATFORM.moduleName("account/logout"),
-        title: "Logout",
     },
 ]

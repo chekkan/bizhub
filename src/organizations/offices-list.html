@@ -2,17 +2,17 @@
 
   <h2>Offices</h2>
 
-  <div>
-        <a route-href="route: officeNew; params.bind: {id: organizationId}" class="btn btn-primary">New</a>
+    <div class="resource-actions-bar">
+        <a route-href="route: officeNew; params.bind: {id: organizationId}" class="btn-new">New</a>
     </div>
 
-  <ul class="list-group">
+  <div>
     <div show.bind="offices.length === 0">
       <p class="text-center">No offices to display.<p>
     </div>
-      <li class="list-group-item" repeat.for="office of offices">
-        ${office.addressLine1}
-      </li>
-  </ul>
+      <div class="resource-list-item" repeat.for="office of offices">
+        <span class="resource-title">${office.addressLine1}</span>
+      </div>
+  </div>
 
 </template>
