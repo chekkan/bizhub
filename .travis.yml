@@ -7,6 +7,7 @@ before_install:
 - sh -e /etc/init.d/xvfb start
 script:
 - npm test
+- npm start -- build
 after_script: "cat ./test/coverage-karma/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
 deploy:
   provider: s3
@@ -17,4 +18,6 @@ deploy:
   region: $AWS_DEFAULT_REGION
   local_dir: dist
   on:
-    branch: master
+    branch:
+        - feature/organizations
+        - master

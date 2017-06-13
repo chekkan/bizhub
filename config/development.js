@@ -2,19 +2,19 @@ export default {
     loginUrl: "/oauth/token",
     debug: true,
     testing: true,
-    apiBaseUrl: "http://localhost:3000",
+    apiBaseUrl: "https://fq5j7iuo1f.execute-api.eu-west-1.amazonaws.com/dev",
     googleAnalytics: {
         trackingId: "UA-82866053-1",
         config: {
             logging: {
-                enabled: true
+                enabled: true,
             },
             pageTracking: {
-                enabled: false
+                enabled: false,
             },
             clickTracking: {
-                enabled: false
-            }
-        }
-    }
+                enabled: false,
+            },
+        },
+    },
 }
