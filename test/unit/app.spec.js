@@ -47,17 +47,6 @@ describe("the App module", () => {
         })
     })
 
-    it("should have a timesheets route", () => {
-        expect(sut.router.routes).toContain({
-            route: "timesheets",
-            name: "timesheets",
-            moduleId: "timesheets/index",
-            nav: true,
-            title: "Timesheets",
-            auth: true,
-        })
-    })
-
     it("should have a not-found route", () => {
         expect(sut.router.unKnownRoute).toEqual("not-found")
     })
