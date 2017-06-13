@@ -1,10 +1,12 @@
 import { inject, Factory } from "aurelia-framework"
+import { Router } from "aurelia-router"
 import { ApiService } from "../services/api-service"
 
-@inject(Factory.of(ApiService))
+@inject(Factory.of(ApiService), Router)
 export class New {
 
-    constructor(apiService) {
+    constructor(apiService, router) {
+        this.router = router
         this.orgService = apiService("organization")
         this.schema = {
             properties: {
