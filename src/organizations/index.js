@@ -19,6 +19,8 @@ export class OrganizationsIndex {
     async activate(params) {
         if (params && params.page) {
             this.currentPage = +params.page
+        } else {
+            this.currentPage = 1
         }
         const offset = (this.currentPage - 1) * 10
         return this.getOrganizations(10, offset)

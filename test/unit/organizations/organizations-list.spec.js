@@ -46,4 +46,14 @@ describe("the OrganizationsIndex module", () => {
             .determineActivationStrategy()
         expect(actual).toEqual(activationStrategy.invokeLifecycle)
     })
+
+    it("call without page sets currentPage to 1 on activate", async () => {
+        const apiServiceMock = () => new ApiServiceStub()
+
+        const sut = new OrganizationsIndex(null, null, apiServiceMock)
+        sut.currentPage = 2
+        await sut.activate()
+
+        expect(sut.currentPage).toEqual(1)
+    })
 })
