@@ -1,20 +1,26 @@
 <template>
 
-  <form>
-    <ul class="validation-errors" if.bind="controller.errors">
-        <li repeat.for="error of controller.errors">
-        ${error.message}
-        </li>
-    </ul>
-    <div repeat.for="elem of formElements">
-      <label for="${elem.id}">${elem.title}</label>
-      <input type="text" id="${elem.id}" value.bind="model[elem.id] & validate:rules" class="form-control" />
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary" click.delegate="validate()">
+    <form>
+        <ul class="validation-errors" if.bind="controller.errors">
+            <li repeat.for="error of controller.errors">
+                ${error.message}
+            </li>
+        </ul>
+        <div repeat.for="elem of formElements">
+            <label for="${elem.id}">${elem.title}</label>
+            <input if.bind="elem.type === 'text'" type="text" id="${elem.id}" value.bind="model[elem.id] & validate:rules" class="form-control"
+            />
+            <select if.bind="elem.type === 'select'" class="form-control" id="${elem.id}" value.bind="model[elem.id].id">
+                <option repeat.for="option of elem.options" value="${option.value}">
+                    ${option.text}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" click.delegate="validate()">
             Create
         </button>
-    </div>
-  </form>
+        </div>
+    </form>
 
 </template>

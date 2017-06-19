@@ -29,4 +29,11 @@ export default [
         name: "officeNew",
         moduleId: PLATFORM.moduleName("offices/new"),
     },
+    {
+        route: "time-entries",
+        name: "time-entries",
+        title: "Time Entries",
+        moduleId: PLATFORM.moduleName("time-entries/index"),
+        nav: true,
+    },
 ]

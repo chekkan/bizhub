@@ -42,6 +42,8 @@
   },
   "peerDependencies": {},
   "devDependencies": {
+    "@easy-webpack/config-sass": "^5.0.0",
+    "@easy-webpack/core": "^2.0.1",
     "aurelia-loader-nodejs": "1.0.1",
     "aurelia-pal-nodejs": "1.0.0-beta.1.0.0",
     "aurelia-protractor-plugin": "1.0.3",

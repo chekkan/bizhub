@@ -25,7 +25,7 @@ describe("the OrganizationsIndex module", () => {
             return http
         }
 
-        const sut = new OrganizationsIndex(null, null, apiServiceMock)
+        const sut = new OrganizationsIndex(null, apiServiceMock)
 
         await sut.activate()
         expect(sut.organizations).toBe(itemStubs)
@@ -35,14 +35,14 @@ describe("the OrganizationsIndex module", () => {
         const page = 3
         const apiServiceMock = () => new ApiServiceStub()
 
-        const sut = new OrganizationsIndex(null, null, apiServiceMock)
+        const sut = new OrganizationsIndex(null, apiServiceMock)
         await sut.activate({ page })
 
         expect(sut.currentPage).toEqual(page)
     })
 
     it("determineActivationStrategy return invokeLifecycle activationStrategy", () => {
-        const actual = new OrganizationsIndex(null, activationStrategy, () => {})
+        const actual = new OrganizationsIndex(activationStrategy, () => {})
             .determineActivationStrategy()
         expect(actual).toEqual(activationStrategy.invokeLifecycle)
     })
@@ -50,7 +50,7 @@ describe("the OrganizationsIndex module", () => {
     it("call without page sets currentPage to 1 on activate", async () => {
         const apiServiceMock = () => new ApiServiceStub()
 
-        const sut = new OrganizationsIndex(null, null, apiServiceMock)
+        const sut = new OrganizationsIndex(null, apiServiceMock)
         sut.currentPage = 2
         await sut.activate()
 

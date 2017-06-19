@@ -8,6 +8,7 @@ export class ApiService {
         const plural = {
             organization: "organizations",
             office: "offices",
+            "time-entry": "time-entries",
         }
         this.httpClient = httpClient
         this.resource = resource
