@@ -25,7 +25,7 @@ export default class Helper {
     }
 
     static async constructElements(schema, bindingContext) {
-        const elems = await Object.keys(schema.properties).map(key => ({
+        const elems = Object.keys(schema.properties).map(key => ({
             id: key,
             title: schema.properties[key].title,
             required: schema.properties[key].required,
@@ -72,5 +72,10 @@ export default class Helper {
             })
             .reduce((prev, curr) => prev.concat(curr))
         return Promise.resolve(rules)
+    }
+
+    static subscribePropertyChanged(elements, bindingEngine, model, modelPropertyChangedFn) {
+        return bindingEngine.expressionObserver(model, "organization.id")
+            .subscribe((newValue, oldValue) => modelPropertyChangedFn("organization.id", newValue, oldValue))
     }
 }
