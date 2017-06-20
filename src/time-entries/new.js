@@ -1,20 +1,41 @@
 import { inject, Factory } from "aurelia-framework"
+import { Router } from "aurelia-router"
 import schema from "./time-entry-schema"
 import { ApiService } from "../services/api-service"
 
-@inject(Factory.of(ApiService))
+@inject(Factory.of(ApiService), Router)
 export class NewTimeEntryViewModel {
 
     model = {};
 
-    constructor(apiService) {
+    constructor(apiService, router) {
         this.schema = schema
         this.orgService = apiService("organization")
-        this.officeService = apiService("office")
+        this.timeEntryService = apiService("time-entry")
+        this.router = router
     }
 
     create() {
-        console.log(this.model)
+        const transModel = {
+            start: this.model.start,
+            end: this.model.end,
+            break: Number(this.model.break),
+            ratePerHour: Number(this.model.ratePerHour),
+            organization: {
+                id: this.model.organization.id,
+            },
+            office: {
+                id: this.model.office.id,
+            },
+        }
+        console.log(transModel)
+        this.timeEntryService.create(transModel)
+        .then((response) => {
+            console.log(response)
+            this.router.navigateToRoute("time-entries")
+        }).catch((err) => {
+            console.log(err)
+        })
     }
 
     get organizations() {

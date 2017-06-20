@@ -28,7 +28,7 @@ export class CreateFormCustomElement {
     }
 
     getSubscriptions() {
-        this.formElements.filter(c => c.childOf)
+        return this.formElements.filter(c => c.childOf)
         .map((el) => {
             const propertyName = `${el.childOf}.id`
             return this.bindingEngine.expressionObserver(this.model, propertyName)

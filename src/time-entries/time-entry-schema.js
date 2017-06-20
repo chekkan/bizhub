@@ -32,7 +32,7 @@ export default {
             required: true,
         },
         break: {
-            type: "number",
+            type: "integer",
             title: "Break",
         },
         ratePerHour: {

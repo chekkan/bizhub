@@ -38,6 +38,7 @@ export class ApiService {
             method: "post",
             body: json(organization),
         })
+        .catch(error => error.json().then(err => Promise.reject(err)))
     }
 
     delete(id) {
