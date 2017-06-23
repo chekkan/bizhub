@@ -20,6 +20,10 @@ export async function configure(aurelia) {
     aurelia.use
     .standardConfiguration()
     .plugin(PLATFORM.moduleName("aurelia-validation"))
+    .plugin(PLATFORM.moduleName("aurelia-google-analytics"), (config) => {
+        config.init(configuration.googleAnalytics.trackingId)
+        config.attach(configuration.googleAnalytics.config)
+    })
     .feature(PLATFORM.moduleName("resources/index"))
     .developmentLogging()
 
