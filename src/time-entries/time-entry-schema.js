@@ -23,22 +23,29 @@ export default {
         },
         start: {
             type: "string",
+            format: "date-time",
             title: "Start",
             required: true,
         },
         end: {
             type: "string",
+            format: "date-time",
             title: "Finish",
             required: true,
         },
         break: {
             type: "integer",
             title: "Break",
+            default: 0,
+            minimum: 0,
+            maximum: 1440,
         },
         ratePerHour: {
             type: "number",
             title: "Rate",
             required: true,
+            minimum: 0,
+            multipleOf: 0.01,
         },
     },
 }

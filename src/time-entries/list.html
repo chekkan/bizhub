@@ -13,10 +13,10 @@
             <p class="text-center">No entries to display.<p>
         </div>
         <div repeat.for="entry of timeEntries" class="resource-list-item">
-            <div>Date: ${entry.start | dateFormat:'MMMM Mo YYYY'}</div>
+            <div>Date: ${entry.start | dateFormat:'MMMM Do YYYY'}</div>
             <div>Time: ${entry.start | dateFormat:'h:mm a'}</div>
             <div>Hours: ${entry.hours} hrs</div>
-            <div>Break: ${entry.break} hrs</div>
+            <div>Break: ${entry.break}</div>
             <div>Rate per hour: £${entry.ratePerHour}</div>
         </div>
     </div>

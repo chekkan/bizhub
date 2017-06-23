@@ -1,5 +1,6 @@
 import { inject, Factory } from "aurelia-framework"
 import { activationStrategy } from "aurelia-router"
+import moment from "moment"
 import { ApiService } from "../services/api-service"
 import { ListViewModel } from "../common/list-view-model"
 
@@ -20,7 +21,7 @@ export class TimeEntriesListViewModel extends ListViewModel {
                 hours: Math.abs(
                     Date.parse(resource.end) - Date.parse(resource.start),
                 ) / 36e5,
-                break: resource.break,
+                break: moment.duration(resource.break, "minutes").humanize(),
                 ratePerHour: resource.ratePerHour,
             }))
         })

@@ -8,8 +8,17 @@ export default class Helper {
         if (property.properties && property.properties.id) {
             return "select"
         }
+        if (property.format === "date-time") {
+            return "date-time"
+        }
         if (property.type === "string") {
             return "text"
+        }
+        if (property.type === "integer") {
+            return "integer"
+        }
+        if (property.type === "number") {
+            return "number"
         }
         return "text"
     }
@@ -33,6 +42,7 @@ export default class Helper {
             type: Helper.getFormElementType(schema.properties[key]),
             childOf: schema.properties[key]["x-child-of"],
             options: schema.properties[key]["x-form-options"],
+            step: schema.properties[key].multipleOf,
         }))
         return Helper.populateElements(elems, bindingContext)
     }
@@ -59,6 +69,11 @@ export default class Helper {
     }
 
     static async constructRules(elements) {
+        ValidationRules.customRule(
+            "integer",
+            value => Number.isInteger(value),
+            `\${$displayName} must be an integer.`,
+        )
         const rules = elements
             .filter(elem => elem.required)
             .map((elem) => {
@@ -67,6 +82,9 @@ export default class Helper {
                     .required()
                 if (elem.pattern) {
                     builder = builder.matches(new RegExp(elem.pattern))
+                }
+                if (elem.type === "integer") {
+                    builder.satisfiesRule("integer")
                 }
                 return builder.rules
             })

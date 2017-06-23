@@ -1,5 +1,6 @@
 import { inject, Factory } from "aurelia-framework"
 import { Router } from "aurelia-router"
+import moment from "moment"
 import schema from "./time-entry-schema"
 import { ApiService } from "../services/api-service"
 
@@ -16,18 +17,10 @@ export class NewTimeEntryViewModel {
     }
 
     create() {
-        const transModel = {
-            start: this.model.start,
-            end: this.model.end,
-            break: Number(this.model.break),
-            ratePerHour: Number(this.model.ratePerHour),
-            organization: {
-                id: this.model.organization.id,
-            },
-            office: {
-                id: this.model.office.id,
-            },
-        }
+        const transModel = Object.assign({}, this.model, {
+            start: moment(this.model.start).utc().format(),
+            end: moment(this.model.end).utc().format(),
+        })
         console.log(transModel)
         this.timeEntryService.create(transModel)
         .then((response) => {
