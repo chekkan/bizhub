@@ -1,0 +1,18 @@
+<template bindable="organizationId">
+
+  <h2>Offices</h2>
+
+    <div class="resource-actions-bar">
+        <a route-href="route: officeNew; params.bind: {id: organizationId}" class="btn-new">New</a>
+    </div>
+
+  <div>
+    <div show.bind="offices.length === 0">
+      <p class="text-center">No offices to display.<p>
+    </div>
+      <div class="resource-list-item" repeat.for="office of offices">
+        <span class="resource-title">${office.addressLine1}</span>
+      </div>
+  </div>
+
+</template>

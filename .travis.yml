@@ -1,16 +1,14 @@
-branches:
-  only:
-  - master
 language: node_js
 node_js:
-- '6.1'
+- "6.1"
 before_install:
 - export CHROME_BIN=chromium-browser
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 script:
 - npm test
-- npm run build:prod
+- npm start -- build
+after_script: "cat ./test/coverage-karma/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
 deploy:
   provider: s3
   access_key_id: $AWS_ACCESS_KEY_ID
@@ -20,4 +18,5 @@ deploy:
   region: $AWS_DEFAULT_REGION
   local_dir: dist
   on:
-    branch: master
+    branch:
+        - master

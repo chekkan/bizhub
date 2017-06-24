@@ -1,176 +1,136 @@
-"use strict";
+const path = require("path")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const CopyWebpackPlugin = require("copy-webpack-plugin")
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const { AureliaPlugin } = require("aurelia-webpack-plugin")
+const { optimize: { CommonsChunkPlugin }, ProvidePlugin } = require("webpack")
 
-/**
- * To learn more about how to use Easy Webpack
- * Take a look at the README here: https://github.com/easy-webpack/core
- **/
-const easyWebpack = require('@easy-webpack/core');
-const generateConfig = easyWebpack.default;
-const get = easyWebpack.get;
-const path = require('path');
-const ENV = process.env.NODE_ENV
-  && process.env.NODE_ENV.toLowerCase() || 'development';
-let config;
+const configSass = require("./webpack/config-sass")
+const configCss = require("./webpack/config-css")
 
-// basic configuration:
-const title = 'Bizhub';
-const baseUrl = '/';
-const rootDir = path.resolve();
-const srcDir = path.resolve('src');
-const outDir = path.resolve('dist');
+// config helpers:
+const ensureArray = config =>
+  (config && (Array.isArray(config) ? config : [config])) || []
+const when = (condition, config, negativeConfig) =>
+  (condition ? ensureArray(config) : ensureArray(negativeConfig))
 
-const coreBundles = {
-  bootstrap: [
-    'aurelia-bootstrapper-webpack',
-    'aurelia-polyfills',
-    'aurelia-pal',
-    'aurelia-pal-browser',
-    'regenerator-runtime',
-    'bluebird'
-  ],
-  // these will be included in the 'aurelia' bundle (except for the above
-  // bootstrap packages)
-  aurelia: [
-    'aurelia-bootstrapper-webpack',
-    'aurelia-binding',
-    'aurelia-dependency-injection',
-    'aurelia-event-aggregator',
-    'aurelia-framework',
-    'aurelia-history',
-    'aurelia-history-browser',
-    'aurelia-loader',
-    'aurelia-loader-webpack',
-    'aurelia-logging',
-    'aurelia-logging-console',
-    'aurelia-metadata',
-    'aurelia-pal',
-    'aurelia-pal-browser',
-    'aurelia-path',
-    'aurelia-polyfills',
-    'whatwg-fetch',
-    'aurelia-route-recognizer',
-    'aurelia-router',
-    'aurelia-task-queue',
-    'aurelia-templating',
-    'aurelia-templating-binding',
-    'aurelia-templating-router',
-    'aurelia-templating-resources',
-    // 'aurelia-configuration'
-    'aurelia-authentication',
-    'aurelia-google-analytics'
-  ]
-}
+// primary config:
+const title = "Bizhub"
+const outDir = path.resolve(__dirname, "dist")
+const srcDir = path.resolve(__dirname, "src")
+const nodeModulesDir = path.resolve(__dirname, "node_modules")
+const baseUrl = "/"
 
-const baseConfig = {
+module.exports = ({ production, server, extractCss, coverage } = {}) => ({
+    resolve: {
+        extensions: [".js"],
+        modules: [srcDir, "node_modules"],
+        alias: {
+            config: path.join(__dirname, "config", process.env.NODE_ENV),
+        },
+    },
     entry: {
-        'app': [/* this is filled by the aurelia-webpack-plugin */],
-        'aurelia-bootstrap': coreBundles.bootstrap,
-        'aurelia': coreBundles.aurelia.filter(
-            pkg => coreBundles.bootstrap.indexOf(pkg) === -1)
+        app: ["aurelia-bootstrapper", `${srcDir}/scss/main.scss`],
+        vender: ["bluebird", "jquery", "tether", "bootstrap"],
     },
     output: {
         path: outDir,
+        publicPath: baseUrl,
+        filename: production
+      ? "[name].[chunkhash].bundle.js"
+      : "[name].[hash].bundle.js",
+        sourceMapFilename: production
+      ? "[name].[chunkhash].bundle.map"
+      : "[name].[hash].bundle.map",
+        chunkFilename: production
+      ? "[name].[chunkhash].chunk.js"
+      : "[name].[hash].chunk.js",
     },
-    resolve: {
-        alias: {
-            config: path.join(__dirname, 'config', process.env.NODE_ENV)
+    devServer: {
+        contentBase: outDir,
+    // serve index.html for all 404 (required for push-state)
+        historyApiFallback: true,
+    },
+    module: {
+        rules: [
+            ...configCss(extractCss),
+            ...configSass(extractCss),
+      { test: /\.html$/i, loader: "html-loader" },
+            {
+                test: /\.js$/i,
+                loader: "babel-loader",
+                exclude: nodeModulesDir,
+                options: coverage ? { sourceMap: "inline", plugins: ["istanbul"] } : {},
+            },
+      { test: /\.json$/i, loader: "json-loader" },
+      // use Bluebird as the global Promise implementation:
+            {
+                test: /[/\\]node_modules[/\\]bluebird[/\\].+\.js$/,
+                loader: "expose-loader?Promise",
+            },
+      // exposes jQuery globally as $ and as jQuery:
+            {
+                test: require.resolve("jquery"),
+                loader: "expose-loader?$!expose-loader?jQuery",
+            },
+      // embed small images and fonts as Data Urls and larger ones as files:
+            {
+                test: /\.(png|gif|jpg|cur)$/i,
+                loader: "url-loader",
+                options: { limit: 8192 },
+            },
+            {
+                test: /\.woff2(\?v=[0-9]\.[0-9]\.[0-9])?$/i,
+                loader: "url-loader",
+                options: { limit: 10000, mimetype: "application/font-woff2" },
+            },
+            {
+                test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/i,
+                loader: "url-loader",
+                options: { limit: 10000, mimetype: "application/font-woff" },
+            },
+      // load these fonts normally, as files:
+            {
+                test: /\.(ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/i,
+                loader: "file-loader",
+            },
+        ],
+    },
+    plugins: [
+        new AureliaPlugin(),
+        new ProvidePlugin({
+            Promise: "bluebird",
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery",
+            Tether: "tether",
+        }),
+        new HtmlWebpackPlugin({
+            template: "index.ejs",
+            minify: production
+        ? {
+            removeComments: true,
+            collapseWhitespace: true,
         }
-    }
-}
-
-// advanced configuration:
-switch (ENV) {
-  case 'production':
-    config = generateConfig(
-      baseConfig,
-
-      require('@easy-webpack/config-env-production')
-        ({compress: true}),
-
-      require('@easy-webpack/config-aurelia')
-        ({root: rootDir, src: srcDir, title: title, baseUrl: baseUrl}),
-
-      require('@easy-webpack/config-babel')(),
-      require('@easy-webpack/config-html')(),
-
-      require('@easy-webpack/config-css')
-        ({ filename: 'styles.css', allChunks: true, sourceMap: false }),
-
-      require('@easy-webpack/config-fonts-and-images')(),
-      require('@easy-webpack/config-global-bluebird')(),
-      require('@easy-webpack/config-global-jquery')(),
-      require('@easy-webpack/config-global-regenerator')(),
-      require('@easy-webpack/config-generate-index-html')
-        ({minify: true}),
-
-      require('@easy-webpack/config-copy-files')
-        ({patterns: [{ from: 'favicon.ico', to: 'favicon.ico' }]}),
-
-      require('@easy-webpack/config-common-chunks-simple')
-        ({appChunkName: 'app', firstChunk: 'aurelia-bootstrap'}),
-
-      require('@easy-webpack/config-uglify')
-        ({debug: false})
-    );
-    break;
-
-  case 'test':
-    config = generateConfig(
-      baseConfig,
-
-      require('@easy-webpack/config-env-development')
-        ({devtool: 'inline-source-map'}),
-
-      require('@easy-webpack/config-aurelia')
-        ({root: rootDir, src: srcDir, title: title, baseUrl: baseUrl}),
-
-      require('@easy-webpack/config-babel')(),
-      require('@easy-webpack/config-html')(),
-
-      require('@easy-webpack/config-css')
-        ({ filename: 'styles.css', allChunks: true, sourceMap: false }),
-
-      require('@easy-webpack/config-fonts-and-images')(),
-      require('@easy-webpack/config-global-bluebird')(),
-      require('@easy-webpack/config-global-jquery')(),
-      require('@easy-webpack/config-global-regenerator')(),
-      require('@easy-webpack/config-generate-index-html')(),
-
-      require('@easy-webpack/config-test-coverage-istanbul')()
-    );
-    break;
-
-  default:
-  case 'development':
-    process.env.NODE_ENV = 'development';
-    config = generateConfig(
-      baseConfig,
-
-      require('@easy-webpack/config-env-development')(),
-
-      require('@easy-webpack/config-aurelia')
-        ({root: rootDir, src: srcDir, title: title, baseUrl: baseUrl}),
-
-      require('@easy-webpack/config-babel')(),
-      require('@easy-webpack/config-html')(),
-
-      require('@easy-webpack/config-css')
-        ({ filename: 'styles.css', allChunks: true, sourceMap: false }),
-
-      require('@easy-webpack/config-fonts-and-images')(),
-      require('@easy-webpack/config-global-bluebird')(),
-      require('@easy-webpack/config-global-jquery')(),
-      require('@easy-webpack/config-global-regenerator')(),
-      require('@easy-webpack/config-generate-index-html')
-        ({minify: false}),
-
-      require('@easy-webpack/config-copy-files')
-        ({patterns: [{ from: 'favicon.ico', to: 'favicon.ico' }]}),
-
-      require('@easy-webpack/config-common-chunks-simple')
-        ({appChunkName: 'app', firstChunk: 'aurelia-bootstrap'})
-    );
-    break;
-}
-
-module.exports = config;
+        : undefined,
+            metadata: {
+        // available in index.ejs
+                title,
+                server,
+                baseUrl,
+            },
+        }),
+        new CopyWebpackPlugin([{ from: "favicon.ico", to: "favicon.ico" }]),
+        ...when(
+      extractCss,
+      new ExtractTextPlugin({
+          filename: production ? "[contenthash].css" : "[id].css",
+          allChunks: true,
+      })),
+        ...when(
+      production,
+      new CommonsChunkPlugin({
+          name: "common",
+      })),
+    ],
+})

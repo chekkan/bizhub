@@ -2,19 +2,19 @@ export default {
     loginUrl: "/oauth/token",
     debug: false,
     testing: false,
-    apiBaseUrl: "http://bizhub-api.us-west-2.elasticbeanstalk.com",
+    apiBaseUrl: "https://fq5j7iuo1f.execute-api.eu-west-1.amazonaws.com/dev",
     googleAnalytics: {
         trackingId: "UA-82866053-1",
         config: {
             logging: {
-                enabled: true
+                enabled: true,
             },
             pageTracking: {
-                enabled: true
+                enabled: true,
             },
             clickTracking: {
-                enabled: true
-            }
-        }
-    }
+                enabled: true,
+            },
+        },
+    },
 }
