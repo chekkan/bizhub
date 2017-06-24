@@ -19,5 +19,4 @@ deploy:
   local_dir: dist
   on:
     branch:
-        - feature/organizations
         - master
