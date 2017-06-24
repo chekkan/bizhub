@@ -4,7 +4,7 @@ import { ApiService } from "../services/api-service"
 import { ListViewModel } from "../common/list-view-model"
 
 @inject(activationStrategy, Factory.of(ApiService))
-export class OrganizationsIndex extends ListViewModel {
+export class OrganizationsListViewModel extends ListViewModel {
 
     organizations = [];
 
