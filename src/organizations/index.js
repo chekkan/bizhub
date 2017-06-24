@@ -1,21 +1,25 @@
-import { inject, Factory } from "aurelia-framework"
-import { activationStrategy } from "aurelia-router"
-import { ApiService } from "../services/api-service"
-import { ListViewModel } from "../common/list-view-model"
+import { PLATFORM } from "aurelia-pal"
 
-@inject(activationStrategy, Factory.of(ApiService))
-export class OrganizationsIndex extends ListViewModel {
-
-    organizations = [];
-
-    constructor(actStrategy, apiService) {
-        super(actStrategy, apiService("organization"))
-    }
-
-    async activate(params) {
-        return super.activate(params)
-        .then((resources) => {
-            this.organizations = resources
-        })
+export class Index {
+    configureRouter(config, router) {
+        config.map([
+            {
+                route: "",
+                name: "organizations",
+                moduleId: PLATFORM.moduleName("organizations/list"),
+            },
+            {
+                route: "new",
+                name: "organizationNew",
+                moduleId: PLATFORM.moduleName("organizations/new"),
+                title: "New",
+            },
+            {
+                route: "/:id",
+                name: "organizationDetail",
+                moduleId: PLATFORM.moduleName("organizations/detail"),
+            },
+        ])
+        this.router = router
     }
 }

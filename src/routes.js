@@ -10,19 +10,9 @@ export default [
     {
         route: "organizations",
         name: "organizations",
-        moduleId: PLATFORM.moduleName("organizations/index"),
         title: "Organizations",
+        moduleId: PLATFORM.moduleName("organizations/index"),
         nav: true,
-    },
-    {
-        route: "organizations/new",
-        name: "organizationNew",
-        moduleId: PLATFORM.moduleName("organizations/new"),
-    },
-    {
-        route: "organizations/:id",
-        name: "organizationDetail",
-        moduleId: PLATFORM.moduleName("organizations/detail"),
     },
     {
         route: "offices/new",
