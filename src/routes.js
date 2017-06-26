@@ -26,4 +26,30 @@ export default [
         moduleId: PLATFORM.moduleName("time-entries/index"),
         nav: true,
     },
+    {
+        route: "login",
+        name: "login",
+        title: "Login",
+        moduleId: PLATFORM.moduleName("account/signin"),
+        nav: false,
+    },
+    {
+        route: "register",
+        name: "register",
+        title: "Register",
+        moduleId: PLATFORM.moduleName("account/signup"),
+        nav: false,
+    },
+    {
+        route: "logout",
+        name: "logout",
+        title: "Logout",
+        moduleId: PLATFORM.moduleName("account/logout"),
+        nav: false,
+    },
+    {
+        route: "callback",
+        name: "callback",
+        moduleId: PLATFORM.moduleName("account/callback"),
+    },
 ]

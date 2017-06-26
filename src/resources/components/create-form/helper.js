@@ -11,6 +11,9 @@ export default class Helper {
         if (property.format === "date-time") {
             return "date-time"
         }
+        if (property.format === "password") {
+            return "password"
+        }
         if (property.type === "string") {
             return "text"
         }

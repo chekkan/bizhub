@@ -13,6 +13,7 @@ export class Index {
                 name: "organizationNew",
                 moduleId: PLATFORM.moduleName("organizations/new"),
                 title: "New",
+                auth: true,
             },
             {
                 route: "/:id",
