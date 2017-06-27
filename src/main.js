@@ -1,33 +1,33 @@
-import { HttpClient } from "aurelia-fetch-client"
 import "babel-polyfill"
 import { PLATFORM } from "aurelia-pal"
 import * as Bluebird from "bluebird"
-import configuration from "config" // eslint-disable-line import/no-unresolved,import/extensions,import/no-extraneous-dependencies
+import { AureliaConfiguration } from "aurelia-configuration"
 
 Bluebird.config({ warnings: false })
 
-function configureContainer(container) {
-    const http = new HttpClient()
-    http.configure((conf) => {
-        conf
-        .useStandardConfiguration()
-        .withBaseUrl(configuration.apiBaseUrl)
+function configConfigurationPlugin(config) {
+    config.setEnvironments({
+        development: ["localhost"],
+        production: ["bizhub.io"],
     })
-    container.registerInstance(HttpClient, http)
 }
 
 export async function configure(aurelia) {
     aurelia.use
     .standardConfiguration()
+    .plugin(PLATFORM.moduleName("aurelia-configuration"), configConfigurationPlugin)
     .plugin(PLATFORM.moduleName("aurelia-validation"))
     .plugin(PLATFORM.moduleName("aurelia-google-analytics"), (config) => {
-        config.init(configuration.googleAnalytics.trackingId)
-        config.attach(configuration.googleAnalytics.config)
+        const configInstance = aurelia.container.get(AureliaConfiguration)
+        config.init(configInstance.get("googleAnalytics.trackingId"))
+        config.attach(configInstance.get("googleAnalytics.config"))
     })
+    .plugin(PLATFORM.moduleName("plugins/http-client/index"))
     .feature(PLATFORM.moduleName("resources/index"))
-    .developmentLogging()
 
-    configureContainer(aurelia.container)
+    if (process.env.NODE_ENV !== "production") {
+        aurelia.use.developmentLogging()
+    }
 
     await aurelia.start()
     await aurelia.setRoot(PLATFORM.moduleName("app"))

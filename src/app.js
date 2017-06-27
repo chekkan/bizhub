@@ -1,4 +1,4 @@
-import { AuthenticateStep } from "aurelia-authentication"
+import { AuthenticateStep } from "./common/authenticate-step"
 import routes from "./routes"
 
 export class App {

@@ -1,5 +1,5 @@
 import { bindable } from "aurelia-framework"
-import { AuthService } from "aurelia-authentication"
+import { AuthService } from "./services/auth-service"
 
 export class NavBar {
 
@@ -15,7 +15,7 @@ export class NavBar {
         this.authService = authService
     }
 
-    get authenticated() {
-        return this.authService.isAuthenticated()
+    get isAuthenticated() {
+        return this.authService.isAuthenticated
     }
 }

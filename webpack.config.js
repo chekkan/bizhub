@@ -25,9 +25,6 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
     resolve: {
         extensions: [".js"],
         modules: [srcDir, "node_modules"],
-        alias: {
-            config: path.join(__dirname, "config", process.env.NODE_ENV),
-        },
     },
     entry: {
         app: ["aurelia-bootstrapper", `${srcDir}/scss/main.scss`],
@@ -120,7 +117,9 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
                 baseUrl,
             },
         }),
-        new CopyWebpackPlugin([{ from: "favicon.ico", to: "favicon.ico" }]),
+        new CopyWebpackPlugin([
+            { from: "favicon.ico", to: "favicon.ico" },
+            { from: "config/config.json", to: "config/config.json" }]),
         ...when(
       extractCss,
       new ExtractTextPlugin({

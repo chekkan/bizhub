@@ -13,6 +13,8 @@
             <label for="${elem.id}">${elem.title}</label>
             <input if.bind="elem.type === 'text'" type="text" id="${elem.id}" value.bind="model[elem.id] & validate:rules" class="form-control"
             />
+            <input if.bind="elem.type === 'password'" type="password" id="${elem.id}" value.bind="model[elem.id] & validate:rules" class="form-control"
+            />
             <select if.bind="elem.type === 'select'" class="form-control" id="${elem.id}" value.bind="model[elem.id].id">
                 <option repeat.for="option of elem.options" value="${option.value}">
                     ${option.text}

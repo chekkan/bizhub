@@ -8,8 +8,8 @@ module.exports = {
             karma: {
                 default: series(
                     rimraf("test/coverage-karma"),
-                    crossEnv("NODE_ENV=development karma start test/karma.conf.js")),
-                debug: crossEnv("NODE_ENV=development karma start test/karma.conf.js --auto-watch --no-single-run --debug"),
+                    "karma start test/karma.conf.js"),
+                debug: "karma start test/karma.conf.js --auto-watch --no-single-run --debug",
             },
         },
         build: "nps webpack.build",
@@ -21,7 +21,7 @@ module.exports = {
                 development: {
                     default: series(
                         "nps webpack.build.before",
-                        crossEnv("NODE_ENV=development webpack --progress -d")),
+                        "webpack --progress -d"),
                     serve: series.nps(
                         "webpack.build.development",
                         "serve"),
@@ -33,7 +33,7 @@ module.exports = {
                 },
             },
             server: {
-                default: "NODE_ENV=development webpack-dev-server -d --devtool '#source-map' --inline --env.server",
+                default: "webpack-dev-server -d --devtool '#source-map' --inline --env.server",
             },
         },
         lint: {
