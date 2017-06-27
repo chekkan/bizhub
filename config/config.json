@@ -1,8 +1,17 @@
 {
-    "loginUrl": "/oauth/token",
     "debug": true,
     "testing": true,
     "apiBaseUrl": "https://fq5j7iuo1f.execute-api.eu-west-1.amazonaws.com/dev",
+    "logoutRedirect": "http://localhost:8080",
+    "loginRedirect": "http://localhost:8080",
+    "loginRoute": "login",
+    "auth": {
+        "authEndpoint": "https://bizhub.eu.auth0.com/authorize",
+        "signupUrl": "https://bizhub.eu.auth0.com/dbconnections/signup",
+        "clientId": "FADvfi3XwGOe5NLT7zDXjthJ3WgwPIQU",
+        "connectionName": "Username-Password-Authentication",
+        "redirectUri": "http://localhost:8080/callback"
+    },
     "googleAnalytics": {
         "trackingId": "UA-82866053-1",
         "config": {
@@ -18,6 +27,11 @@
         }
     },
     "production": {
+        "logoutRedirect": "http://bizhub.io",
+        "loginRedirect": "http://bizhub.io",
+        "auth":{
+            "redirectUri": "http://bizhub.io/callback"
+        },
         "googleAnalytics":{
             "logging": {
                 "enabled": true

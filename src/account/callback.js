@@ -6,17 +6,11 @@ export class SignInCallbackViewModel {
     constructor(authService) {
         let qs = SignInCallbackViewModel.parseQueryString(window.location.search.substr(1))
         if (qs.action && qs.action === "logout") {
-            authService.logout().then(() => {
-                const href = "http://localhost:8080"
-                window.location.replace(href)
-            })
+            authService.logout()
         } else {
             qs = SignInCallbackViewModel.parseQueryString(
                 window.location.hash.substr(1))
-            authService.login(qs).then(() => {
-                const href = "http://localhost:8080"
-                window.location.replace(href)
-            })
+            authService.login(qs)
         }
     }
 

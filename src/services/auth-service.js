@@ -1,25 +1,31 @@
 import { inject } from "aurelia-framework"
+import { Router } from "aurelia-router"
 import { HttpClient, json } from "aurelia-fetch-client"
+import { AureliaConfiguration } from "aurelia-configuration"
 
-@inject(HttpClient)
+@inject(HttpClient, AureliaConfiguration, Router)
 export class AuthService {
-
-    config = {
-        loginRedirect: "/",
-        loginRoute: "/login",
-    }
-
-    constructor(httpClient) {
+    constructor(httpClient, configuration, router) {
         this.httpClient = httpClient
-        this.baseUrl = "https://bizhub.eu.auth0.com/"
+        this.router = router
+        this.config = {
+            authEndpoint: configuration.get("auth.authEndpoint"),
+            clientId: configuration.get("auth.clientId"),
+            connectionName: configuration.get("auth.connectionName"),
+            redirectUri: configuration.get("auth.redirectUri"),
+            signupUrl: configuration.get("signupUrl"),
+            logoutRedirect: configuration.get("logoutRedirect"),
+            loginRoute: configuration.get("loginRoute"),
+            loginRedirect: configuration.get("loginRedirect"),
+        }
     }
 
     register(model) {
         const postData = Object.assign({}, model, {
-            client_id: "FADvfi3XwGOe5NLT7zDXjthJ3WgwPIQU",
-            connection: "Username-Password-Authentication",
+            client_id: this.config.clientId,
+            connection: this.config.connectionName,
         })
-        return this.httpClient.fetch(`${this.baseUrl}dbconnections/signup`, {
+        return this.httpClient.fetch(this.config.signupUrl, {
             method: "post",
             body: json(postData),
         })
@@ -51,7 +57,9 @@ export class AuthService {
         localStorage.setItem("expires_in", token.expires_in)
         localStorage.setItem("token_type", token.token_type)
         localStorage.setItem("id_token", token.id_token)
-        return Promise.resolve()
+        return Promise.resolve().then(() => {
+            window.location.replace(this.config.loginRedirect)
+        })
     }
 
     logout() {
@@ -59,6 +67,8 @@ export class AuthService {
         localStorage.removeItem("expires_in")
         localStorage.removeItem("token_type")
         localStorage.removeItem("id_token")
-        return Promise.resolve()
+        return Promise.resolve().then(() => {
+            window.location.replace(this.config.logoutRedirect)
+        })
     }
 }

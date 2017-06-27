@@ -8,19 +8,15 @@ export class AuthenticateStep {
         this.authService = authService
     }
 
-    run(routingContext, next) {
+    run(navigationInstruction, next) {
         const isLoggedIn = this.authService.isAuthenticated
         const loginRoute = this.authService.config.loginRoute
 
-        if (routingContext.getAllInstructions()
+        if (navigationInstruction.getAllInstructions()
                 .some(route => route.config.auth === true)) {
             if (!isLoggedIn) {
                 return next.cancel(new Redirect(loginRoute))
             }
-        } else if (isLoggedIn &&
-            routingContext.getAllInstructions()
-            .some(route => route.fragment === loginRoute)) {
-            return next.cancel(new Redirect(this.authService.config.loginRedirect))
         }
 
         return next()

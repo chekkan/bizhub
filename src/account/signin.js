@@ -1,9 +1,13 @@
+import { inject } from "aurelia-framework"
+import { AuthService } from "../services/auth-service"
+
+@inject(AuthService)
 export class SignInViewModel {
-    constructor() {
-        let href = "https://bizhub.eu.auth0.com/authorize"
-        href += "?response_type=token&client_id=FADvfi3XwGOe5NLT7zDXjthJ3WgwPIQU"
-        href += "&connection=Username-Password-Authentication"
-        href += "&redirect_uri=http://localhost:8080/callback"
+    constructor(authService) {
+        let href = authService.config.authEndpoint
+        href += `?response_type=token&client_id=${authService.config.clientId}`
+        href += `&connection=${authService.config.connectionName}`
+        href += `&redirect_uri=${authService.config.redirectUri}`
         window.location.replace(href)
     }
 }
