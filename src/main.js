@@ -24,7 +24,10 @@ export async function configure(aurelia) {
     })
     .plugin(PLATFORM.moduleName("plugins/http-client/index"))
     .feature(PLATFORM.moduleName("resources/index"))
-    .developmentLogging()
+
+    if (process.env.NODE_ENV !== "production") {
+        aurelia.use.developmentLogging()
+    }
 
     await aurelia.start()
     await aurelia.setRoot(PLATFORM.moduleName("app"))
