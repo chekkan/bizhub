@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- "6.1"
+- '6.1'
 before_install:
 - export CHROME_BIN=chromium-browser
 - export DISPLAY=:99.0
@@ -8,15 +8,15 @@ before_install:
 script:
 - npm test
 - npm start -- build
-after_script: "cat ./test/coverage-karma/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+after_script: cat ./test/coverage-karma/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+before_deploy:
+  - cd ./dist
 deploy:
-  provider: s3
-  access_key_id: $AWS_ACCESS_KEY_ID
-  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  provider: heroku
   skip_cleanup: true
-  bucket: bizhub.io
-  region: $AWS_DEFAULT_REGION
-  local_dir: dist
+  api_key:
+    secure: "$HEROKU_API_KEY"
+  app: bizhub
   on:
     branch:
-        - master
+    - master
