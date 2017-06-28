@@ -4,8 +4,7 @@
   "version": "0.1.0",
   "scripts": {
     "start": "nps",
-    "test": "nps test",
-    "heroku-postbuild": "nps build"
+    "test": "nps test"
   },
   "repository": {
     "type": "git",
