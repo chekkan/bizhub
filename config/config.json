@@ -31,7 +31,7 @@
         "logoutRedirect": "http://bizhub.io",
         "loginRedirect": "http://bizhub.io",
         "auth":{
-            "redirectUri": "http://bizhub.io/#/callback"
+            "redirectUri": "http://bizhub.io/callback"
         },
         "googleAnalytics":{
             "config": {
