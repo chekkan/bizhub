@@ -34,20 +34,25 @@ export class AuthService {
 
     get isAuthenticated() {
         const idToken = localStorage.getItem("id_token")
+        const nonce = localStorage.getItem("nonce")
         if (!idToken) {
             return false
         }
-        let exp
+        let jwt
         try {
             const base64Url = idToken.split(".")[1]
             const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/")
-            exp = JSON.parse(window.atob(base64)).exp
+            jwt = JSON.parse(window.atob(base64))
         } catch (error) {
             return false
         }
 
-        if (exp) {
-            return Math.round(new Date().getTime() / 1000) <= exp
+        if (jwt) {
+            const isExpired = !(Math.round(new Date().getTime() / 1000) <= jwt.exp)
+            if (isExpired) {
+                return false
+            }
+            return jwt.nonce === nonce
         }
 
         return true
@@ -71,5 +76,20 @@ export class AuthService {
         return Promise.resolve().then(() => {
             window.location.replace(this.config.logoutRedirect)
         })
+    }
+
+    generateNonce(length = 16) {
+        const bytes = new Uint8Array(length)
+        const random = window.crypto.getRandomValues(bytes)
+        const result = []
+        const charset = "0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._~"
+        random.forEach((c) => {
+            result.push(charset[c % charset.length])
+        })
+        return result.join("")
+    }
+
+    saveNonce(nonce) {
+        localStorage.setItem("nonce", nonce)
     }
 }
