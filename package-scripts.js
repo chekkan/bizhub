@@ -40,6 +40,6 @@ module.exports = {
             default: "eslint src",
             fix: "eslint src --fix",
         },
-        serve: "http-server dist --cors",
+        serve: "pushstate-server dist",
     },
 }

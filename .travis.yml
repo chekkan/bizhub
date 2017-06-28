@@ -7,15 +7,11 @@ before_install:
 - sh -e /etc/init.d/xvfb start
 script:
 - npm test
-- npm start -- build
 after_script: cat ./test/coverage-karma/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-before_deploy:
-  - cd ./dist
 deploy:
   provider: heroku
-  skip_cleanup: true
-  api_key:
-    secure: $HEROKU_API_KEY
+  buildpack: nodejs
+  api_key: "$HEROKU_API_KEY"
   app: bizhub
   on:
     branch:
