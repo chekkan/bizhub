@@ -11,6 +11,7 @@ export class SignInViewModel {
         href += `&connection=${authService.config.connectionName}`
         href += `&redirect_uri=${authService.config.redirectUri}`
         href += `&nonce=${nonce}`
+        href += `&audience=${authService.config.audience}`
         window.location.replace(href)
     }
 }

@@ -15,6 +15,7 @@ export class AuthService {
             redirectUri: configuration.get("auth.redirectUri"),
             signupUrl: configuration.get("auth.signupUrl"),
             logoutUrl: configuration.get("auth.logoutUrl"),
+            audience: configuration.get("audience"),
             logoutRedirect: configuration.get("logoutRedirect"),
             loginRoute: configuration.get("loginRoute"),
             loginRedirect: configuration.get("loginRedirect"),

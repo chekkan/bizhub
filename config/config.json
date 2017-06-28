@@ -11,7 +11,8 @@
         "logoutUrl": "http://bizhub.eu.auth0.com/logout",
         "clientId": "FADvfi3XwGOe5NLT7zDXjthJ3WgwPIQU",
         "connectionName": "Username-Password-Authentication",
-        "redirectUri": "http://localhost:8080/callback"
+        "redirectUri": "http://localhost:8080/callback",
+        "audience": "https://bizhub-api/"
     },
     "googleAnalytics": {
         "trackingId": "UA-82866053-1",
