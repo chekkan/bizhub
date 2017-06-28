@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nps",
     "test": "nps test",
-    "heroku-postbuild": "nps start -- build"
+    "heroku-postbuild": "nps build"
   },
   "repository": {
     "type": "git",
