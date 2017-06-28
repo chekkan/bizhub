@@ -28,10 +28,10 @@
         }
     },
     "production": {
-        "logoutRedirect": "http://bizhub.io",
-        "loginRedirect": "http://bizhub.io",
+        "logoutRedirect": "https://bizhub.io",
+        "loginRedirect": "https://bizhub.io",
         "auth":{
-            "redirectUri": "http://bizhub.io/callback"
+            "redirectUri": "https://bizhub.io/callback"
         },
         "googleAnalytics":{
             "config": {
