@@ -1,28 +1,22 @@
-import { bindable } from "aurelia-framework"
+import { bindable, inject } from "aurelia-framework"
+import { Router } from "aurelia-router"
 
+@inject(Router)
 export class PagerCustomElement {
-  @bindable()
-    router;
   @bindable()
     currentPage;
   @bindable()
     lastPage;
 
-    changePage(page) {
-        this.router.navigateToRoute(this.router.currentInstruction.config.name, {
-            page,
-        })
+    constructor(router) {
+        this.route = router.currentInstruction.config.name
     }
 
-    nextPage() {
-        this.router.navigateToRoute(this.router.currentInstruction.config.name, {
-            page: this.currentPage + 1,
-        })
+    get nextPage() {
+        return this.currentPage + 1
     }
 
-    previousPage() {
-        this.router.navigateToRoute(this.router.currentInstruction.config.name, {
-            page: this.currentPage - 1,
-        })
+    get previousPage() {
+        return this.currentPage - 1
     }
 }

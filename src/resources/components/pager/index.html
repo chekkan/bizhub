@@ -3,14 +3,17 @@
     <nav aria-label="pagination">
         <ul class="pagination justify-content-center">
             <li class="page-item ${currentPage - 1 == 0 ? 'disabled' : ''}">
-                <a class="page-link" click.delegate="previousPage()" tabindex="-1" href="#">Previous</a>
+                <a class="page-link" 
+                    route-href="route.bind: route; params.bind: { page: previousPage }" 
+                    tabindex="-1">Previous</a>
             </li>
             <li repeat.for="i of lastPage" class="page-item ${i == (currentPage - 1) ? 'active' : ''}">
-                <a href="#" click.delegate="changePage(i + 1)" class="page-link">${i+1} <span
+                <a class="page-link" 
+                    route-href="route.bind: route; params.bind: { page: i + 1 }">${i+1} <span
                     if.bind="i == currentPage" class="sr-only">(current)</span></a>
             </li>
             <li class="page-item ${currentPage == lastPage ? 'disabled' : ''}">
-                <a class="page-link" click.delegate="nextPage()" href="#">Next</a>
+                <a class="page-link" route-href="route.bind: route; params.bind: { page: nextPage }">Next</a>
             </li>
         </ul>
     </nav>
