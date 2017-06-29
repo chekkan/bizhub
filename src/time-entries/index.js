@@ -13,6 +13,7 @@ export class Index {
                 name: "new-time-entry",
                 moduleId: PLATFORM.moduleName("time-entries/new"),
                 title: "New",
+                auth: true,
             },
         ])
         this.router = router

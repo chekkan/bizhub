@@ -2,12 +2,14 @@ import { inject } from "aurelia-framework"
 import { Router } from "aurelia-router"
 import { HttpClient, json } from "aurelia-fetch-client"
 import { AureliaConfiguration } from "aurelia-configuration"
+import { Authentication } from "../common/authentication"
 
-@inject(HttpClient, AureliaConfiguration, Router)
+@inject(HttpClient, AureliaConfiguration, Router, Authentication)
 export class AuthService {
-    constructor(httpClient, configuration, router) {
+    constructor(httpClient, configuration, router, authentication) {
         this.httpClient = httpClient
         this.router = router
+        this.authentication = authentication
         this.config = {
             authEndpoint: configuration.get("auth.authEndpoint"),
             clientId: configuration.get("auth.clientId"),
@@ -34,29 +36,7 @@ export class AuthService {
     }
 
     get isAuthenticated() {
-        const idToken = localStorage.getItem("id_token")
-        const nonce = localStorage.getItem("nonce")
-        if (!idToken) {
-            return false
-        }
-        let jwt
-        try {
-            const base64Url = idToken.split(".")[1]
-            const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/")
-            jwt = JSON.parse(window.atob(base64))
-        } catch (error) {
-            return false
-        }
-
-        if (jwt) {
-            const isExpired = !(Math.round(new Date().getTime() / 1000) <= jwt.exp)
-            if (isExpired) {
-                return false
-            }
-            return jwt.nonce === nonce
-        }
-
-        return true
+        return this.authentication.isAuthenticated
     }
 
     login(token) {
