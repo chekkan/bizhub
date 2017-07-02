@@ -25,6 +25,7 @@ export default [
         title: "Time Entries",
         moduleId: PLATFORM.moduleName("time-entries/index"),
         nav: true,
+        auth: true,
     },
     {
         route: "login",

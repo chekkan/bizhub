@@ -7,6 +7,7 @@ export class Index {
                 route: "",
                 name: "time-entries",
                 moduleId: PLATFORM.moduleName("time-entries/list"),
+                auth: true,
             },
             {
                 route: "new",
