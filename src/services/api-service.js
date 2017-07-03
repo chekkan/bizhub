@@ -15,11 +15,27 @@ export class ApiService {
         this.resourcesHref = `/${plural[resource]}`
     }
 
-    getAll(limit = 10, offset = 0) {
+    parseFilter(filters) {
+        const parts = Object.keys(filters).map((k) => {
+            let value = filters[k]
+            if (Array.isArray(value)) {
+                value = value.join(",")
+            }
+            return `filter[${k}]=${value}`
+        })
+        return parts.join("&")
+    }
+
+    getAll(limit = 10, offset = 0, filters = null) {
         const params = { limit, offset }
         const urlParams = new URLSearchParams(Object.entries(params))
-        return this.httpClient.fetch(`${this.resourcesHref}?${urlParams}`)
-        .then(response => response.json())
+        let href = `${this.resourcesHref}?${urlParams}`
+        if (filters) {
+            const filterQuery = this.parseFilter(filters)
+            href += `&${filterQuery}`
+        }
+        return this.httpClient.fetch(href)
+            .then(response => response.json())
     }
 
     getById(id) {
