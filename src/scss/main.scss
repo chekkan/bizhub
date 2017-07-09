@@ -1,23 +1,18 @@
-@import "~bootstrap/scss/bootstrap";
+$fa-font-path:   "/fonts";
+@import "~font-awesome/scss/font-awesome";
 
-.navbar {
-    margin: 0px auto;
-    padding: 0px;
-    max-width: 62.4rem;
-    height: 100px;
+body {
+    margin: 0px;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
 }
 
-.btn-delete {
-    @extend .btn;
-    @extend .btn-danger;
-}
-
-.btn-new {
-    @extend .btn;
-    @extend .btn-primary;
+.page-host {
+    margin: 0 1rem;
 }
 
 .page-header {
+    text-align: left;
     margin: 0px auto;
     max-width: 62.5rem;
 }
@@ -29,12 +24,14 @@
 }
 
 .resource-actions-bar {
+    text-align: left;
     margin: 0px auto;
     max-width: 62.5rem;
     margin-bottom: 1.5rem;
 }
 
 .resource-list, .child-resource-list {
+    text-align: left;
     margin: 0px auto;
     max-width: 62.5rem;
 }
@@ -48,10 +45,37 @@
     font-weight: 500;
 }
 
-pager nav {
-    margin: 0px auto;
-    max-width: 62.5rem;
-    margin-top: 1.5rem;
+a.new-resource-btn {
+    text-decoration: none;
+    color: #000;
+    border: 1px solid #cecece;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.new-resource-btn::before {
+    content: "\f055";
+    font-family: FontAwesome;
+    margin-right: 5px;
+}
+
+a.delete-resource-btn {
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #cecece;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: #F44336;
+}
+
+.delete-resource-btn::before {
+    content: "\f1f8";
+    font-family: FontAwesome;
+    margin-right: 5px;
+}
+
+.delete-resource-btn:hover {
+    background-color: #d4392e;
 }
 
 create-form form {

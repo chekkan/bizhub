@@ -1,0 +1,76 @@
+.navbar-brand::before {
+    content: "\f0b1";
+    font-family: FontAwesome;
+    margin-right: 2px;
+}
+
+.navbar-brand {
+    color: #000;
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+}
+
+.navbar {
+    margin: 0px auto;
+    padding: 0px;
+}
+
+.navbar-nav {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f5f0;
+}
+
+ul.navbar-nav {
+    list-style-type: none;
+}
+
+ul.navbar-nav li.nav-item {
+    display: inline;
+}
+
+.nav-item .nav-link {
+    display: inline-block;
+    padding: 1rem 0.5rem 0.2rem;
+    color: #676767;
+    font-size: 0.80rem;
+    text-decoration: none;
+}
+
+.nav-item .nav-link:hover {
+    color: #000;
+    background: #e7e8e3;
+}
+
+.nav-item.active .nav-link {
+    color: #000;
+    font-weight: bold;
+}
+
+.nav-item .nav-link::before {
+    display: block;
+    margin: -12px auto 0;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.nav-item .nav-link[href="/organizations"]::before {
+    content: "\f19c";
+    font-family: FontAwesome;
+}
+
+.nav-item .nav-link[href="/login"]::before {
+    content: "\f090";
+    font-family: FontAwesome;
+}
+
+.nav-item .nav-link[href="/logout"]::before {
+    content: "\f08b";
+    font-family: FontAwesome;
+}
+
+.nav-item .nav-link[href="/time-entries"]::before {
+    content: "\f1da";
+    font-family: FontAwesome;
+}

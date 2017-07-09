@@ -119,7 +119,8 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
         }),
         new CopyWebpackPlugin([
             { from: "favicon.ico", to: "favicon.ico" },
-            { from: "config/config.json", to: "config/config.json" }]),
+            { from: "config/config.json", to: "config/config.json" },
+            { from: "node_modules/font-awesome/fonts", to: "fonts" }]),
         ...when(
       extractCss,
       new ExtractTextPlugin({

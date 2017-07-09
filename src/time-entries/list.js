@@ -33,10 +33,8 @@ export class TimeEntriesListViewModel extends ListViewModel {
 
                 self.timeEntries = resources.map(resource => ({
                     start: resource.start,
-                    hours: Math.abs(
-                        Date.parse(resource.end) - Date.parse(resource.start),
-                    ) / 36e5,
-                    break: moment.duration(resource.break, "minutes").humanize(),
+                    end: resource.end,
+                    break: moment.duration(resource.break, "minutes").humanize().replace("minute", "min"),
                     ratePerHour: resource.ratePerHour,
                     organization: orgs.filter(o => o.id === resource.organization.id)[0],
                     office: offices.filter(o => o.id === resource.office.id)[0],

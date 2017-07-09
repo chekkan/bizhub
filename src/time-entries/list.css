@@ -1,0 +1,31 @@
+.page-header {
+    color: #0ecfee;
+}
+
+div.start::after {
+    content: ' \2192 ';
+}
+
+div.start {
+    display: block;
+    float: left;
+    width: 33%;
+}
+
+div.break {
+    display: block;
+    float: left;
+    width: 33%;
+    text-align: center;
+}
+
+div.break .label {
+    display: block;
+}
+
+div.end {
+    display: block;
+    float: left;
+    width: 33%;
+    clear: right;
+}
