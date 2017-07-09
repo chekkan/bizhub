@@ -1,0 +1,27 @@
+form {
+    text-align: left;
+}
+
+label {
+    color: #444;
+    display: none;
+}
+
+input, select {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    padding: 0.3rem 0 0.3rem 0.3rem;
+    width: 100%;
+}
+
+div.form-group {
+    margin: 1rem 0;
+}
+
+form .validation-errors {
+    color: #e5464e;
+}
+
+form ul {
+    padding-left: 18px;
+}

@@ -45,6 +45,20 @@ body {
     font-weight: 500;
 }
 
+button {
+    color: #000;
+    border: 1px solid #cecece;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #f4f5f0;   
+}
+
 a.new-resource-btn {
     text-decoration: none;
     color: #000;
@@ -76,31 +90,6 @@ a.delete-resource-btn {
 
 .delete-resource-btn:hover {
     background-color: #d4392e;
-}
-
-create-form form {
-    margin: 0px auto;
-    max-width: 62.5rem;
-}
-
-create-form form .validation-errors {
-    color: #e5464e;
-}
-
-create-form form ul {
-    padding-left: 18px;
-}
-
-create-form form label {
-    color: #444;
-}
-
-create-form form input {
-    margin-bottom: 0.5rem;
-}
-
-create-form form button[type="submit"] {
-    margin-top: 1.5rem;
 }
 
 .child-resource-list h2 {
