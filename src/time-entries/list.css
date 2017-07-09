@@ -35,7 +35,7 @@
         margin-right: 0;
     }
 
-    .time-entries .resource-list:after {
+    .time-entries.resource-list:after {
         content: "";
         display: table;
         clear: both;
