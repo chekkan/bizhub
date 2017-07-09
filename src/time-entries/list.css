@@ -1,31 +1,43 @@
-.page-header {
-    color: #0ecfee;
+.time-entries .resource-list-item {
+    padding: 0.5rem;
+    border: 1px solid #cecece;
+    border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 1rem;
+    max-width: 560px;
 }
 
-div.start::after {
-    content: ' \2192 ';
-}
-
-div.start {
-    display: block;
+.time-entries .resource-list-item div {
+    width: 50%;
     float: left;
-    width: 33%;
+    margin-bottom: 8px;
 }
 
-div.break {
+.time-entries .resource-list-item span.label {
     display: block;
-    float: left;
-    width: 33%;
-    text-align: center;
+    font-weight: normal;
+    color: #9e9e9e;
+    font-size: 0.7rem;
 }
 
-div.break .label {
-    display: block;
-}
+@media screen and (min-width: 700px) {
+    .time-entries .resource-list-item {
+        width: 48%;
+        float: left;
+        clear: right;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        margin-right: 1rem;
+    }
 
-div.end {
-    display: block;
-    float: left;
-    width: 33%;
-    clear: right;
+    .time-entries .resource-list-item:nth-child(odd) {
+        margin-right: 0;
+    }
+
+    .time-entries .resource-list:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
 }

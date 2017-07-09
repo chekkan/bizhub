@@ -7,31 +7,45 @@
     </div>
 
     <div class="resource-actions-bar">
-        <a href="/time-entries/new" class="btn btn-primary">New</a>
+        <a href="/time-entries/new" class="new-resource-btn">New</a>
     </div>
 
-    <div class="resource-list">
+    <pager router.bind="router" current-page.bind="currentPage" last-page.bind="lastPage"></pager>
+
+    <div class="time-entries resource-list">
         <div show.bind="timeEntries.length === 0">
             <p class="text-center">No entries to display.<p>
         </div>
         <div repeat.for="entry of timeEntries" class="resource-list-item">
             <div class="start">
-                <span class="sr-only">Start</span>
-                ${entry.start | dateFormat:'DD/MM/YYYY h:mm a'}
+                <span class="label">Start</span>
+                <span>${entry.start | dateFormat:'DD/MM/YYYY h:mm a'}</span>
             </div>
-            <div class="break"><span class="label">Break</span>${entry.break}</div>
-            <div class="end"><span class="sr-only">End</span>${entry.end | dateFormat: 'DD/MM/YYYY h:mm a'}</div>
-            <div class="rate">Rate per hour: £${entry.ratePerHour}</div>
+            <div class="end">
+                <span class="label">End</span>
+                <span>${entry.end | dateFormat: 'DD/MM/YYYY h:mm a'}</span>
+            </div>
+            <div class="break">
+                <span class="label">Break</span>
+                <span>${entry.break}</span>
+            </div>
+            <div class="rate">
+                <span class="label">Rate per hour</span>
+                <span>£${entry.ratePerHour}</span>
+            </div>
             <div class="office">
-                <span class="sr-only">Office: </span>${entry.office.addressLine1}
+                <span class="label">Office</span>
+                <span>${entry.office.addressLine1}</span>
             </div>
             <div class="organization">
-                <span class="sr-only">Organization: </span>
-                <a href="/organizations/${entry.organization.id}">${entry.organization.name}</a>
+                <span class="label">Organization</span>
+                <span>
+                    <a href="/organizations/${entry.organization.id}">${entry.organization.name}</a>
+                </span>
             </div>
         </div>
     </div>
 
-    <pager router.bind="router" current-page.bind="currentPage" last-page.bind="lastPage" />
+    <pager router.bind="router" current-page.bind="currentPage" last-page.bind="lastPage"></pager>
 
 </template>
