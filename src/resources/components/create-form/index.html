@@ -4,7 +4,7 @@
     <require from="./integer-value-converter"></require>
     <require from="./float-value-converter"></require>
 
-    <form>
+    <form class="create-form">
         <ul class="validation-errors" if.bind="controller.errors">
             <li repeat.for="error of controller.errors">
                 ${error.message}
