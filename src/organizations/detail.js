@@ -11,10 +11,11 @@ export class Detail {
         this.organization = {}
     }
 
-    activate(params) {
+    activate(params, route) {
         return this.organizationService.getById(params.id)
         .then((org) => {
             this.organization = org
+            Object.assign(route.navModel.router, { title: org.name })
         })
     }
 
