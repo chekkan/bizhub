@@ -1,6 +1,8 @@
 $fa-font-path:   "/fonts";
 @import "~font-awesome/scss/font-awesome";
 
+@import "./forms";
+
 body {
     margin: 0px;
     font-family: 'Lato', sans-serif;
