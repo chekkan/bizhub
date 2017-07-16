@@ -15,7 +15,7 @@ export class Detail {
         return this.organizationService.getById(params.id)
         .then((org) => {
             this.organization = org
-            Object.assign(route.navModel.router, { title: org.name })
+            Object.assign(route.navModel, { title: org.name })
         })
     }
 
