@@ -1,4 +1,4 @@
-# bizhub
+# bizhub ![status not ready](https://img.shields.io/badge/status-WIP-yellow.svg)
 
 ## Run the app
 
