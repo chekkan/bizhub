@@ -9,6 +9,7 @@ export function configure(config) {
   .globalResources(PLATFORM.moduleName("./value-converters/date-format"))
   .globalResources(PLATFORM.moduleName("./value-converters/keys"))
   .globalResources(PLATFORM.moduleName("./value-converters/auth-filter"))
+  .globalResources(PLATFORM.moduleName("./value-converters/filter-value"))
   .globalResources(PLATFORM.moduleName("./components/pager/index"))
   .globalResources(PLATFORM.moduleName("./components/create-form/index"))
 }
@@ -17,5 +18,6 @@ export function configure(config) {
 export * from "./value-converters/date-format"
 export * from "./value-converters/keys"
 export * from "./value-converters/auth-filter"
+export * from "./value-converters/filter-value"
 export * from "./components/pager"
 export * from "./components/create-form"

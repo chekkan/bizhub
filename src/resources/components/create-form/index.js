@@ -54,6 +54,9 @@ export class CreateFormCustomElement {
                         }))
                 }
             })
+            .then(() => {
+            })
+        debugger;            
     }
 
     modelPropertyChanged(propertyName, childElementId, newValue, oldValue) {

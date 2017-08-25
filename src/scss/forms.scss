@@ -1,10 +1,12 @@
 form {
     text-align: left;
-    margin: 0px auto;
+    margin: -25px auto 0px;
     max-width: 62.5rem;
 
     .validation-errors {
         color: #e5464e;
+        font-size: 0.75rem;
+        padding: 1rem;
     }
 
     ul {
@@ -22,7 +24,7 @@ form {
         width: 100%;
     }
 
-    .form-group {
-        margin: 1rem 0;
+    button[type='submit'] {
+        margin-top: 1rem;
     }
 }
