@@ -1,4 +1,4 @@
-# bizhub ![status not ready](https://img.shields.io/badge/status-WIP-yellow.svg)
+# bizhub ![status not ready](https://img.shields.io/badge/status-WIP-yellow.svg) [![dependencies Status](https://david-dm.org/pillaru/bizhub/status.svg)](https://david-dm.org/pillaru/bizhub) [![devDependencies Status](https://david-dm.org/pillaru/bizhub/dev-status.svg)](https://david-dm.org/pillaru/bizhub?type=dev) 
 
 ## Run the app
 
