@@ -38,7 +38,6 @@
     "jquery": "3.2.0",
     "moment": "^2.14.1",
     "popper.js": "^1.12.6",
-    "tether": "^1.4.0",
     "whatwg-fetch": "^1.0.0"
   },
   "peerDependencies": {},
