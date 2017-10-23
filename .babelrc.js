@@ -1,6 +1,6 @@
 module.exports = {
   "plugins": [
-    "transform-decorators",
+    "transform-decorators-legacy",
     "transform-class-properties"
   ],
   "presets": [
