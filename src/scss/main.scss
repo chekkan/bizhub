@@ -1,6 +1,7 @@
 $fa-font-path:   "/fonts";
 @import "~font-awesome/scss/font-awesome";
 
+@import "./_reboot";
 @import "./footer";
 @import "./forms";
 @import "./float-labels";

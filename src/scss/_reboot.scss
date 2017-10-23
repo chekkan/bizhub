@@ -1,0 +1,10 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box; // 1
+}
+
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+}

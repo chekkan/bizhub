@@ -4,7 +4,7 @@
     <require from="./float-value-converter"></require>
 
     <form class="create-form">
-        <div repeat.for="elem of formElements" class="form-group float-label ${model[elem.id].length > 0 ? 'is-active' : ''}"
+        <div repeat.for="elem of formElements" class="form-group ${elem.type === 'text' ? 'float-label' : ''} ${model[elem.id].length > 0 ? 'is-active' : ''}"
                 >
             <label for="${elem.id}">${elem.title}</label>
             <input if.bind="elem.type === 'text'" type="text" id="${elem.id}"
