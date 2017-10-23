@@ -28,7 +28,7 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
     },
     entry: {
         app: ["aurelia-bootstrapper", `${srcDir}/scss/main.scss`],
-        vender: ["bluebird", "jquery", "bootstrap"],
+        vender: ["bluebird", "jquery", "popper.js", "bootstrap"],
     },
     output: {
         path: outDir,
