@@ -100,7 +100,7 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
             $: "jquery",
             jQuery: "jquery",
             "window.jQuery": "jquery",
-            Tether: "tether",
+            Popper: ["popper.js", "default"],
         }),
         new HtmlWebpackPlugin({
             template: "index.ejs",
