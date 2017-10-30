@@ -1,0 +1,82 @@
+time-entry-card {
+    border: 2px solid #cecece;
+    border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 1rem;
+    max-width: 560px;
+}
+
+time-entry-card {
+    padding: 0.5rem;
+    z-index: 2;
+    position: relative;
+}
+
+time-entry-card div {
+    width: 50%;
+    float: left;
+    margin-bottom: 8px;
+}
+
+time-entry-card span.label {
+    display: block;
+    font-weight: normal;
+    color: #9e9e9e;
+    font-size: 0.7rem;
+}
+
+time-entry-card {
+    cursor: pointer;
+}
+
+time-entry-card .tick-wrapper {
+    display: none;
+}
+
+time-entry-card.selected {
+    border-color: #33A8FF;
+}
+
+time-entry-card.selected .tick-wrapper {
+    z-index: 2;
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-style: solid;
+    border-width: 0px 48px 50px 0px;
+    border-color: transparent #33A8FF transparent transparent;
+}
+
+time-entry-card.selected .tick::before {
+    content: "\f00c";
+    font-family: FontAwesome;
+    position: absolute;
+    color: #FDFEFE;
+    top: 5px;
+    right: 3px;
+    z-index: 2;
+    font-size: 21px;
+}
+
+@media screen and (min-width: 700px) {
+    time-entry-card {
+        width: 48%;
+        float: left;
+        clear: right;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        margin-right: 1rem;
+    }
+
+    time-entry-card:nth-child(odd) {
+        margin-right: 0;
+    }
+
+    time-entry-card:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}

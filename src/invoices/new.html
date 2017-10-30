@@ -4,4 +4,20 @@
         <h1>New Invoice</h1>
     </div>
 
+    <div id="steps">
+        <h3 class="current">Select time cards</h3>
+    </div>
+
+    <div>
+        <h4>0 entries selected</h4>
+    </div>
+
+    <div class="time-entries resource-list">
+        <div show.bind="timeEntries.length === 0">
+            <p class="text-center">No entries to display.<p>
+        </div>
+        <time-entry-card repeat.for="entry of timeEntries" class="resource-list-item ${entry.selected ? 'selected' : ''}"
+        click.delegate="selectCard(entry)" model.bind="entry" />
+    </div>
+
 </template>

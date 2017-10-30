@@ -1,4 +1,10 @@
 <template bindable="model">
+    
+    <require from="./card.css" as="scoped"></require>
+
+    <div class="tick-wrapper"></div>
+    <span class="tick"></span>
+
     <div class="start">
         <span class="label">Start</span>
         <span>${model.start | dateFormat:'DD/MM/YYYY h:mm a'}</span>
