@@ -28,6 +28,14 @@ export default [
         auth: true,
     },
     {
+        route: "invoices",
+        name: "invoices",
+        title: "Invoices",
+        moduleId: PLATFORM.moduleName("invoices/index"),
+        nav: true,
+        auth: true,
+    },
+    {
         route: "login",
         name: "login",
         title: "Login",

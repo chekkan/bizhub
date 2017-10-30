@@ -74,3 +74,8 @@ ul.navbar-nav li.nav-item {
     content: "\f1da";
     font-family: FontAwesome;
 }
+
+.nav-item .nav-link[href="/invoices"]::before {
+    content: "\f0f6";
+    font-family: FontAwesome;
+}

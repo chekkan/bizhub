@@ -1,0 +1,28 @@
+<template bindable="model">
+    <div class="start">
+        <span class="label">Start</span>
+        <span>${model.start | dateFormat:'DD/MM/YYYY h:mm a'}</span>
+    </div>
+    <div class="end">
+        <span class="label">End</span>
+        <span>${model.end | dateFormat: 'DD/MM/YYYY h:mm a'}</span>
+    </div>
+    <div class="break">
+        <span class="label">Break</span>
+        <span>${model.break}</span>
+    </div>
+    <div class="rate">
+        <span class="label">Rate per hour</span>
+        <span>£${model.ratePerHour}</span>
+    </div>
+    <div class="office">
+        <span class="label">Office</span>
+        <span>${model.office.addressLine1}</span>
+    </div>
+    <div class="organization">
+        <span class="label">Organization</span>
+        <span>
+            <a href="/organizations/${model.organization.id}">${model.organization.name}</a>
+        </span>
+    </div>
+</template>
