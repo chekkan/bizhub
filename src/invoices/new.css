@@ -1,17 +1,23 @@
-#steps {
+.step {
+    display: none;
+}
+
+.step.current {
+    display: block;
+}
+
+.step-nav-banner {
     display: table;
     width: calc(100% + 32px);
     text-align:center;
     height:100%;
     vertical-align: middle;
-    /* background-color: #660066; */
-    /* background-color: #0D47A1; */
     color: white;
     margin-bottom: 1rem;
     margin-left: -16px;
 }
 
-#steps div {
+.step-nav-banner div {
     display: table-cell;
     background-color: #1E88E5;
     vertical-align: middle;
@@ -19,11 +25,11 @@
     padding: 0.8rem 0;
 }
 
-#steps .current {
+.step-nav-banner .current {
     background-color: #1976D2;
 }
 
-#steps .divider {
+.step-nav-banner .divider {
     background-color: #1E88E5;
     display: block;
     padding: 0;
@@ -34,7 +40,7 @@
 	border-bottom: 2rem solid transparent;
 }
 
-#steps div button {
+.step-nav-banner div button {
     width: 60%;
     background-color: #2ED06E;
     border-color: #2ED06E;
@@ -42,6 +48,6 @@
     padding: 0.7rem 0.5rem;
 }
 
-#steps #next-step {
-    
+.step-nav-banner a {
+    color: #fff;
 }

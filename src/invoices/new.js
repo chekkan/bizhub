@@ -1,4 +1,4 @@
-import { inject, Factory } from "aurelia-framework"
+import { inject, Factory, LogManager } from "aurelia-framework"
 import moment from "moment"
 import { ApiService } from "../services/api-service"
 
@@ -8,9 +8,12 @@ export class NewInvoiceViewModel {
     selectedEntries = []
 
     constructor(apiService) {
+        this.logger = LogManager.getLogger("NewInvoiceViewModel")
         this.timeEntryService = apiService("time-entry")
         this.orgService = apiService("organization")
         this.officeService = apiService("office")
+        this.date = new Date().toISOString().slice(0, 10)
+        this.currentStep = "select-time-card"
     }
 
     async activate() {
@@ -26,7 +29,8 @@ export class NewInvoiceViewModel {
             const orgsPromise = this.orgService.getAll(orgIds.length, 0, { id: orgIds })
             const officesPromise = this.officeService.getAll(officeIds.length, 0, { id: officeIds })
 
-            Promise.all([orgsPromise, officesPromise]).then((values) => {
+            return Promise.all([orgsPromise, officesPromise])
+            .then((values) => {
                 const orgs = values[0].content
                 const offices = values[1].content
 
@@ -40,6 +44,16 @@ export class NewInvoiceViewModel {
                     office: offices.filter(o => o.id === resource.office.id)[0],
                 }))
             })
+            .then(() => this.orgService.getAll(10, 0))
+            .then((orgsResponse) => {
+                this.organizations = orgsResponse.content
+                return Promise.resolve(orgsResponse.content[0])
+            })
+            .then(currentOrg => this.orgService.getChild(currentOrg.id, "offices")
+                .then(offices => offices.content))
+            .then((offices) => {
+                this.offices = offices
+            })
         })
     }
 
@@ -52,5 +66,33 @@ export class NewInvoiceViewModel {
             this.timeEntries.find(e => e.id === entry.id).selected = true
             this.selectedEntries.push(entry.id)
         }
+    }
+
+    orgIdChanged(newOrgId) {
+        return this.orgService.getChild(newOrgId, "offices")
+        .then(offices => offices.content)
+        .then((offices) => {
+            this.offices = offices
+        })
+    }
+
+    nextStep() {
+        this.currentStep = "info"
+    }
+
+    goToEditTimeCardsStep() {
+        this.currentStep = "select-time-card"
+    }
+
+    createInvoice() {
+        const newInvoice = {
+            date: this.date,
+            timeEntries: this.selectedEntries.map(e => ({ id: e })),
+            recipient: {
+                organization: { id: this.orgId },
+                office: { id: this.officeId },
+            },
+        }
+        this.logger.debug(newInvoice)
     }
 }
