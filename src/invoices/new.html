@@ -1,15 +1,20 @@
 <template>
+
+    <require from="./new.css" as="new-invoice"></require>
     
     <div class="page-header">
         <h1>New Invoice</h1>
     </div>
 
     <div id="steps">
-        <h3 class="current">Select time cards</h3>
-    </div>
-
-    <div>
-        <h4>0 entries selected</h4>
+        <div if.bind="!selectedEntries.length" class="current">Select time entries</div>
+        <div if.bind="selectedEntries.length" class="current">
+            ${selectedEntries.length} ${selectedEntries.length == 1 ? "entry" : "entries" } selected
+        </div>
+        <div class="divider"></div>
+        <div id="next-step">
+            <button>Next</button>
+        </div>
     </div>
 
     <div class="time-entries resource-list">

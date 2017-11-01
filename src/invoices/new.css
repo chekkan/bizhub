@@ -1,0 +1,47 @@
+#steps {
+    display: table;
+    width: calc(100% + 32px);
+    text-align:center;
+    height:100%;
+    vertical-align: middle;
+    /* background-color: #660066; */
+    /* background-color: #0D47A1; */
+    color: white;
+    margin-bottom: 1rem;
+    margin-left: -16px;
+}
+
+#steps div {
+    display: table-cell;
+    background-color: #1E88E5;
+    vertical-align: middle;
+    width: 50%;
+    padding: 0.8rem 0;
+}
+
+#steps .current {
+    background-color: #1976D2;
+}
+
+#steps .divider {
+    background-color: #1E88E5;
+    display: block;
+    padding: 0;
+    width: 0;
+	height: 100%;
+	border-top: 2rem solid transparent;
+	border-left: 1rem solid #1976D2;
+	border-bottom: 2rem solid transparent;
+}
+
+#steps div button {
+    width: 60%;
+    background-color: #2ED06E;
+    border-color: #2ED06E;
+    color: #fff;
+    padding: 0.7rem 0.5rem;
+}
+
+#steps #next-step {
+    
+}
