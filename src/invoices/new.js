@@ -1,19 +1,22 @@
 import { inject, Factory, LogManager } from "aurelia-framework"
+import { Router } from "aurelia-router"
 import moment from "moment"
 import { ApiService } from "../services/api-service"
 
-@inject(Factory.of(ApiService))
+@inject(Factory.of(ApiService), Router)
 export class NewInvoiceViewModel {
     timeEntries = []
     selectedEntries = []
 
-    constructor(apiService) {
+    constructor(apiService, router) {
         this.logger = LogManager.getLogger("NewInvoiceViewModel")
         this.timeEntryService = apiService("time-entry")
         this.orgService = apiService("organization")
         this.officeService = apiService("office")
+        this.invoiceService = apiService("invoice")
         this.date = new Date().toISOString().slice(0, 10)
         this.currentStep = "select-time-card"
+        this.router = router
     }
 
     async activate() {
@@ -94,5 +97,12 @@ export class NewInvoiceViewModel {
             },
         }
         this.logger.debug(newInvoice)
+        this.invoiceService.create(newInvoice)
+        .then((response) => {
+            this.logger.debug(response)
+            this.router.navigateToRoute("invoices")
+        }).catch((err) => {
+            this.logger.error(err)
+        })
     }
 }

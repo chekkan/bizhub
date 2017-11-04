@@ -9,6 +9,7 @@ export class ApiService {
             organization: "organizations",
             office: "offices",
             "time-entry": "time-entries",
+            invoice: "invoices",
         }
         this.httpClient = httpClient
         this.resource = resource
