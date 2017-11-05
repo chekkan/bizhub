@@ -7,6 +7,7 @@ import { PLATFORM } from "aurelia-pal"
 export function configure(config) {
     config
   .globalResources(PLATFORM.moduleName("./value-converters/date-format"))
+  .globalResources(PLATFORM.moduleName("./value-converters/number-format"))
   .globalResources(PLATFORM.moduleName("./value-converters/keys"))
   .globalResources(PLATFORM.moduleName("./value-converters/auth-filter"))
   .globalResources(PLATFORM.moduleName("./value-converters/filter-value"))
@@ -17,6 +18,7 @@ export function configure(config) {
 
 // export {DateFormatValueConverter}
 export * from "./value-converters/date-format"
+export * from "./value-converters/number-format"
 export * from "./value-converters/keys"
 export * from "./value-converters/auth-filter"
 export * from "./value-converters/filter-value"

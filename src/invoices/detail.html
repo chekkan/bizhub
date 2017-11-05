@@ -1,0 +1,12 @@
+<template>
+    <h2>${invoice.id}</h2>
+    <h3>Date: ${invoice.date | dateFormat:'DD/MM/YYYY'}</h3>
+
+    <h3>Time Entries</h3>
+    <div repeat.for="entry of invoice.timeEntries">
+        ${entry.start | dateFormat: 'DD/MM/YYYY h:mm a'}
+        | ${entry.end | dateFormat: 'DD/MM/YYYY h:mm a'}
+        | ${entry.totalAmount | numberFormat: '$0,00.00'}
+    </div>
+
+</template>

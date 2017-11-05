@@ -16,6 +16,11 @@ export class Index {
                 title: "New",
                 auth: true,
             },
+            {
+                route: "/:id",
+                name: "invoice-detail",
+                moduleId: PLATFORM.moduleName("invoices/detail"),
+            },
         ])
         this.router = router
     }
