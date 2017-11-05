@@ -8,5 +8,13 @@
         <a href="/invoices/new" class="new-resource-btn">New</a>
     </div>
 
+    <div class="resource-list">
+        <div repeat.for="invoice of invoices" class="resource-list-item">
+            <a href="/invoices/${invoice.id}">
+                ${invoice.id} | ${invoice.date} | ${invoice.totalAmount}
+            </a>
+        </div>
+    </div>
+
 </template>
     
