@@ -1,0 +1,30 @@
+a.resource-list-item {
+    display: block;
+    overflow: auto;
+}
+
+.resource-list-item .invoice-date {
+    float: left;
+    width: 4rem;
+}
+
+.resource-list-item .invoice-date .date {
+    display: block;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.resource-list-item .invoice-date .month {
+    display: block;
+    text-align: center;
+}
+
+.resource-list-item .description {
+    float: left;
+    width: calc(100% - 4rem);
+}
+
+.resource-list-item .invoice-amount {
+    float: left;
+    width: calc(100% - 4rem)
+}
