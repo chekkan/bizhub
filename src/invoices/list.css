@@ -26,5 +26,14 @@ a.resource-list-item {
 
 .resource-list-item .invoice-amount {
     float: left;
-    width: calc(100% - 4rem)
+    width: calc(100% - 4rem);
+    font-size: 0.8rem;    
+}
+
+.resource-list-item .label {
+    color: rgb(100, 100, 100);
+}
+
+.resource-list-item .label::after {
+    content: ': ';
 }
