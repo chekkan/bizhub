@@ -1,0 +1,19 @@
+.invoice-date {
+    text-align: right;
+}
+
+.invoice-date .label {
+    font-weight: bolder;
+}
+
+.invoice-date .label::after {
+    content: ': ';
+}
+
+.recipient {
+    text-align: left;
+}
+
+.recipient .org-name {
+    font-weight: bolder;
+}

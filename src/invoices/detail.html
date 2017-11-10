@@ -1,6 +1,23 @@
 <template>
-    <h2>${invoice.id}</h2>
-    <h3>Date: ${invoice.date | dateFormat:'DD/MM/YYYY'}</h3>
+    <require from="./detail.css" as="invoice-detail"></require>
+
+    <div class="invoice-date">
+        <span class="label">Date</span>
+        ${invoice.date | dateFormat:'DD/MM/YYYY'}
+    </div>
+
+    <div class="recipient">
+        <address>
+            <div class="org-name">
+                ${invoice.recipient.organization.name}
+            </div>
+            ${invoice.recipient.office.addressLine1}<br>
+            ${invoice.recipient.office.addressLine2}<br>
+            ${invoice.recipient.office.townOrCity}<br>
+            ${invoice.recipient.office.country}<br>
+            ${invoice.recipient.office.postalCode}
+        </address>
+    </div>
 
     <h3>Time Entries</h3>
     <div repeat.for="entry of invoice.timeEntries">
