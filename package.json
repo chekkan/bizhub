@@ -1,5 +1,5 @@
 {
-  "name": "bizhub",
+  "name": "busynest",
   "description": "An Aurelia client application.",
   "version": "0.1.0",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/pillaru/bizhub.git"
+    "url": "git+ssh://git@github.com/pillaru/busynest.git"
   },
   "license": "MIT",
   "dependencies": {
