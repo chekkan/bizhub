@@ -19,11 +19,25 @@
         </address>
     </div>
 
-    <h3>Time Entries</h3>
-    <div repeat.for="entry of invoice.timeEntries">
-        ${entry.start | dateFormat: 'DD/MM/YYYY h:mm a'}
-        | ${entry.end | dateFormat: 'DD/MM/YYYY h:mm a'}
-        | ${entry.totalAmount | numberFormat: '$0,00.00'}
+    <div class="invoice-entries">
+        <div class="header">
+            <span class="date">Date</span>
+            <span class="description">Description</span>
+            <span class="amount">Amount</span>
+        </div>
+        <div class="row" repeat.for="entry of invoice.timeEntries">
+            <span class="date">${entry.start | dateFormat: 'DD/MM/YYYY'}</span>
+            <span class="description">
+                ${entry.organization.name},
+                ${entry.office.addressLine1},
+                ${entry.office.townOrCity}
+                <p class="subtext">
+                    <span class="label">Rate</span>£${entry.ratePerHour}/hr
+                    <span class="label">Billable Hours</span>${entry.billableHours}
+                </p>
+            </span>
+            <span class="amount">${entry.totalAmount | numberFormat: '$0,00.00'}</span>
+        </div>
     </div>
-
+    
 </template>

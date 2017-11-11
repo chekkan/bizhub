@@ -14,6 +14,67 @@
     text-align: left;
 }
 
+.recipient address {
+    font-style: normal;    
+}
+
 .recipient .org-name {
     font-weight: bolder;
+}
+
+.invoice-entries {
+    text-align: left;
+    margin-top: 1rem;    
+}
+
+.invoice-entries .header {
+    font-weight: bolder;
+    overflow: auto;
+}
+
+.invoice-entries .row {
+    overflow: auto;
+}
+
+.invoice-entries .header span {
+    display: block;
+    float: left;
+}
+
+.invoice-entries .row > span {
+    display: block;
+    float: left;
+}
+
+.invoice-entries .date {
+    width: 5.7rem;
+}
+
+.invoice-entries .description {
+    width: calc(100% - 5.7rem - 4rem);
+}
+
+.invoice-entries .subtext {
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.invoice-entries .label {
+    font-weight: bolder;
+    color: rgb(100, 100, 100);
+    display: inline-block;
+    margin-left: 4px;
+}
+
+.invoice-entries .label::after {
+    content: ": ";
+    white-space: pre;
+}
+
+.invoice-entries .row .description .label:first-of-type {
+    margin-left: 0;
+}
+
+.invoice-entries .amount {
+    width: 4rem
 }
