@@ -15,7 +15,7 @@ const when = (condition, config, negativeConfig) =>
   (condition ? ensureArray(config) : ensureArray(negativeConfig))
 
 // primary config:
-const title = "Bizhub"
+const title = "Busy Nest"
 const outDir = path.resolve(__dirname, "dist")
 const srcDir = path.resolve(__dirname, "src")
 const nodeModulesDir = path.resolve(__dirname, "node_modules")
