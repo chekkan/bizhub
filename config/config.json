@@ -29,10 +29,10 @@
         }
     },
     "production": {
-        "logoutRedirect": "https://bizhub.io",
-        "loginRedirect": "https://bizhub.io",
+        "logoutRedirect": "https://busynest.org",
+        "loginRedirect": "https://busynest.org",
         "auth":{
-            "redirectUri": "https://bizhub.io/callback"
+            "redirectUri": "https://busynest.org/callback"
         },
         "googleAnalytics":{
             "config": {
