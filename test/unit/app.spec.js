@@ -35,7 +35,7 @@ describe("the App module", () => {
     })
 
     it("configures the router title", () => {
-        expect(sut.router.title).toEqual("Bizhub")
+        expect(sut.router.title).toEqual("Busy Nest")
     })
 
     it("should have a home route", () => {
