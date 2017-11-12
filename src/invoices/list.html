@@ -1,0 +1,36 @@
+<template>
+    
+    <require from="./list.css" as="invoice-list"></require>
+
+    <div class="page-header">
+        <h1>Invoices</h1>
+    </div>
+
+    <div class="resource-actions-bar">
+        <a href="/invoices/new" class="new-resource-btn">New</a>
+    </div>
+
+    <div class="resource-list">
+        <a href="/invoices/${invoice.id}" repeat.for="invoice of invoices" 
+            class="resource-list-item">
+            <div class="invoice-date">
+                <span class="date">
+                    ${invoice.date | dateFormat: 'DD'}
+                </span>
+                <span class="month">
+                    ${invoice.date | dateFormat: 'MMM'}
+                </span>
+            </div>
+            <div class="description">
+                ${invoice.recipient.organization.name}, ${invoice.recipient.office.addressLine1}, 
+                ${invoice.recipient.office.townOrCity}, ${invoice.recipient.office.postalCode}
+            </div>
+            <div class="invoice-amount">
+                <span class="label">Total</span>
+                ${invoice.totalAmount | numberFormat: "$0,0.00"}
+            </div>
+        </div>
+    </div>
+
+</template>
+    

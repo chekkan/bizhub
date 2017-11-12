@@ -1,0 +1,86 @@
+.invoice-date {
+    text-align: right;
+    max-width: 62.5rem;
+    margin: 0 auto;
+}
+
+.invoice-date .label {
+    font-weight: bolder;
+}
+
+.invoice-date .label::after {
+    content: ': ';
+}
+
+.recipient {
+    text-align: left;
+    max-width: 62.5rem;
+    margin: 0 auto;
+}
+
+.recipient address {
+    font-style: normal;    
+}
+
+.recipient .org-name {
+    font-weight: bolder;
+}
+
+.invoice-entries {
+    text-align: left;
+    margin: 1rem auto 0;
+    max-width: 62.5rem;
+}
+
+.invoice-entries .header {
+    font-weight: bolder;
+    overflow: auto;
+}
+
+.invoice-entries .row {
+    overflow: auto;
+    padding: 0.5rem 0 0;
+}
+
+.invoice-entries .header span {
+    display: block;
+    float: left;
+}
+
+.invoice-entries .row > span {
+    display: block;
+    float: left;
+}
+
+.invoice-entries .date {
+    width: 6.2rem;
+}
+
+.invoice-entries .description {
+    width: calc(100% - 6.2rem - 4rem);
+}
+
+.invoice-entries .subtext {
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.invoice-entries .label {
+    font-weight: bolder;
+    color: rgb(100, 100, 100);
+    display: inline-block;
+    margin-left: 4px;
+}
+
+.invoice-entries .label::after {
+    content: ": ";
+    white-space: pre;
+}
+
+.invoice-entries .row .description .label:first-of-type {
+    margin-left: 0;
+}
+
+.invoice-entries .amount {
+    width: 4rem
+}

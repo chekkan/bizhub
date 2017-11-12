@@ -1,4 +1,4 @@
-import { inject, Factory } from "aurelia-framework"
+import { inject, Factory, LogManager } from "aurelia-framework"
 import { Router } from "aurelia-router"
 import moment from "moment"
 import schema from "./time-entry-schema"
@@ -10,6 +10,7 @@ export class NewTimeEntryViewModel {
     model = {};
 
     constructor(apiService, router) {
+        this.logger = LogManager.getLogger("NewTimeEntryViewModel")
         this.schema = schema
         this.orgService = apiService("organization")
         this.timeEntryService = apiService("time-entry")
@@ -21,13 +22,13 @@ export class NewTimeEntryViewModel {
             start: moment(this.model.start).utc().format(),
             end: moment(this.model.end).utc().format(),
         })
-        console.log(transModel)
+        this.logger.debug(transModel)
         this.timeEntryService.create(transModel)
         .then((response) => {
-            console.log(response)
+            this.logger.debug(response)
             this.router.navigateToRoute("time-entries")
         }).catch((err) => {
-            console.log(err)
+            this.logger.error(err)
         })
     }
 

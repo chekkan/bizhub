@@ -1,0 +1,43 @@
+<template>
+    <require from="./detail.css" as="invoice-detail"></require>
+
+    <div class="invoice-date">
+        <span class="label">Date</span>
+        ${invoice.date | dateFormat:'DD/MM/YYYY'}
+    </div>
+
+    <div class="recipient">
+        <address>
+            <div class="org-name">
+                ${invoice.recipient.organization.name}
+            </div>
+            ${invoice.recipient.office.addressLine1}<br>
+            ${invoice.recipient.office.addressLine2}<br>
+            ${invoice.recipient.office.townOrCity}<br>
+            ${invoice.recipient.office.country}<br>
+            ${invoice.recipient.office.postalCode}
+        </address>
+    </div>
+
+    <div class="invoice-entries">
+        <div class="header">
+            <span class="date">Date</span>
+            <span class="description">Description</span>
+            <span class="amount">Amount</span>
+        </div>
+        <div class="row" repeat.for="entry of invoice.timeEntries">
+            <span class="date">${entry.start | dateFormat: 'DD/MM/YYYY'}</span>
+            <span class="description">
+                ${entry.organization.name},
+                ${entry.office.addressLine1},
+                ${entry.office.townOrCity}
+                <p class="subtext">
+                    <span class="label">Rate</span>£${entry.ratePerHour}/hr
+                    <span class="label">Billable Hours</span>${entry.billableHours}
+                </p>
+            </span>
+            <span class="amount">${entry.totalAmount | numberFormat: '$0,00.00'}</span>
+        </div>
+    </div>
+    
+</template>
