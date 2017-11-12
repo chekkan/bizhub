@@ -6,7 +6,7 @@ export class App {
     configureRouter(config, router) {
         this.router = router
 
-        Object.assign(config, { title: "Bizhub" })
+        Object.assign(config, { title: "Busy Nest" })
         Object.assign(config.options, { pushState: true, root: "/" })
 
         config.addPipelineStep("authorize", AuthenticateStep)
