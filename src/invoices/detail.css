@@ -1,5 +1,7 @@
 .invoice-date {
     text-align: right;
+    max-width: 62.5rem;
+    margin: 0 auto;
 }
 
 .invoice-date .label {
@@ -12,6 +14,8 @@
 
 .recipient {
     text-align: left;
+    max-width: 62.5rem;
+    margin: 0 auto;
 }
 
 .recipient address {
@@ -24,7 +28,8 @@
 
 .invoice-entries {
     text-align: left;
-    margin-top: 1rem;    
+    margin: 1rem auto 0;
+    max-width: 62.5rem;
 }
 
 .invoice-entries .header {
@@ -34,6 +39,7 @@
 
 .invoice-entries .row {
     overflow: auto;
+    padding: 0.5rem 0 0;
 }
 
 .invoice-entries .header span {
@@ -47,11 +53,11 @@
 }
 
 .invoice-entries .date {
-    width: 5.7rem;
+    width: 6.2rem;
 }
 
 .invoice-entries .description {
-    width: calc(100% - 5.7rem - 4rem);
+    width: calc(100% - 6.2rem - 4rem);
 }
 
 .invoice-entries .subtext {
