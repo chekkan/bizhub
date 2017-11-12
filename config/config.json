@@ -6,13 +6,13 @@
     "loginRedirect": "http://localhost:8080",
     "loginRoute": "login",
     "auth": {
-        "authEndpoint": "https://bizhub.eu.auth0.com/authorize",
-        "signupUrl": "https://bizhub.eu.auth0.com/dbconnections/signup",
-        "logoutUrl": "http://bizhub.eu.auth0.com/logout",
-        "clientId": "FADvfi3XwGOe5NLT7zDXjthJ3WgwPIQU",
+        "authEndpoint": "https://busynest.eu.auth0.com/authorize",
+        "signupUrl": "https://busynest.eu.auth0.com/dbconnections/signup",
+        "logoutUrl": "http://busynest.eu.auth0.com/logout",
+        "clientId": "QtZBYABXkpXOMjh0QoCwPTp3mfNOYllC",
         "connectionName": "Username-Password-Authentication",
         "redirectUri": "http://localhost:8080/callback",
-        "audience": "https://bizhub-api/"
+        "audience": "https://busynest-api/"
     },
     "googleAnalytics": {
         "trackingId": "UA-109562109-1",
