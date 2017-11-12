@@ -15,7 +15,7 @@
         "audience": "https://bizhub-api/"
     },
     "googleAnalytics": {
-        "trackingId": "UA-82866053-1",
+        "trackingId": "UA-109562109-1",
         "config": {
             "logging": {
                 "enabled": true
