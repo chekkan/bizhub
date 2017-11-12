@@ -8,7 +8,7 @@ Bluebird.config({ warnings: false })
 function configConfigurationPlugin(config) {
     config.setEnvironments({
         development: ["localhost"],
-        production: ["bizhub.io"],
+        production: ["busynest.org"],
     })
 }
 
