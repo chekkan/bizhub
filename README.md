@@ -1,4 +1,4 @@
-# bizhub ![status not ready](https://img.shields.io/badge/status-WIP-yellow.svg) [![dependencies Status](https://david-dm.org/pillaru/bizhub/status.svg)](https://david-dm.org/pillaru/bizhub) [![devDependencies Status](https://david-dm.org/pillaru/bizhub/dev-status.svg)](https://david-dm.org/pillaru/bizhub?type=dev) 
+# Busy Nest Website ![status not ready](https://img.shields.io/badge/status-WIP-yellow.svg) [![dependencies Status](https://david-dm.org/pillaru/busynest/status.svg)](https://david-dm.org/pillaru/busynest) [![devDependencies Status](https://david-dm.org/pillaru/busynest/dev-status.svg)](https://david-dm.org/pillaru/busynest?type=dev) 
 
 ## Run the app
 
