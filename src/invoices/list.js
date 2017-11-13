@@ -19,7 +19,7 @@ export class InvoicesListViewModel extends ListViewModel {
         return super.activate(params)
         .then((invoices) => {
             const timeEntryIds = invoices.map(inv => inv.timeEntries.map(te => te.id))
-                .reduce((acc, val) => [...acc, ...val])
+                .reduce((acc, val) => [...acc, ...val], [])
                 .filter((v, i, a) => a.indexOf(v) === i)
 
             const organizationIds = invoices.map(inv => inv.recipient.organization.id)
