@@ -33,7 +33,7 @@ module.exports = {
                 },
             },
             server: {
-                default: "webpack-dev-server -d --devtool '#source-map' --inline --env.server",
+                default: "webpack-dev-server -d --inline --env.server",
             },
         },
         lint: {
