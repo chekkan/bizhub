@@ -1,0 +1,64 @@
+.container {
+    margin: 0 auto;
+    max-width: 62.5rem;
+    overflow: auto;
+    text-align: left;    
+}
+
+#welcome-msg h1 {
+    font-size: 54px;
+    font-weight: 300;
+    margin: 16px 0;
+}
+
+.alt-lead {
+    font-size: 24px;
+    color: #6a737d;
+    font-weight: 300;
+    margin: 0;
+}
+
+signup-form {
+    display: none;
+    padding: 0 24px;
+}
+
+@media screen and (min-width: 480px) {
+    
+    #welcome-msg {
+        width: 60%;
+        float: left;
+    }
+
+    #welcome-msg h1 {
+        font-size: 72px;        
+    }
+
+    #welcome-msg a[href="/register"] {
+        display: none;
+    }
+
+    .alt-lead {
+        font-size: 26px;
+    }
+
+    signup-form {
+        display: block;
+        width: 40%;
+        float: left;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 480px){
+    #welcome-msg {
+        width: 100%;
+        float: left;
+        text-align: center;
+    }
+
+    signup-form {
+        display: block;
+        width: 100%;
+        float: left;
+    }
+}
