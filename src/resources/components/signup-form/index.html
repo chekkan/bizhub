@@ -1,0 +1,29 @@
+<template>
+    
+    <form role="form" submit.delegate="join()" validation-errors.bind="errors">
+        <p>Already have an account? <a href="/login" title="Login">Login</a></p>            
+        <div class="form-group" validation-errors.bind="emailErrors"
+                class.bind="emailErrors.length ? 'has-error' : ''">
+            <label for="email">Email address</label>
+            <input type="email" name="email" id="email" value.bind="email & validate" />
+            <span class="hint" if.bind="!emailErrors.length">We'll use this email to verify your account.</span>
+            <span class="hint" repeat.for="errorInfo of emailErrors">
+                ${errorInfo.error.message}
+            </span>
+        </div>
+        <div class="form-group" validation-errors.bind="passwordErrors"
+                class.bind="passwordErrors.length ? 'has-error' : ''">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" value.bind="password & validate" />
+            <span class="hint" if.bind="!passwordErrors.length">Use at least one lowercase letter, one numeral, and 8 characters.</span>
+            <span class="hint" repeat.for="errorInfo of passwordErrors">
+                ${errorInfo.error.message}
+            </span>
+        </div>
+
+        <div>
+            <button class="btn btn-primary" type="submit" disabled.bind="errors.length">Create an account</button>
+        </div>
+    </form>
+
+</template>
