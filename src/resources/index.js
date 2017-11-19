@@ -14,7 +14,8 @@ export function configure(config) {
   .globalResources(PLATFORM.moduleName("./components/pager/index"))
   .globalResources(PLATFORM.moduleName("./components/create-form/index"))
   .globalResources(PLATFORM.moduleName("./components/time-entry-card/time-entry-card.html"))
-  .globalResources(PLATFORM.moduleName("./components/signup-form/index"))
+  .globalResources(PLATFORM.moduleName("./components/sign-up/index"))
+  .globalResources(PLATFORM.moduleName("./components/sign-in/index"))
 }
 
 // export {DateFormatValueConverter}
@@ -26,4 +27,5 @@ export * from "./value-converters/filter-value"
 export * from "./components/pager"
 export * from "./components/create-form"
 export * from "./components/time-entry-card/time-entry-card.html"
-export * from "./components/signup-form"
+export * from "./components/sign-up"
+export * from "./components/sign-in"

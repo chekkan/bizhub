@@ -18,9 +18,13 @@
     margin: 0 0 24px;
 }
 
-#visitor-banner signup-form {
+#visitor-banner sign-up {
     display: none;
-    padding: 0 24px;
+    padding: 24px;
+    text-align: center;
+    border: 1px solid #d8dee2;
+    border-radius: 5px;
+    margin: 16px 0;
 }
 
 @media screen and (min-width: 480px) {
@@ -34,7 +38,7 @@
         font-size: 72px;        
     }
 
-    #welcome-msg a[href="/register"] {
+    #welcome-msg a[href="/login"] {
         display: none;
     }
 
@@ -42,7 +46,7 @@
         font-size: 26px;
     }
 
-    #visitor-banner signup-form {
+    #visitor-banner sign-up {
         display: block;
         width: 40%;
         float: left;
@@ -56,7 +60,7 @@
         text-align: center;
     }
 
-    #visitor-banner signup-form {
+    #visitor-banner sign-up {
         display: block;
         width: 100%;
         float: left;
