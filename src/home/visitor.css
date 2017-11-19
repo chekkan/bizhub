@@ -30,7 +30,7 @@
 @media screen and (min-width: 480px) {
     
     #welcome-msg {
-        width: 60%;
+        width: calc(60% - 12px);
         float: left;
     }
 
@@ -64,5 +64,12 @@
         display: block;
         width: 100%;
         float: left;
+    }
+}
+
+@media (min-width: 768px) {
+    #visitor-banner sign-up {
+        margin-top: 124px;
+        margin-left: 12px;
     }
 }
