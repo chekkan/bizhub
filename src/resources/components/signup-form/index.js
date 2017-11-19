@@ -6,6 +6,7 @@ import { Auth0Service } from "./auth0-service"
 export class SignupFormCustomElement {
 
     controller = null
+    auth0Service = null
 
     constructor(controller, auth0Service) {
         this.controller = controller

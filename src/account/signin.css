@@ -1,0 +1,18 @@
+#sign-in-section {
+    text-align: center;
+}
+
+#sign-in-section h1 {
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+}
+
+#sign-in-section form {
+    text-align: center;
+    border: 1px solid #d8dee2;
+    border-radius: 5px;
+    padding: 20px;
+    width: 340px;
+    margin: 0 auto;
+}
