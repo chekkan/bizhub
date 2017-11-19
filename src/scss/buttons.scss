@@ -19,3 +19,20 @@
     background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
     background-color: #28a745
 }
+
+.login-btn-google::before {
+    content: "\f1a0";
+    font-family: FontAwesome;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    border-right: 1px solid rgba(27, 31, 35, 0.2);
+}
+
+.login-btn-google {
+    background-color: #DD4B39;
+    color: #fff;    
+}
+
+.login-btn-google:hover {
+    background-color: #c23321;
+}

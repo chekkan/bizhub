@@ -8,7 +8,7 @@
     "auth": {
         "authEndpoint": "https://busynest.eu.auth0.com/authorize",
         "signupUrl": "https://busynest.eu.auth0.com/dbconnections/signup",
-        "logoutUrl": "http://busynest.eu.auth0.com/logout",
+        "logoutUrl": "http://busynest.eu.auth0.com/v2/logout",
         "clientId": "QtZBYABXkpXOMjh0QoCwPTp3mfNOYllC",
         "connectionName": "Username-Password-Authentication",
         "redirectUri": "http://localhost:8080/callback",
