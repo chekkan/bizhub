@@ -11,6 +11,9 @@
     </div>
 
     <div class="resource-list">
+        <div show.bind="invoices.length === 0">
+            <p>No invoices to display.<p>
+        </div>
         <a href="/invoices/${invoice.id}" repeat.for="invoice of invoices" 
             class="resource-list-item">
             <div class="invoice-date">
