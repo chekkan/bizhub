@@ -18,6 +18,9 @@ export class InvoicesListViewModel extends ListViewModel {
     async activate(params) {
         return super.activate(params)
         .then((invoices) => {
+            if (invoices.length === 0) {
+                return Promise.resolve(invoices)
+            }
             const timeEntryIds = invoices.map(inv => inv.timeEntries.map(te => te.id))
                 .reduce((acc, val) => [...acc, ...val], [])
                 .filter((v, i, a) => a.indexOf(v) === i)
