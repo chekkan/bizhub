@@ -1,0 +1,13 @@
+<template>
+    <form submit.delegate="createOrg()">
+        <div class="form-group" validation-errors.bind="nameErrors"
+                class.bind="nameErrors.length ? 'has-error' : ''">
+            <label for="name">Name</label>
+            <input type="text" id="name" value.bind="name & validateManually" />
+            <span class="hint" repeat.for="errorInfo of nameErrors">
+                ${errorInfo.error.message}
+            </span>
+        </div>
+        <button type="submit" class="btn btn-primary">Create organization</button>
+    </form>
+</template>

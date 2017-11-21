@@ -1,1 +1,14 @@
-<template></template>
+<template>
+    <require from="../organizations/create-org-prompt/index"></require>
+    <require from="./authorized.css"></require>
+
+    <div class="container">
+
+        <div class="create-org-prompt" if.bind="shouldShowCreateOrgPrompt">
+            <p class="message">Create your new organization.</p>
+            <create-org-prompt></create-org-prompt>
+        </div>
+
+    </div>
+
+</template>

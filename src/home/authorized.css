@@ -1,0 +1,19 @@
+.create-org-prompt {
+    background-color: #fcf8e3;
+    border-color: #faf2cc;
+    color: #8a6d3b;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+}
+
+.create-org-prompt .message {
+    text-align: left;
+    margin-top: 0;
+    font-weight: bold;
+}
+
+.create-org-prompt form label {
+    font-weight: bold;
+}
