@@ -9,43 +9,6 @@ form {
         padding: 1rem;
     }
 
-    ul {
-        padding-left: 18px;
-    }
-
-    label {
-        color: #444;
-    }
-
-    input, select, textarea {
-        font-family: 'Lato', sans-serif;
-        font-size: 1rem;
-        padding: .375rem .75rem;
-        width: 100%;
-        background-color: #fff;
-        background-image: none;
-        background-clip: padding-box;
-        border: 1px solid #ced4da;
-        border-radius: .25rem;
-        display: block;
-    }
-
-    input:focus, select:focus {
-        color: #495057;
-        background-color: #fff;
-        border-color: #80bdff;
-        outline: 0;
-        box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
-    }
-
-    select {
-        height: calc(2.25rem + 2px);
-    }
-
-    button[type='submit'] {
-        margin-top: 0;
-    }
-
     .form-group {
         label {
             font-weight: bold;
@@ -61,11 +24,6 @@ form {
         margin-bottom: 1rem;
     }
 
-    .form-group .hint {
-        font-size: 0.8rem;
-        color: #6a737d;
-    }
-
     .form-group.has-error input {
         border-color: #ff4136;
     }
@@ -73,4 +31,61 @@ form {
     .form-group.has-error .hint {
         color: #FF4136;
     }
+}
+
+ul {
+    padding-left: 18px;
+}
+
+label {
+    color: #444;
+}
+
+input, select, textarea {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    padding: .375rem .75rem;
+    width: 100%;
+    background-color: #fff;
+    background-image: none;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    display: block;
+}
+
+input:focus, select:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+input {
+    height: 42px;
+}
+
+select {
+    height: calc(2.25rem + 2px);
+}
+
+.form-group input[type='text'] {
+    padding: 4px 10px;
+}
+
+button[type='submit'] {
+    margin-top: 0;
+}
+
+fieldset { 
+    border-width: 0;
+    padding: 0;
+    margin: 0;
+}
+
+legend {
+    margin-bottom: .5rem;
+    padding: 0;
+    font-size: 1.5rem;
 }

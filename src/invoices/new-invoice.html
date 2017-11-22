@@ -7,21 +7,22 @@
             <h2>Create a new invoice</h2>
         </div>
 
-        <form>
+        <form submit.delegate="createInvoice()">
             <div class="form-group">
                 <label for="date">Date</label>
                 <input type="date" value.bind="date" />
             </div>
 
-            <fieldset>
-                <legend>Payee</legend>
+            <fieldset id="invoice_recipient">
+                <legend>Recipient</legend>
+                <span class="hint">Who are you sending this invoice to?</span>
                 <div class="form-group">
-                    <label for="payee-name">Name</label>
-                    <input type="text" id="payee-name" value.bind="payee.name" />
+                    <label for="recipient-name">Name</label>
+                    <input type="text" id="recipient-name" value.bind="recipient.name" />
                 </div>
                 <div class="form-group">
-                    <label for="payee-address">Address</label>
-                    <textarea id="payee-address" value.bind="payee.address" rows="5"></textarea>
+                    <label for="recipient-address">Address</label>
+                    <textarea id="recipient-address" value.bind="recipient.address" rows="5"></textarea>
                 </div>
             </fieldset>
 

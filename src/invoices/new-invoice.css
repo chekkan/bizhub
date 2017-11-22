@@ -1,3 +1,12 @@
 .subhead {
     text-align: left;
 }
+
+#invoice_recipient legend{
+    margin-bottom: 0;
+}
+
+#invoice_recipient .hint {
+    margin-bottom: .5rem;
+    display: block;
+}
