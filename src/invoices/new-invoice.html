@@ -1,0 +1,38 @@
+<template>
+    <require from="./new-invoice.css"></require>
+    <require from="../time-entries/time-entry-form"></require>
+
+    <div class="container">
+        <div class="subhead">
+            <h2>Create a new invoice</h2>
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" value.bind="date" />
+            </div>
+
+            <fieldset>
+                <legend>Payee</legend>
+                <div class="form-group">
+                    <label for="payee-name">Name</label>
+                    <input type="text" id="payee-name" value.bind="payee.name" />
+                </div>
+                <div class="form-group">
+                    <label for="payee-address">Address</label>
+                    <textarea id="payee-address" value.bind="payee.address" rows="5"></textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Time entries</legend>
+                <time-entry-form repeat.for="entry of invoiceEntries" model.bind="entry">
+                </time-entry-form>
+                <a href="#" click.delegate="addTimeEntry()">Add new time entry</a>
+            </fieldset>
+
+            <button type="submit" class="btn btn-primary">Create invoice</button>
+        </form>
+    </div>
+</template>

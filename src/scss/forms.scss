@@ -17,7 +17,7 @@ form {
         color: #444;
     }
 
-    input, select {
+    input, select, textarea {
         font-family: 'Lato', sans-serif;
         font-size: 1rem;
         padding: .375rem .75rem;
@@ -43,15 +43,22 @@ form {
     }
 
     button[type='submit'] {
-        margin-top: 1rem;
+        margin-top: 0;
     }
 
     .form-group {
-        margin-bottom: 1rem;
+        label {
+            font-weight: bold;
+            display: block;
+        }
+
+        input[type='date'] {
+            width: 250px;
+        }
     }
 
-    .form-group:last-of-type {
-        margin-bottom: 0;
+    .form-group, fieldset {
+        margin-bottom: 1rem;
     }
 
     .form-group .hint {

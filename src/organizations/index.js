@@ -20,6 +20,13 @@ export class Index {
                 name: "organizationDetail",
                 moduleId: PLATFORM.moduleName("organizations/detail"),
             },
+            {
+                route: "/:orgId/invoices/new",
+                name: "new-org-invoice",
+                moduleId: PLATFORM.moduleName("invoices/new-invoice"),
+                title: "New",
+                auth: true,
+            },
         ])
         this.router = router
     }
