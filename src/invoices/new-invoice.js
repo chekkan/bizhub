@@ -1,7 +1,8 @@
 import { inject, Factory, LogManager } from "aurelia-framework"
+import { Router } from "aurelia-router"
 import { ApiService } from "../services/api-service"
 
-@inject(Factory.of(ApiService))
+@inject(Factory.of(ApiService), Router)
 export class NewInvoiceViewModel {
 
     invoiceEntries = []
@@ -9,11 +10,13 @@ export class NewInvoiceViewModel {
     orgId = null
     recipient = {}
     invoiceService = null
+    router = null
 
-    constructor(apiService) {
+    constructor(apiService, router) {
         this.date = new Date().toISOString().slice(0, 10)
         this.logger = LogManager.getLogger("NewInvoiceViewModel")
         this.invoiceService = apiService("invoice")
+        this.router = router
     }
 
     async activate(params) {
@@ -32,8 +35,8 @@ export class NewInvoiceViewModel {
             },
             items: this.invoiceEntries.map(i => ({
                 date: i.date,
-                billableHours: i.billableHours,
-                totalAmount: i.totalAmount,
+                billableHours: Number(i.billableHours),
+                totalAmount: Number(i.totalAmount),
                 client: i.client,
             })),
         }
