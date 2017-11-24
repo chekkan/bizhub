@@ -17,16 +17,19 @@ export async function configure(aurelia) {
     .standardConfiguration()
     .plugin(PLATFORM.moduleName("aurelia-configuration"), configConfigurationPlugin)
     .plugin(PLATFORM.moduleName("aurelia-validation"))
-    .plugin(PLATFORM.moduleName("aurelia-google-analytics"), (config) => {
-        const configInstance = aurelia.container.get(AureliaConfiguration)
-        config.init(configInstance.get("googleAnalytics.trackingId"))
-        config.attach(configInstance.get("googleAnalytics.config"))
-    })
     .plugin(PLATFORM.moduleName("plugins/http-client/index"))
     .feature(PLATFORM.moduleName("resources/index"))
 
     if (process.env.NODE_ENV !== "production") {
         aurelia.use.developmentLogging()
+    }
+
+    if (process.env.NODE_ENV === "production") {
+        aurelia.use.plugin(PLATFORM.moduleName("aurelia-google-analytics"), (config) => {
+            const configInstance = aurelia.container.get(AureliaConfiguration)
+            config.init(configInstance.get("googleAnalytics.trackingId"))
+            config.attach(configInstance.get("googleAnalytics.config"))
+        })
     }
 
     await aurelia.start()

@@ -1,6 +1,10 @@
 <template>
     <require from="./detail.css" as="invoice-detail"></require>
 
+    <div>
+        <h2>${invoice.organization.name}</h2>
+    </div>
+
     <div class="invoice-date">
         <span class="label">Date</span>
         ${invoice.date | dateFormat:'DD/MM/YYYY'}
@@ -9,13 +13,9 @@
     <div class="recipient">
         <address>
             <div class="org-name">
-                ${invoice.recipient.organization.name}
+                ${invoice.recipient.name}
             </div>
-            ${invoice.recipient.office.addressLine1}<br>
-            ${invoice.recipient.office.addressLine2}<br>
-            ${invoice.recipient.office.townOrCity}<br>
-            ${invoice.recipient.office.country}<br>
-            ${invoice.recipient.office.postalCode}
+            <span innerhtml.bind="invoice.recipient.address"></span>
         </address>
     </div>
 
@@ -25,14 +25,11 @@
             <span class="description">Description</span>
             <span class="amount">Amount</span>
         </div>
-        <div class="row" repeat.for="entry of invoice.timeEntries">
-            <span class="date">${entry.start | dateFormat: 'DD/MM/YYYY'}</span>
+        <div class="row" repeat.for="entry of invoice.items">
+            <span class="date">${entry.date | dateFormat: 'DD/MM/YYYY'}</span>
             <span class="description">
-                ${entry.organization.name},
-                ${entry.office.addressLine1},
-                ${entry.office.townOrCity}
+                ${entry.client}
                 <p class="subtext">
-                    <span class="label">Rate</span>£${entry.ratePerHour}/hr
                     <span class="label">Billable Hours</span>${entry.billableHours}
                 </p>
             </span>
