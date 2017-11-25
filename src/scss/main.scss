@@ -70,6 +70,7 @@ button:hover {
 
 a.new-resource-btn {
     text-decoration: none;
+    display: inline-block;
     color: #000;
     border: 1px solid #CDDC39;
     padding: 0.5rem;
@@ -88,6 +89,7 @@ a.new-resource-btn:hover {
 }
 
 a.delete-resource-btn {
+    display: inline-block;
     text-decoration: none;
     color: #fff;
     border: 1px solid #cecece;
@@ -116,4 +118,9 @@ a.delete-resource-btn {
 .container {
     margin: 0px auto;
     max-width: 62.5rem;
+}
+
+.hint {
+    font-size: 0.8rem;
+    color: #6a737d;
 }

@@ -1,0 +1,7 @@
+.time-entry-form {
+    display: block;
+    border: 1px solid #d1d5da;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: .5rem;
+}

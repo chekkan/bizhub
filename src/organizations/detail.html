@@ -1,16 +1,13 @@
 <template>
-    <require from="./offices-list"></require>
+    <require from="../invoices/invoice-list"></require>
 
     <div class="page-header">
         <h1>${organization.name}</h1>
     </div>
 
-    <div class="resource-actions-bar">
-        <a class="delete-resource-btn" click.delegate="delete()" href="#">Delete</a>
-    </div>
-
     <div class="child-resource-list">
-        <offices-list organization-id.bind="organization.id"></offices-list>
+        <h2>Invoices</h2>
+        <invoice-list organization-id.bind="organization.id"></invoice-list>
     </div>
 
 </template>

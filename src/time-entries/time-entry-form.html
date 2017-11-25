@@ -1,0 +1,19 @@
+<template class="time-entry-form">
+    <require from="./time-entry-form.css"></require>
+    <div class="form-group entry-date">
+        <label for="date">Date</label>
+        <input type="date" id="date" value.bind="model.date" />
+    </div>
+    <div class="form-group entry-hours">
+        <label for="billable-hours">Billable hours</label>
+        <input type="number" id="billable-hours" value.bind="model.billableHours" />
+    </div>
+    <div class="form-group entry-amount">
+        <label for="total-amount">Total amount</label>
+        <input type="number" id="total-amount" value.bind="model.totalAmount" />
+    </div>
+    <div class="form-group">
+        <label for="client">Client</label>
+        <input type="text" id="client" value.bind="model.client" />
+    </div>
+</template>
