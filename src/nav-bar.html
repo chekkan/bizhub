@@ -3,6 +3,9 @@
         <a route-href="route: home" aria-label="Homepage"><h1>Busy Nest</h1></a>
         <nav id="profile-links" role="navigation">
             <ul>
+                <li class="nav-item">
+                    <a class="nav-link" route-href="route: organizations">Organizations</a>
+                </li>
                 <li if.bind="!isAuthenticated" class="nav-item">
                     <a class="login nav-link" route-href="route: login">Sign In</a>
                 </li>
@@ -13,16 +16,6 @@
                     <a class="logout nav-link"route-href="route: logout">Logout</a>
                 </li>
             </ul>
-        </nav>
-        <nav class="navbar" role="navigation">
-            <div class="navbar">
-                <ul class="navbar-nav">
-                    <li repeat.for="row of router.navigation | authFilter: isAuthenticated"
-                    class="nav-item ${row.isActive ? 'active' : ''}">
-                        <a class="nav-link" href.bind="row.href">${row.title}</a>
-                    </li>
-                </ul>
-            </div>
         </nav>
     </header>
 </template>
