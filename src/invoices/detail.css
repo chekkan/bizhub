@@ -12,17 +12,21 @@
     content: ': ';
 }
 
-.recipient {
+.recipient, .from {
     text-align: left;
     max-width: 62.5rem;
     margin: 0 auto;
 }
 
-.recipient address {
+.from {
+    margin-bottom: 1rem;
+}
+
+.recipient address, .from address {
     font-style: normal;    
 }
 
-.recipient .org-name {
+.recipient .org-name, .from .org-name {
     font-weight: bolder;
 }
 
@@ -75,6 +79,31 @@
 .invoice-entries .label::after {
     content: ": ";
     white-space: pre;
+}
+
+.invoice-entries .footer {
+    margin-top: 1rem;
+}
+
+.invoice-entries .footer .label {
+    color: rgb(0,0,0);
+    margin-left: 0;
+    width: calc(100% - 5rem);
+    text-align: right;
+    display: block;
+    float: left;
+}
+
+.invoice-entries .footer .label::after {
+    content: ': ';
+    white-space: pre;
+}
+
+.invoice-entries .footer .value {
+    width: 4rem;
+    display: block;
+    float: left;
+    margin-left: 1rem;
 }
 
 .invoice-entries .row .description .label:first-of-type {

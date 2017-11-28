@@ -1,13 +1,25 @@
 <template>
     <require from="./detail.css" as="invoice-detail"></require>
 
-    <div>
-        <h2>${invoice.organization.name}</h2>
+    <div class="page-header">
+        <h2>Invoice</h2>
+    </div>
+
+    <div class="resource-actions-bar">
+        <button class="print-btn" click.delegate="print()">Print</button>
     </div>
 
     <div class="invoice-date">
         <span class="label">Date</span>
         ${invoice.date | dateFormat:'DD/MM/YYYY'}
+    </div>
+
+    <div class="from">
+        <address>
+            <div class="org-name">
+                ${invoice.organization.name}
+            </div>
+        </address>
     </div>
 
     <div class="recipient">
@@ -35,6 +47,10 @@
             </span>
             <span class="amount">${entry.totalAmount | numberFormat: '$0,00.00'}</span>
         </div>
+        <div class="footer">
+            <span class="label">Total</span>
+            <span class="value">${invoice.total | numberFormat: '$0,00.00'}</span>
+        </div>
     </div>
-    
+
 </template>

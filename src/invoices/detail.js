@@ -31,9 +31,14 @@ export class Detail {
                         address: nl2br(invoice.recipient.address),
                     },
                     organization,
+                    total: invoice.items.reduce((a, b) => a + b.totalAmount, 0),
                 })
                 this.invoice = invoice
             })
         })
+    }
+
+    print() {
+        window.print()
     }
 }
