@@ -12,17 +12,21 @@
     content: ': ';
 }
 
-.recipient {
+.recipient, .from {
     text-align: left;
     max-width: 62.5rem;
     margin: 0 auto;
 }
 
-.recipient address {
+.from {
+    margin-bottom: 1rem;
+}
+
+.recipient address, .from address {
     font-style: normal;    
 }
 
-.recipient .org-name {
+.recipient .org-name, .from .org-name {
     font-weight: bolder;
 }
 

@@ -36,4 +36,8 @@ export class Detail {
             })
         })
     }
+
+    print() {
+        window.print()
+    }
 }
