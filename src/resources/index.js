@@ -11,7 +11,7 @@ export function configure(config) {
   .globalResources(PLATFORM.moduleName("./value-converters/keys"))
   .globalResources(PLATFORM.moduleName("./value-converters/auth-filter"))
   .globalResources(PLATFORM.moduleName("./value-converters/filter-value"))
-  .globalResources(PLATFORM.moduleName("./components/pager/index"))
+  .globalResources(PLATFORM.moduleName("./elements/pager"))
   .globalResources(PLATFORM.moduleName("./components/create-form/index"))
   .globalResources(PLATFORM.moduleName("./components/time-entry-card/time-entry-card.html"))
   .globalResources(PLATFORM.moduleName("./components/sign-up/index"))
@@ -24,7 +24,6 @@ export * from "./value-converters/number-format"
 export * from "./value-converters/keys"
 export * from "./value-converters/auth-filter"
 export * from "./value-converters/filter-value"
-export * from "./components/pager"
 export * from "./components/create-form"
 export * from "./components/time-entry-card/time-entry-card.html"
 export * from "./components/sign-up"
