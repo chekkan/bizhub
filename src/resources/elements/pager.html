@@ -5,15 +5,14 @@
     <nav aria-label="pagination">
         <ul class="pagination justify-content-center">
             <li class="prev ${currentPage - 1 == 0 ? 'disabled' : ''}">
-                <a if.bind="currentPage - 1 != 0" 
-                    route-href="route.bind: route; params.bind: { page: previousPage }" 
-                    tabindex="-1">Previous</a>
+                <a if.bind="currentPage - 1 != 0" route-href="route.bind: route; params.bind: { page: previousPage }" tabindex="-1">Previous</a>
                 <span class="prev" if.bind="currentPage - 1 == 0">Previous</span>
             </li>
-            <li><span>Page ${currentPage} of ${lastPage}</span></li>
+            <li>
+                <span>Page ${currentPage} of ${lastPage}</span>
+            </li>
             <li class="next ${currentPage == lastPage ? 'disabled' : ''}">
-                <a if.bind="currentPage != lastPage" 
-                    route-href="route.bind: route; params.bind: { page: nextPage }">Next</a>
+                <a if.bind="currentPage != lastPage" route-href="route.bind: route; params.bind: { page: nextPage }">Next</a>
                 <span if.bind="currentPage == lastPage" class="next">Next</a>
             </li>
         </ul>

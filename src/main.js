@@ -2,6 +2,7 @@ import "babel-polyfill"
 import { PLATFORM } from "aurelia-pal"
 import * as Bluebird from "bluebird"
 import { AureliaConfiguration } from "aurelia-configuration"
+import "./scss/main.scss"
 
 Bluebird.config({ warnings: false })
 
