@@ -41,9 +41,8 @@ export class NewInvoiceViewModel {
             })),
         }
         this.invoiceService.create(newInvoice)
-        .then((response) => {
-            this.logger.debug(response)
-            this.router.navigateToRoute("organizations")
+        .then((location) => {
+            this.router.navigate(`/invoices/${location}`)
         }).catch((err) => {
             this.logger.error(err)
         })
