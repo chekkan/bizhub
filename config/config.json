@@ -1,7 +1,7 @@
 {
     "debug": true,
     "testing": true,
-    "apiBaseUrl": "https://fq5j7iuo1f.execute-api.eu-west-1.amazonaws.com/dev",
+    "apiBaseUrl": "http://localhost:3000",
     "logoutRedirect": "http://localhost:8080",
     "loginRedirect": "http://localhost:8080",
     "loginRoute": "login",

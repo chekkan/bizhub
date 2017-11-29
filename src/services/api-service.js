@@ -1,4 +1,4 @@
-import { inject } from "aurelia-framework"
+import { inject, LogManager } from "aurelia-framework"
 import { HttpClient, json } from "aurelia-fetch-client"
 
 @inject(HttpClient)
@@ -15,6 +15,7 @@ export class ApiService {
         this.httpClient = httpClient
         this.resource = resource
         this.resourcesHref = `/${plural[resource]}`
+        this.logger = LogManager.getLogger(`ApiService - ${resource}`)
     }
 
     parseFilter(filters) {
@@ -55,6 +56,13 @@ export class ApiService {
         return this.httpClient.fetch(this.resourcesHref, {
             method: "post",
             body: json(organization),
+        })
+        .then((res) => {
+            this.logger.debug(res)
+            for (const key of res.headers.keys()) {
+                this.logger.debug(key)
+            }
+            return res.headers.get("location")
         })
         .catch(error => error.json().then(err => Promise.reject(err)))
     }
