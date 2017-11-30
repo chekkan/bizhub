@@ -13,6 +13,19 @@
                 <input type="date" value.bind="date" />
             </div>
 
+            <fieldset id="invoice_from">
+                <legend>From</legend>
+                <span class="hint">Who is sending the invoice?</span>
+                <div class="form-group">
+                    <label for="from_name">Name</label>
+                    <input type="text" id="from_name" value.bind="from.name" />
+                </div>
+                <div class="form-group">
+                    <label for="from_address">Address</label>
+                    <textarea id="from_address" value.bind="from.address" rows="5"></textarea>
+                </div>
+            </fieldset>
+
             <fieldset id="invoice_recipient">
                 <legend>Recipient</legend>
                 <span class="hint">Who are you sending this invoice to?</span>
