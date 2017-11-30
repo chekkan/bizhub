@@ -11,6 +11,7 @@ export class NewInvoiceViewModel {
     recipient = {}
     invoiceService = null
     router = null
+    from = {}
 
     constructor(apiService, router) {
         this.date = new Date().toISOString().slice(0, 10)
@@ -29,6 +30,10 @@ export class NewInvoiceViewModel {
                 id: this.orgId,
             },
             date: this.date,
+            from: {
+                name: this.from.name,
+                address: this.from.address,
+            },
             recipient: {
                 name: this.recipient.name,
                 address: this.recipient.address,
