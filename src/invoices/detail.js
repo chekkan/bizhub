@@ -26,6 +26,10 @@ export class Detail {
             this.orgService.getById(invoice.organization.id)
             .then((organization) => {
                 Object.assign(invoice, {
+                    from: {
+                        name: invoice.from === undefined ? undefined : invoice.from.name,
+                        address: invoice.from === undefined ? undefined : nl2br(invoice.from.address),
+                    },
                     recipient: {
                         name: invoice.recipient.name,
                         address: nl2br(invoice.recipient.address),

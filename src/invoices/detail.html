@@ -9,26 +9,33 @@
         <button class="print-btn" click.delegate="print()">Print</button>
     </div>
 
-    <div class="invoice-date">
-        <span class="label">Date</span>
-        ${invoice.date | dateFormat:'DD/MM/YYYY'}
-    </div>
+    <div id="invoice_header">
 
-    <div class="from">
-        <address>
-            <div class="org-name">
-                ${invoice.organization.name}
-            </div>
-        </address>
-    </div>
+        <div class="invoice-date">
+            <span class="label">Date</span>
+            ${invoice.date | dateFormat:'DD/MM/YYYY'}
+        </div>
 
-    <div class="recipient">
-        <address>
-            <div class="org-name">
-                ${invoice.recipient.name}
-            </div>
-            <span innerhtml.bind="invoice.recipient.address"></span>
-        </address>
+        <div class="invoice_recipient">
+            <address>
+                <div class="org-name">
+                    ${invoice.recipient.name}
+                </div>
+                <span innerhtml.bind="invoice.recipient.address"></span>
+            </address>
+        </div>
+
+        <div class="invoice_from">
+            <address>
+                <div class="org-name">
+                    ${invoice.from && invoice.from.name.length > 0 ? invoice.from.name : invoice.organization.name}
+                </div>
+                <span 
+                    if.bind="invoice.from && invoice.from.address" 
+                    innerhtml.bind="invoice.from.address"></span>
+            </address>
+        </div>
+
     </div>
 
     <div class="invoice-entries">
