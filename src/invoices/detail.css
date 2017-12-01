@@ -1,7 +1,6 @@
 .invoice-date {
     text-align: right;
-    max-width: 62.5rem;
-    margin: 0 auto;
+    margin-bottom: 1rem;
 }
 
 .invoice-date .label {
@@ -12,22 +11,31 @@
     content: ': ';
 }
 
-.recipient, .from {
-    text-align: left;
+#invoice_header {
     max-width: 62.5rem;
     margin: 0 auto;
 }
 
-.from {
+.invoice_recipient, .invoice_from {
+    text-align: left;
+}
+
+.invoice_from, .invoice_recipient {
     margin-bottom: 1rem;
 }
 
-.recipient address, .from address {
+.invoice_recipient address, .invoice_from address {
     font-style: normal;    
 }
 
-.recipient .org-name, .from .org-name {
+.invoice_recipient .org-name, .invoice_from .org-name {
     font-weight: bolder;
+}
+
+.invoice_recipient .label, .invoice_from .label {
+    color: #ababb1;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .invoice-entries {
@@ -112,4 +120,20 @@
 
 .invoice-entries .amount {
     width: 4rem
+}
+
+@media print, screen and (min-width: 425px) {
+    .invoice_recipient {
+        width: 50%;
+        float: left;
+    }
+    .invoice_from {
+        width: 50%;
+        float: left;
+        text-align: right;
+    }
+
+    .invoice-entries {
+        clear: both;
+    }
 }
