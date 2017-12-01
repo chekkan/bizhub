@@ -29,6 +29,7 @@
         }
     },
     "production": {
+        "apiBaseUrl": "https://fq5j7iuo1f.execute-api.eu-west-1.amazonaws.com/dev",
         "logoutRedirect": "https://busynest.org",
         "loginRedirect": "https://busynest.org",
         "auth":{
