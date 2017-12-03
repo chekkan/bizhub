@@ -60,4 +60,12 @@
         </div>
     </div>
 
+    <div class="invoice_payment" if.bind="invoice.payment">
+        <h3>Bank Details</h3>
+        <div><span class="label">Name</span>${invoice.payment.name}</div>
+        <div><span class="label">Bank</span>${invoice.payment.bank}</div>
+        <div><span class="label">Sort Code</span>${invoice.payment.sortCode}</div>
+        <div><span class="label">Account Number</span>${invoice.payment.accountNumber}</div>
+    </div>
+
 </template>
