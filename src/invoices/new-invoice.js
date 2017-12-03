@@ -9,6 +9,7 @@ export class NewInvoiceViewModel {
     date = null
     orgId = null
     recipient = {}
+    payment = null
     invoiceService = null
     router = null
     from = {}
@@ -44,6 +45,7 @@ export class NewInvoiceViewModel {
                 totalAmount: Number(i.totalAmount),
                 client: i.client,
             })),
+            payment: this.payment,
         }
         this.invoiceService.create(newInvoice)
         .then((location) => {
