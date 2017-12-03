@@ -46,6 +46,26 @@
                 <a href="#" click.delegate="addTimeEntry()">Add new time entry</a>
             </fieldset>
 
+            <fieldset>
+                <legend>Payment</legend>
+                <div class="form-group">
+                    <label for="invoice_payment_name">Name</label>
+                    <input type="text" id="invoice_payment_name" value.bind="payment.name" />
+                </div>
+                <div class="form-group">
+                    <label for="invoice_payment_bank">Bank</label>
+                    <input type="text" id="invoice_payment_bank" value.bind="payment.bank" />
+                </div>
+                <div class="form-group">
+                    <label for="invoice_payment_sortcode">Sort Code</label>
+                    <input type="text" id="invoice_payment_sortcode" value.bind="payment.sortCode" />
+                </div>
+                <div class="form-group">
+                    <label for="invoice_payment_account_number">Account Number</label>
+                    <input type="text" id="invoice_payment_account_number" value.bind="payment.accountNumber" />
+                </div>
+            </fieldset>
+
             <button type="submit" class="btn btn-primary">Create invoice</button>
         </form>
     </div>
