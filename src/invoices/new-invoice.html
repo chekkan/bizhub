@@ -41,7 +41,8 @@
 
             <fieldset>
                 <legend>Time entries</legend>
-                <time-entry-form repeat.for="entry of invoiceEntries" model.bind="entry">
+                <time-entry-form repeat.for="entry of invoiceEntries" model.bind="entry"
+                    remove.delegate="removeTimeEntry(entry)">
                 </time-entry-form>
                 <a href="#" click.delegate="addTimeEntry()">Add new time entry</a>
             </fieldset>

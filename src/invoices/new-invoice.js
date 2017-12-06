@@ -60,4 +60,11 @@ export class NewInvoiceViewModel {
             date: new Date().toISOString().slice(0, 10),
         })
     }
+
+    removeTimeEntry(entry) {
+        const index = this.invoiceEntries.indexOf(entry)
+        if (index !== -1) {
+            this.invoiceEntries.splice(index, 1)
+        }
+    }
 }

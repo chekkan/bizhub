@@ -1,5 +1,9 @@
 <template class="time-entry-form">
     <require from="./time-entry-form.css"></require>
+    
+    <div class="action_bar">
+        <a href="#" click.delegate="remove()" class="remove">Remove</a>
+    </div>
     <div class="form-group entry-date">
         <label for="date">Date</label>
         <input type="date" id="date" value.bind="model.date" />

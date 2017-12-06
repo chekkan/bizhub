@@ -5,3 +5,31 @@
     padding: 10px;
     margin-bottom: .5rem;
 }
+
+.time-entry-form .action_bar {
+    float: right;
+}
+
+.time-entry-form .action_bar a.remove {
+    font-size: 0.8rem;
+    text-decoration: none;
+    display: inline-block;
+    color: #FF4136;
+    position: relative;
+    border: 1px solid transparent;
+    padding: 0.3rem 1.6rem 0.3rem 0.6rem;
+    border-radius: 5px;
+}
+
+.time-entry-form .action_bar a.remove:hover {
+    border: 1px solid #d1d5da;
+}
+
+.time-entry-form .action_bar a.remove::after {
+    font-family: FontAwesome;
+    font-size: 1rem;
+    content: " \f057";
+    position: absolute;
+    top: 4px;
+    right: 6px;
+}
