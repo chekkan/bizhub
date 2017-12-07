@@ -1,11 +1,18 @@
 <template>
 
-    <div class="page-header">
-        <h1>New Organization</h1>
+    <div class="container">
+        <div class="subhead">
+            <h2>Create an organization</h2>
+        </div>
     </div>
 
-    <create-form submit.delegate="create()" 
-        schema.bind="schema"
-        model.bind="model" />
+    <form submit.delegate="createOrg()">
+        <div class="form-group">
+            <label for="org_name">Organization name</label>
+            <input type="text" id="org_name" value.bind="name" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create organization</button>
+    </form>
 
 </template>

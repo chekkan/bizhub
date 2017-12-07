@@ -5,23 +5,17 @@ import { ApiService } from "../services/api-service"
 @inject(Factory.of(ApiService), Router)
 export class New {
 
+    name = null
+
     constructor(apiService, router) {
         this.router = router
         this.orgService = apiService("organization")
-        this.schema = {
-            properties: {
-                name: {
-                    type: "string",
-                    title: "Name",
-                    required: true,
-                },
-            },
-        }
-        this.model = {}
     }
 
-    create() {
-        this.orgService.create(this.model)
+    createOrg() {
+        this.orgService.create({
+            name: this.name,
+        })
         .then((location) => {
             this.router.navigateToRoute("organizationDetail", { id: location })
         })
