@@ -21,6 +21,13 @@ export class Index {
                 moduleId: PLATFORM.moduleName("organizations/detail"),
             },
             {
+                route: "/:id/settings",
+                name: "org-settings",
+                moduleId: PLATFORM.moduleName("organizations/settings"),
+                title: "Settings",
+                auth: true,
+            },
+            {
                 route: "/:orgId/invoices/new",
                 name: "new-org-invoice",
                 moduleId: PLATFORM.moduleName("invoices/new-invoice"),
