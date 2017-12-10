@@ -168,7 +168,7 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
                 name: "common",
             })),
         new CopyWebpackPlugin([
-            { from: "static/favicon.ico", to: "favicon.ico" },
+            { from: "static" },
             { from: "config/config.json", to: "config/config.json" },
             { from: "node_modules/font-awesome/fonts", to: "fonts" }]),
         ...when(production, new UglifyJsPlugin({
