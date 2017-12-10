@@ -17,3 +17,7 @@
 .create-org-prompt form label {
     font-weight: bold;
 }
+
+.my_orgs {
+    text-align: left;
+}

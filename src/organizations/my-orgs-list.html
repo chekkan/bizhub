@@ -1,0 +1,14 @@
+<template>
+    <div class="my_orgs">
+        <h2>My Organizations</h2>
+        <div class="resource-actions-bar">
+            <a href="/organizations/new" class="new-resource-btn">New</a>
+        </div>
+        <div if.bind="orgs.length === 0">
+            You don't have any organizations.
+        </div>
+        <div repeat.for="org of orgs">
+            <h4><a href="/organizations/${org.id}" title.bind="org.name">${org.name}</a></h4>
+        </div>
+    </div>
+</template>
