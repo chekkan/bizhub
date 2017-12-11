@@ -35,10 +35,10 @@ module.exports = (config) => {
        * available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
        */
         preprocessors: {
-            "test/karma-bundle.js": ["webpack"],
+            "test/karma-bundle.js": ["webpack", "sourcemap"],
         },
 
-        webpack: webpack({ coverage: true }),
+        webpack: webpack({ coverage: true, devtool: "inline-source-map" }),
 
         /*
         * test results reporter to use
