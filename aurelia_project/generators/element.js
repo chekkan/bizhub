@@ -40,7 +40,7 @@ export class ${className} {
 `
     }
 
-    generateHTMLSource(className) {
+    generateHTMLSource() {
         return `<template>
   <h1>\${value}</h1>
 </template>`

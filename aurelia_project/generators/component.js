@@ -39,7 +39,7 @@ export default class ElementGenerator {
 }`
     }
 
-    generateHTMLSource(className) {
+    generateHTMLSource() {
         return `<template>
   <h1>\${message}</h1>
 </template>`
