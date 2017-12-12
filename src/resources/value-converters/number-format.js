@@ -1,4 +1,5 @@
 import numeral from "numeral"
+import "numeral/locales/en-gb"
 
 export class NumberFormatValueConverter {
     toView(value, format) {
