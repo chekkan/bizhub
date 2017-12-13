@@ -1,4 +1,6 @@
-import { json } from "aurelia-fetch-client"
+import { HttpClient, json } from "aurelia-fetch-client"
+import sinon from "sinon"
+import "jasmine-sinon"
 import { ApiService } from "../../../src/services/api-service"
 
 class HttpClientMock {
@@ -30,19 +32,26 @@ class HttpClientMock {
 describe("the ApiSerivce module", () => {
     describe("create method", () => {
         it("calls fetch with correct url and method", async () => {
-            const client = new HttpClientMock()
+            var client = sinon.createStubInstance(HttpClient)
+            client.fetch.resolves({headers: new Headers()})
             const sut = new ApiService(client, "organization")
             await sut.create({ name: "bizhub" })
-            expect(client.href).toEqual("/organizations")
-            expect(client.method).toEqual("post")
+            expect(client.fetch).toHaveBeenCalledWith(
+                "/organizations", 
+                jasmine.objectContaining({method: "post" })
+            )
         })
 
         it("calls fetch with correct body", async () => {
             const body = { name: "bizhub" }
-            const client = new HttpClientMock()
+            var client = sinon.createStubInstance(HttpClient)
+            client.fetch.resolves({headers: new Headers()})
             const sut = new ApiService(client, "organization")
             await sut.create(body)
-            expect(client.body).toEqual(json(body))
+            expect(client.fetch).toHaveBeenCalledWith(
+                "/organizations",
+                jasmine.objectContaining({ body: json(body) })
+            )
         })
     })
 

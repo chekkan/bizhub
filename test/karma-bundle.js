@@ -22,7 +22,7 @@ function loadTestModules() {
         // recursive:
         true,
         // tests in ./unit folder regex:
-        /\.spec\.[tj]s$/igm,
+        /\.spec\.[tj]s$/im,
     )
 
     return [srcContext, testContext]
