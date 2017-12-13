@@ -4,7 +4,6 @@ import { AuthService } from "../services/auth-service"
 
 @inject(AuthService)
 export class Index {
-
     authService = null
 
     constructor(authService) {
@@ -16,7 +15,7 @@ export class Index {
             const isLoggedIn = this.authService.isAuthenticated
 
             const moduleId = isLoggedIn ? PLATFORM.moduleName("home/authorized")
-                : PLATFORM.moduleName("home/visitor")
+                : PLATFORM.moduleName("home/visitor.html")
             Object.assign(instruction.config, {
                 moduleId,
                 href: instruction.fragment,
