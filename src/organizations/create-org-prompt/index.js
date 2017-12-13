@@ -5,7 +5,6 @@ import { ApiService } from "../../services/api-service"
 
 @inject(Factory.of(ApiService), Router, NewInstance.of(ValidationController))
 export class CreateOrgPromptCustomElement {
-
     name = null
     orgService = null
     router = null
@@ -17,21 +16,21 @@ export class CreateOrgPromptCustomElement {
         this.controller = controller
 
         ValidationRules
-        .ensure("name")
+            .ensure("name")
             .required()
             .on(this)
     }
 
     createOrg() {
         this.controller.validate()
-        .then((result) => {
-            if (result.valid) {
-                this.orgService.create({
-                    name: this.name,
-                }).then(() => {
-                    this.router.navigateToRoute("organizations")
-                })
-            }
-        })
+            .then((result) => {
+                if (result.valid) {
+                    this.orgService.create({
+                        name: this.name,
+                    }).then(() => {
+                        this.router.navigateToRoute("organizations")
+                    })
+                }
+            })
     }
 }

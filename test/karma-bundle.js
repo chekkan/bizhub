@@ -13,7 +13,7 @@ function loadTestModules() {
         // recursive:
         true,
         // tests in /src folder regex:
-        /\.spec\.[tj]s$/igm,
+        /\.spec\.[tj]s$/im,
     )
 
     const testContext = require.context(

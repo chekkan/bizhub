@@ -12,10 +12,11 @@ export class InvoiceListCustomElement {
 
     organizationIdChanged() {
         return this.orgService.getChild(this.organizationId, "invoices")
-        .then((data) => {
-            this.invoices = data.content.map(i => Object.assign({}, {
-                totalAmount: i.items.map(o => o.totalAmount).reduce((total, num) => total + num),
-            }, i))
-        })
+            .then((data) => {
+                this.invoices = data.content.map(i => Object.assign({}, {
+                    totalAmount: i.items.map(o => o.totalAmount)
+                        .reduce((total, num) => total + num),
+                }, i))
+            })
     }
 }

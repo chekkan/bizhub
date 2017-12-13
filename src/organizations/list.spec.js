@@ -1,5 +1,5 @@
 import { activationStrategy } from "aurelia-router"
-import { OrganizationsListViewModel } from "../../../src/organizations/list"
+import { OrganizationsListViewModel } from "./list"
 
 class ApiServiceStub {
     itemStubs;

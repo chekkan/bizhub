@@ -1,5 +1,5 @@
 import sinon from "sinon"
-import { Authentication } from "../../../src/common/authentication"
+import { Authentication } from "./authentication"
 
 describe("the authentication common module", () => {
     describe("accessToken getter", () => {
