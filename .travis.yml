@@ -3,7 +3,7 @@ cache:
   directories:
     - node_modules
 node_js:
-- "6"
+- "8"
 before_install:
 - export CHROME_BIN=chromium-browser
 - export DISPLAY=:99.0
