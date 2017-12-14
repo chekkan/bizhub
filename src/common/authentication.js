@@ -14,7 +14,8 @@ export class Authentication {
             return false
         }
 
-        const isExpired = !(Math.round(new Date().getTime() / 1000) <= jwt.exp)
+        const currentTime = Date.now() / 1000
+        const isExpired = jwt.exp < currentTime
         if (isExpired) {
             return false
         }
