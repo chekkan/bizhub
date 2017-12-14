@@ -8,7 +8,7 @@ export class App {
         Object.assign(config, { title: "Busy Nest" })
         Object.assign(config.options, { pushState: true, root: "/" })
 
-        config.addPipelineStep("authorize", AuthenticateStep)
+        config.addAuthorizeStep(AuthenticateStep)
 
         config.map(routes)
 

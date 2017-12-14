@@ -17,7 +17,7 @@ class RouterStub {
         this.unKnownRoute = route
     }
 
-    addPipelineStep() {} // eslint-disable-line class-methods-use-this
+    addAuthorizeStep() {} // eslint-disable-line class-methods-use-this
 }
 
 describe("the App module", () => {
