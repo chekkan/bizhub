@@ -10,7 +10,7 @@ export class AuthenticateStep {
 
     run(navigationInstruction, next) {
         const isLoggedIn = this.authService.isAuthenticated
-        const { loginRoute } = this.authService.config.loginRoute
+        const { loginRoute } = this.authService.config
 
         if (navigationInstruction.getAllInstructions()
             .some(route => route.config.auth === true)) {

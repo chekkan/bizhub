@@ -5,10 +5,6 @@ class RouterStub {
         this.options = {}
     }
 
-    configure(handler) {
-        handler(this)
-    }
-
     map(routes) {
         this.routes = routes
     }
