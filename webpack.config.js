@@ -30,7 +30,9 @@ const cssRules = [
     },
 ]
 
-module.exports = ({ production, server, extractCss, coverage } = {}) => ({
+module.exports = ({
+    production, server, extractCss, coverage,
+} = {}) => ({
     resolve: {
         extensions: [".js"],
         modules: [srcDir, "node_modules"],
@@ -161,15 +163,18 @@ module.exports = ({ production, server, extractCss, coverage } = {}) => ({
             new ExtractTextPlugin({
                 filename: production ? "[contenthash].css" : "[id].css",
                 allChunks: true,
-            })),
+            })
+        ),
         ...when(
             production,
             new CommonsChunkPlugin({
                 name: "common",
-            })),
+            })
+        ),
         new CopyWebpackPlugin([
             { from: "static" },
             { from: "config/config.json", to: "config/config.json" },
+            { from: "src/sw.js", to: "sw.js" },
             { from: "node_modules/font-awesome/fonts", to: "fonts" }]),
         ...when(production, new UglifyJsPlugin({
             sourceMap: true,
