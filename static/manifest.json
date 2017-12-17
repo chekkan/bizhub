@@ -1,6 +1,6 @@
 {
     "name": "Busy Nest",
-    "start_url": "index.html?utm_source=homescreen",
+    "start_url": "/?utm_source=homescreen",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
