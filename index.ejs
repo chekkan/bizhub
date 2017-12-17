@@ -17,6 +17,18 @@
         content="organization, timesheet, invoice, expense, company, startup, open source">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="<%- htmlWebpackPlugin.options.metadata.baseUrl %>" />
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "Organization",
+          "name": "Busy Nest",
+          "url": "https://busynest.org",
+          "sameAs": [
+            "https://www.facebook.com/busynest",
+            "https://twitter.com/BusyNestApp"
+          ]
+        }
+    </script>
     <!-- imported CSS are concatenated and added automatically -->
   </head>
 
