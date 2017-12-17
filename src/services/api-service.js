@@ -17,7 +17,7 @@ export class ApiService {
         this.logger = LogManager.getLogger(`ApiService - ${resource}`)
     }
 
-    parseFilter(filters) {
+    static parseFilter(filters) {
         const parts = Object.keys(filters).map((k) => {
             let value = filters[k]
             if (Array.isArray(value)) {
@@ -33,7 +33,7 @@ export class ApiService {
         const urlParams = new URLSearchParams(Object.entries(params))
         let href = `${this.resourcesHref}?${urlParams}`
         if (filters) {
-            const filterQuery = this.parseFilter(filters)
+            const filterQuery = ApiService.parseFilter(filters)
             href += `&${filterQuery}`
         }
         return this.httpClient.fetch(href)
@@ -57,7 +57,8 @@ export class ApiService {
             body: json(organization),
         })
             .then(res => res.headers.get("location"))
-            .catch(error => error.json().then(err => Promise.reject(err)))
+            .catch(error => error.json()
+                .then(err => Promise.reject(err)))
     }
 
     delete(id) {

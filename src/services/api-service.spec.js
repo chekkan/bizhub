@@ -53,6 +53,19 @@ describe("the ApiSerivce module", () => {
                 jasmine.objectContaining({ body: json(body) }),
             )
         })
+
+        it("rejects with error", (done) => {
+            const body = { }
+            const client = sinon.createStubInstance(HttpClient)
+            const error = new Error()
+            error.json = () => Promise.resolve(new Error())
+            client.fetch.rejects(error)
+
+            const sut = new ApiService(client, "organization")
+            sut.create(body).catch(() => {
+                done()
+            })
+        })
     })
 
     describe("getById method", () => {
