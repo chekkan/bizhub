@@ -1,6 +1,6 @@
 <template>
     <require from="../organizations/create-org-prompt/index"></require>
-    <require from="../organizations/my-orgs-list"></require>
+    <require from="../organizations/orgs-list.html"></require>
     <require from="./authorized.css"></require>
 
     <div class="container">
@@ -10,8 +10,10 @@
             <create-org-prompt></create-org-prompt>
         </div>
 
-        <my-orgs-list orgs.bind="myOrgs"></my-orgs-list>
-
+        <div class="my_orgs">
+            <h2>My Organizations</h2>
+            <orgs-list orgs.bind="myOrgs"></orgs-list>
+        </div>
     </div>
 
 </template>
