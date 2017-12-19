@@ -1,16 +1,17 @@
-import { inject, bindable, Factory } from "aurelia-framework"
+import { inject, Factory } from "aurelia-framework"
 import { ApiService } from "../services/api-service"
 
 @inject(Factory.of(ApiService))
 export class InvoiceListCustomElement {
-    @bindable organizationId;
     invoices = []
+    organizationId = null
 
     constructor(apiService) {
         this.orgService = apiService("organization")
     }
 
-    organizationIdChanged() {
+    async activate(params) {
+        this.organizationId = params.id
         return this.orgService.getChild(this.organizationId, "invoices")
             .then((data) => {
                 this.invoices = data.content.map(i => Object.assign({}, {
