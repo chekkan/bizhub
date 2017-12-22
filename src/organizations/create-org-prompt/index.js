@@ -27,8 +27,8 @@ export class CreateOrgPromptCustomElement {
                 if (result.valid) {
                     this.orgService.create({
                         name: this.name,
-                    }).then(() => {
-                        this.router.navigateToRoute("organizations")
+                    }).then((location) => {
+                        this.router.navigateToRoute("organizationDetail", { id: location })
                     })
                 }
             })

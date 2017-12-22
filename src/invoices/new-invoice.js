@@ -4,7 +4,6 @@ import { ApiService } from "../services/api-service"
 
 @inject(Factory.of(ApiService), Router)
 export class NewInvoiceViewModel {
-
     invoiceEntries = []
     date = null
     orgId = null
@@ -48,11 +47,11 @@ export class NewInvoiceViewModel {
             payment: this.payment,
         }
         this.invoiceService.create(newInvoice)
-        .then((location) => {
-            this.router.navigate(`/invoices/${location}`)
-        }).catch((err) => {
-            this.logger.error(err)
-        })
+            .then((location) => {
+                this.router.navigate(`/invoices/${location}`)
+            }).catch((err) => {
+                this.logger.error(err)
+            })
     }
 
     addTimeEntry() {

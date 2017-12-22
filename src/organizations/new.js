@@ -1,10 +1,11 @@
 import { inject, Factory } from "aurelia-framework"
 import { Router } from "aurelia-router"
 import { ApiService } from "../services/api-service"
+import { Organization } from "./organization-model"
 
 @inject(Factory.of(ApiService), Router)
 export class New {
-    name = null
+    organization = new Organization()
 
     constructor(apiService, router) {
         this.router = router
@@ -12,9 +13,7 @@ export class New {
     }
 
     createOrg() {
-        this.orgService.create({
-            name: this.name,
-        }).then((location) => {
+        this.orgService.create(this.organization).then((location) => {
             this.router.navigateToRoute("organizationDetail", { id: location })
         })
     }
