@@ -4,7 +4,7 @@ import { ApiService } from "../services/api-service"
 import { Organization } from "./organization-model"
 
 @inject(Factory.of(ApiService), Router)
-export class New {
+export class NewOrgViewModel {
     organization = new Organization()
 
     constructor(apiService, router) {
