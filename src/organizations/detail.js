@@ -25,10 +25,4 @@ export class OrgDetailViewModel {
                 Object.assign(route.navModel, { title: org.name })
             })
     }
-
-    delete() {
-        this.organizationService.delete(this.organization.id)
-            .then(() =>
-                this.router.navigateToRoute("organizations"))
-    }
 }
