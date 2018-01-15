@@ -31,7 +31,7 @@ describe("create-org-form", () => {
             const event = element.dispatchEvent.lastCall.args[0]
             expect(event instanceof CustomEvent).toBeTruthy()
             expect(event.type).toEqual("submit")
-            expect(event.bubbles).toBeTruthy()
+            expect(event.bubbles).toBeFalsy()
         })
 
         it("doesn't emit submit event when validation fails", async () => {

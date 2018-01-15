@@ -18,13 +18,12 @@ export class CreateOrgFormCustomElement {
     }
 
     async createOrg() {
-        return this.controller.validate().then((result) => {
-            if (result.valid) {
-                const event = new CustomEvent("submit", {
-                    bubbles: true,
-                })
-                this.element.dispatchEvent(event)
-            }
-        })
+        const result = await this.controller.validate()
+        if (result.valid) {
+            const event = new CustomEvent("submit", {
+                bubbles: false,
+            })
+            this.element.dispatchEvent(event)
+        }
     }
 }
