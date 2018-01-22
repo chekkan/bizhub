@@ -1,16 +1,32 @@
 <template>
 
-    <h2>${org.name}</h2>
+    <div class="page-header">
+        <h2>${org.name}</h2>
+    </div>
 
-    <form>
-        <div class="form-group">
-            <label for="name">Organization name</label>
-            <input type="text" id="name" value.bind="name" />
-        </div>
+    <form submit.delegate="save()">
+        <section>
+            <div class="form-group">
+                <label for="name">Organization name</label>
+                <input type="text" id="name" value.bind="name" />
+            </div>
 
-        <div class="form-group">
-            <label for="description">Description</label>
-            <input type="text" id="description" value.bind="description" />
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" id="description" value.bind="description" />
+            </div>
+        </section>
+
+        <section>
+            <fieldset>
+                <legend>Danger Zone</legend>
+                <button class="btn btn-danger" click.delegate="delete()">Delete Organization</button>
+            </fieldset>
+        </section>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button class="btn" click.delegate="cancel()">Cancel</button>
         </div>
     </form>
 

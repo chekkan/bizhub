@@ -21,6 +21,10 @@
     background-color: #28a745
 }
 
+.btn-danger {
+    color: #c23321;
+}
+
 .login-btn-google::before {
     content: "\f1a0";
     font-family: FontAwesome;
@@ -31,7 +35,7 @@
 
 .login-btn-google {
     background-color: #DD4B39;
-    color: #fff;    
+    color: #fff;
 }
 
 .login-btn-google:hover {

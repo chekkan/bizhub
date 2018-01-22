@@ -28,6 +28,10 @@ export class AuthService {
         return this.authentication.isAuthenticated
     }
 
+    get userId() {
+        return this.authentication.userId
+    }
+
     login(token) {
         localStorage.setItem("access_token", token.access_token)
         localStorage.setItem("expires_in", token.expires_in)

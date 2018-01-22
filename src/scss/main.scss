@@ -78,7 +78,7 @@ button {
 }
 
 button:hover {
-    background-color: #f4f5f0;   
+    background-color: #f4f5f0;
 }
 
 a.new-resource-btn {
@@ -136,4 +136,11 @@ a.delete-resource-btn {
 .hint {
     font-size: 0.8rem;
     color: #6a737d;
+}
+
+section {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 16px 16px;
+    margin-bottom: 16px;
+    border-radius: 2px;
 }

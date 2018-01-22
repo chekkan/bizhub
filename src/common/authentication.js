@@ -25,4 +25,8 @@ export class Authentication {
     get accessToken() {
         return localStorage.getItem("access_token")
     }
+
+    get userId() {
+        return "108400419258399939747"
+    }
 }
