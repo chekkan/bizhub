@@ -2,7 +2,6 @@ import { bindable } from "aurelia-framework"
 import { AuthService } from "./services/auth-service"
 
 export class NavBar {
-
     static inject() {
         return [
             AuthService,

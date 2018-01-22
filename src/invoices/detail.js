@@ -8,38 +8,34 @@ function nl2br(str, isXhtml) {
 }
 
 @inject(Router, Factory.of(ApiService))
-export class Detail {
-
+export class InvoiceDetailViewModel {
     invoice = {}
 
     constructor(router, apiService) {
         this.router = router
         this.invoiceService = apiService("invoice")
-        this.timeEntryService = apiService("time-entry")
         this.orgService = apiService("organization")
-        this.officeService = apiService("office")
     }
 
-    activate(params) {
+    async activate(params) {
         return this.invoiceService.getById(params.id)
-        .then((invoice) => {
-            this.orgService.getById(invoice.organization.id)
-            .then((organization) => {
-                Object.assign(invoice, {
-                    from: {
-                        name: invoice.from === undefined ? undefined : invoice.from.name,
-                        address: invoice.from === undefined ? undefined : nl2br(invoice.from.address),
-                    },
-                    recipient: {
-                        name: invoice.recipient.name,
-                        address: nl2br(invoice.recipient.address),
-                    },
-                    organization,
-                    total: invoice.items.reduce((a, b) => a + b.totalAmount, 0),
-                })
-                this.invoice = invoice
-            })
-        })
+            .then(invoice => this.orgService.getById(invoice.organization.id)
+                .then((organization) => {
+                    Object.assign(invoice, {
+                        from: {
+                            name: invoice.from === undefined ? undefined : invoice.from.name,
+                            address: invoice.from === undefined
+                                ? undefined : nl2br(invoice.from.address),
+                        },
+                        recipient: {
+                            name: invoice.recipient.name,
+                            address: nl2br(invoice.recipient.address),
+                        },
+                        organization,
+                        total: invoice.items.reduce((a, b) => a + b.totalAmount, 0),
+                    })
+                    this.invoice = invoice
+                }))
     }
 
     print() {

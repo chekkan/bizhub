@@ -15,11 +15,11 @@ function configConfigurationPlugin(config) {
 
 export async function configure(aurelia) {
     aurelia.use
-    .standardConfiguration()
-    .plugin(PLATFORM.moduleName("aurelia-configuration"), configConfigurationPlugin)
-    .plugin(PLATFORM.moduleName("aurelia-validation"))
-    .plugin(PLATFORM.moduleName("plugins/http-client/index"))
-    .feature(PLATFORM.moduleName("resources/index"))
+        .standardConfiguration()
+        .plugin(PLATFORM.moduleName("aurelia-configuration"), configConfigurationPlugin)
+        .plugin(PLATFORM.moduleName("aurelia-validation"))
+        .plugin(PLATFORM.moduleName("plugins/http-client/index"))
+        .feature(PLATFORM.moduleName("resources/index"))
 
     if (process.env.NODE_ENV !== "production") {
         aurelia.use.developmentLogging()

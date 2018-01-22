@@ -14,15 +14,12 @@ export class Authentication {
             return false
         }
 
-        if (jwt) {
-            const isExpired = !(Math.round(new Date().getTime() / 1000) <= jwt.exp)
-            if (isExpired) {
-                return false
-            }
-            return jwt.nonce === nonce
+        const currentTime = Date.now() / 1000
+        const isExpired = jwt.exp < currentTime
+        if (isExpired) {
+            return false
         }
-
-        return true
+        return jwt.nonce === nonce
     }
 
     get accessToken() {

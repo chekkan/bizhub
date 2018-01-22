@@ -1,0 +1,13 @@
+<template bindable="orgs">
+    <div class="resource-actions-bar">
+        <a href="/organizations/new" class="new-resource-btn">New</a>
+    </div>
+    <div class="resource-list">
+        <div if.bind="orgs.length === 0">
+            You don't have any organizations.
+        </div>
+        <div repeat.for="org of orgs" class="resource-list-item">
+            <a href="/organizations/${org.id}" title.bind="org.name">${org.name}</a>
+        </div>
+    </div>
+</template>

@@ -8,37 +8,37 @@ const webpack = require("../webpack.config")
 module.exports = (config) => {
     const configuration = {
 
-      // base path that will be used to resolve all patterns (e.g. files, exclude)
+        // base path that will be used to resolve all patterns (e.g. files, exclude)
         basePath: path.dirname(__dirname),
 
-      /*
-       * Frameworks to use
-       *
-       * available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-       */
+        /*
+        * Frameworks to use
+        *
+        * available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+        */
         frameworks: ["jasmine"],
 
-      // list of files to exclude
+        // list of files to exclude
         exclude: [],
 
-      /*
-       * list of files / patterns to load in the browser
-       *
-       * we are building the test environment in ./spec-bundle.js
-       */
+        /*
+        * list of files / patterns to load in the browser
+        *
+        * we are building the test environment in ./spec-bundle.js
+        */
         files: [
             { pattern: "test/karma-bundle.js", watched: false },
         ],
 
-      /*
-       * preprocess matching files before serving them to the browser
-       * available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-       */
+        /*
+        * preprocess matching files before serving them to the browser
+        * available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+        */
         preprocessors: {
-            "test/karma-bundle.js": ["webpack"],
+            "test/karma-bundle.js": ["webpack", "sourcemap"],
         },
 
-        webpack: webpack({ coverage: true }),
+        webpack: webpack({ coverage: true, devtool: "inline-source-map" }),
 
         /*
         * test results reporter to use

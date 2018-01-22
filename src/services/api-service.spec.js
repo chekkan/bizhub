@@ -1,5 +1,7 @@
-import { json } from "aurelia-fetch-client"
-import { ApiService } from "../../../src/services/api-service"
+import { HttpClient, json } from "aurelia-fetch-client"
+import sinon from "sinon"
+import "jasmine-sinon"
+import { ApiService } from "./api-service"
 
 class HttpClientMock {
     href;
@@ -30,19 +32,39 @@ class HttpClientMock {
 describe("the ApiSerivce module", () => {
     describe("create method", () => {
         it("calls fetch with correct url and method", async () => {
-            const client = new HttpClientMock()
+            const client = sinon.createStubInstance(HttpClient)
+            client.fetch.resolves({ headers: new Headers() })
             const sut = new ApiService(client, "organization")
             await sut.create({ name: "bizhub" })
-            expect(client.href).toEqual("/organizations")
-            expect(client.method).toEqual("post")
+            expect(client.fetch).toHaveBeenCalledWith(
+                "/organizations",
+                jasmine.objectContaining({ method: "post" }),
+            )
         })
 
         it("calls fetch with correct body", async () => {
             const body = { name: "bizhub" }
-            const client = new HttpClientMock()
+            const client = sinon.createStubInstance(HttpClient)
+            client.fetch.resolves({ headers: new Headers() })
             const sut = new ApiService(client, "organization")
             await sut.create(body)
-            expect(client.body).toEqual(json(body))
+            expect(client.fetch).toHaveBeenCalledWith(
+                "/organizations",
+                jasmine.objectContaining({ body: json(body) }),
+            )
+        })
+
+        it("rejects with error", (done) => {
+            const body = { }
+            const client = sinon.createStubInstance(HttpClient)
+            const error = new Error()
+            error.json = () => Promise.resolve(new Error())
+            client.fetch.rejects(error)
+
+            const sut = new ApiService(client, "organization")
+            sut.create(body).catch(() => {
+                done()
+            })
         })
     })
 

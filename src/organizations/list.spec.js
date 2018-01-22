@@ -1,5 +1,5 @@
 import { activationStrategy } from "aurelia-router"
-import { OrganizationsListViewModel } from "../../../src/organizations/list"
+import { OrganizationsListViewModel } from "./list"
 
 class ApiServiceStub {
     itemStubs;
@@ -15,8 +15,8 @@ class ApiServiceStub {
 describe("the OrganizationsIndex module", () => {
     it("set fetch response to organizations", async () => {
         const itemStubs = [
-      { id: "dsds", name: "something" },
-      { id: "eeds", name: "github" },
+            { id: "dsds", name: "something" },
+            { id: "eeds", name: "github" },
         ]
 
         const apiServiceMock = () => {

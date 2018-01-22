@@ -75,7 +75,7 @@ export default class Helper {
         ValidationRules.customRule(
             "integer",
             value => Number.isInteger(value),
-            `\${$displayName} must be an integer.`,
+            "${$displayName} must be an integer.",
         )
         const rules = elements
             .filter(elem => elem.required)

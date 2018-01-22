@@ -1,12 +1,8 @@
-import { App } from "../../src/app"
+import { App } from "./app"
 
 class RouterStub {
     constructor() {
         this.options = {}
-    }
-
-    configure(handler) {
-        handler(this)
     }
 
     map(routes) {
@@ -17,7 +13,7 @@ class RouterStub {
         this.unKnownRoute = route
     }
 
-    addPipelineStep() {} // eslint-disable-line class-methods-use-this
+    addAuthorizeStep() {} // eslint-disable-line class-methods-use-this
 }
 
 describe("the App module", () => {

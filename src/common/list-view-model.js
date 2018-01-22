@@ -1,5 +1,4 @@
 export class ListViewModel {
-
     constructor(activationStrategy, apiService) {
         this.activationStrategy = activationStrategy
         this.apiService = apiService
@@ -21,11 +20,11 @@ export class ListViewModel {
 
     getResources(limit, offset) {
         return this.apiService.getAll(limit, offset)
-        .then((response) => {
-            this.totalSize = response.totalSize
-            this.currentPage = Math.ceil(offset / limit) + 1
-            this.lastPage = Math.ceil(this.totalSize / limit)
-            return response.content
-        })
+            .then((response) => {
+                this.totalSize = response.totalSize
+                this.currentPage = Math.ceil(offset / limit) + 1
+                this.lastPage = Math.ceil(this.totalSize / limit)
+                return response.content
+            })
     }
 }

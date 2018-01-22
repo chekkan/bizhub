@@ -1,18 +1,13 @@
 <template>
 
+    <require from="./components/create-org-form"></require>
+
     <div class="container">
         <div class="subhead">
             <h2>Create an organization</h2>
         </div>
     </div>
 
-    <form submit.delegate="createOrg()">
-        <div class="form-group">
-            <label for="org_name">Organization name</label>
-            <input type="text" id="org_name" value.bind="name" />
-        </div>
-
-        <button type="submit" class="btn btn-primary">Create organization</button>
-    </form>
+    <create-org-form submit.delegate="createOrg()" organization.bind="organization"></create-org-form>
 
 </template>

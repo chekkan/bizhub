@@ -1,6 +1,6 @@
 import { inject } from "aurelia-framework"
 import { Router } from "aurelia-router"
-import { HttpClient, json } from "aurelia-fetch-client"
+import { HttpClient } from "aurelia-fetch-client"
 import { AureliaConfiguration } from "aurelia-configuration"
 import { Authentication } from "../common/authentication"
 
@@ -22,17 +22,6 @@ export class AuthService {
             loginRoute: configuration.get("loginRoute"),
             loginRedirect: configuration.get("loginRedirect"),
         }
-    }
-
-    register(model) {
-        const postData = Object.assign({}, model, {
-            client_id: this.config.clientId,
-            connection: this.config.connectionName,
-        })
-        return this.httpClient.fetch(this.config.signupUrl, {
-            method: "post",
-            body: json(postData),
-        })
     }
 
     get isAuthenticated() {
