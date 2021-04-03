@@ -39,7 +39,7 @@
         "moment": "^2.19.4",
         "numeral": "^2.0.6",
         "popper.js": "^1.12.6",
-        "whatwg-fetch": "^2.0.3"
+        "whatwg-fetch": "^3.6.2"
     },
     "peerDependencies": {},
     "devDependencies": {
