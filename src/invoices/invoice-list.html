@@ -10,9 +10,9 @@
 
     <div class="resource-list">
         <div show.bind="invoices.length === 0">
-            <p>No invoices to display.<p>
+            <p>No invoices to display.</p>
         </div>
-        <a href="/invoices/${invoice.id}" repeat.for="invoice of invoices" 
+        <a href="/invoices/${invoice.id}" repeat.for="invoice of invoices"
             class="resource-list-item">
             <div class="invoice-date">
                 <span class="date">
@@ -29,7 +29,7 @@
                 <span class="label">Total</span>
                 ${invoice.totalAmount | numberFormat: "$0,0.00"}
             </div>
-        </div>
+        </a>
     </div>
 
 </template>

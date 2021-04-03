@@ -4,30 +4,28 @@
     <require from="./float-value-converter"></require>
 
     <form class="create-form">
-        <div repeat.for="elem of formElements" class="form-group ${elem.type === 'text' ? 'float-label' : ''} ${model[elem.id].length > 0 ? 'is-active' : ''}"
-                >
+        <div repeat.for="elem of formElements" class="form-group ${elem.type === 'text' ? 'float-label' : ''} ${model[elem.id].length > 0 ? 'is-active' : ''}">
             <label for="${elem.id}">${elem.title}</label>
             <input if.bind="elem.type === 'text'" type="text" id="${elem.id}"
                 placeholder.bind="elem.title"
                 value.bind="model[elem.id] & validate:rules" />
-            <input if.bind="elem.type === 'password'" type="password" id="${elem.id}" 
-                value.bind="model[elem.id] & validate:rules" />
+            <input if.bind="elem.type === 'password'" type="password" id="${elem.id}" value.bind="model[elem.id] & validate:rules" />
             <select if.bind="elem.type === 'select'" id="${elem.id}" value.bind="model[elem.id].id">
                 <option repeat.for="option of elem.options" value="${option.value}">
                     ${option.text}
                 </option>
             </select>
-            <input if.bind="elem.type === 'integer'" type="number" id="${elem.id}" 
+            <input if.bind="elem.type === 'integer'" type="number" id="${elem.id}"
                 placeholder.bind="elem.title"
                 value.bind="model[elem.id] | integer & validate:rules"
                 step="${elem.step}" />
-            <input if.bind="elem.type === 'number'" type="number" id="${elem.id}" 
+            <input if.bind="elem.type === 'number'" type="number" id="${elem.id}"
                 placeholder.bind="elem.title"
                 value.bind="model[elem.id] | float & validate:rules" class="form-control"
                 step="${elem.step}" />
             <input if.bind="elem.type === 'date-time'" type="datetime-local" id="${elem.id}"
                 value.bind="model[elem.id] & validate:rules" class="form-control" />
-            <span class="help-block validation-errors" 
+            <span class="help-block validation-errors"
             repeat.for="errorInfo of controller.errors | filter: ['propertyName']: elem.id">
                 ${errorInfo.message}
             </span>

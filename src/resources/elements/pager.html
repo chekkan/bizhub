@@ -13,7 +13,7 @@
             </li>
             <li class="next ${currentPage == lastPage ? 'disabled' : ''}">
                 <a if.bind="currentPage != lastPage" route-href="route.bind: route; params.bind: { page: nextPage }">Next</a>
-                <span if.bind="currentPage == lastPage" class="next">Next</a>
+                <span if.bind="currentPage == lastPage" class="next">Next</span>
             </li>
         </ul>
     </nav>

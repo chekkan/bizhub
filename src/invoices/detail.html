@@ -30,9 +30,8 @@
                 <div class="org-name">
                     ${invoice.from && invoice.from.name.length > 0 ? invoice.from.name : invoice.organization.name}
                 </div>
-                <span 
-                    if.bind="invoice.from && invoice.from.address" 
-                    innerhtml.bind="invoice.from.address"></span>
+                <span
+                    if.bind="invoice.from && invoice.from.address" innerhtml.bind="invoice.from.address"></span>
             </address>
         </div>
 
