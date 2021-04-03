@@ -11,13 +11,17 @@ export class AuthenticateStep {
     run(navigationInstruction, next) {
         const isLoggedIn = this.authService.isAuthenticated
         const { loginRoute } = this.authService.config
-
-        if (navigationInstruction.getAllInstructions()
-            .some(route => route.config.auth === true)) {
+        const instructions = navigationInstruction.getAllInstructions()
+        // console.log(instructions)
+        if (instructions.some(route => route.config.auth === true)) {
             if (!isLoggedIn) {
                 return next.cancel(new Redirect(loginRoute))
             }
         }
+
+        // if (instructions[instructions.length - 1].config.moduleId === "organizations/settings") {
+        //     instructions[instructions.length - 1].config.moduleId = "not-found"
+        // }
 
         return next()
     }

@@ -2,6 +2,15 @@ import { PLATFORM } from "aurelia-pal"
 
 export class Index {
     configureRouter(config, router) {
+        // const navStrat = (instruction) => {
+        //     if (true) {
+        //         console.log(instruction)
+        //         Object.assign(instruction.config, {
+        //             moduleId: PLATFORM.moduleName("not-found.html"),
+        //             href: instruction.fragment,
+        //         })
+        //     }
+        // }
         config.map([
             {
                 route: "",
@@ -26,6 +35,7 @@ export class Index {
                 moduleId: PLATFORM.moduleName("organizations/settings"),
                 title: "Settings",
                 auth: true,
+                // navigationStrategy: navStrat,
             },
             {
                 route: "/:orgId/invoices/new",

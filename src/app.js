@@ -12,6 +12,6 @@ export class App {
 
         config.map(routes)
 
-        config.mapUnknownRoutes("not-found")
+        config.mapUnknownRoutes("not-found.html")
     }
 }

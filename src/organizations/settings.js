@@ -1,5 +1,6 @@
 import { inject, Factory } from "aurelia-framework"
-import { Router } from "aurelia-router"
+import { Redirect, Router } from "aurelia-router"
+import { PLATFORM } from "aurelia-pal"
 import { ApiService } from "../services/api-service"
 import { AuthService } from "../services/auth-service"
 
@@ -14,6 +15,10 @@ export class OrgSettings {
         this.orgService = apiService("organization")
         this.authService = authService
         this.router = router
+    }
+
+    getViewStrategy() {
+        return PLATFORM.moduleName('../not-found.html')
     }
 
     async activate(params) {
