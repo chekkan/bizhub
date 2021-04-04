@@ -1,9 +1,13 @@
 {
   "name": "busynest",
   "type": "project:application",
-  "bundler": {
-    "id": "webpack",
-    "displayName": "Webpack"
+  "paths": {
+    "root": "src",
+    "resources": "resources",
+    "elements": "resources/elements",
+    "attributes": "resources/attributes",
+    "valueConverters": "resources/value-converters",
+    "bindingBehaviors": "resources/binding-behaviors"
   },
   "build": {
     "options": {
@@ -12,17 +16,16 @@
       "coverage": false
     }
   },
+  "bundler": {
+    "id": "webpack",
+    "displayName": "Webpack"
+  },
   "platform": {
-    "id": "web",
-    "displayName": "Web",
-    "port": 8080,
     "hmr": false,
     "open": false,
+    "port": 8080,
+    "host": "localhost",
     "output": "dist"
-  },
-  "loader": {
-    "id": "none",
-    "displayName": "None"
   },
   "transpiler": {
     "id": "babel",
@@ -47,27 +50,5 @@
   "editor": {
     "id": "vscode",
     "displayName": "Visual Studio Code"
-  },
-  "unitTestRunner": [
-    {
-      "id": "karma",
-      "displayName": "Karma"
-    }
-  ],
-  "integrationTestRunner": {
-    "id": "protractor",
-    "displayName": "Protractor"
-  },
-  "paths": {
-    "root": "src",
-    "resources": "resources",
-    "elements": "resources/elements",
-    "attributes": "resources/attributes",
-    "valueConverters": "resources/value-converters",
-    "bindingBehaviors": "resources/binding-behaviors"
-  },
-  "testFramework": {
-    "id": "jasmine",
-    "displayName": "Jasmine"
   }
 }

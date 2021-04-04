@@ -1,53 +1,26 @@
-import { CLIOptions, Configuration } from "aurelia-cli"
-import webpack from "webpack"
-import gulp from "gulp"
-import del from "del"
-import webpackConfig from "../../webpack.config"
-import project from "../aurelia.json"
-import configureEnvironment from "./environment"
+import { NPM } from 'aurelia-cli';
 
-const buildOptions = new Configuration(project.build.options)
-const production = CLIOptions.getEnvironment() === "prod"
-const server = buildOptions.isApplicable("server")
-const extractCss = buildOptions.isApplicable("extractCss")
-const coverage = buildOptions.isApplicable("coverage")
+export default function() {
+  console.log('`au build` is an alias of the `npm run build:dev`, you may use either of those; see README for more details.');
+  const args = process.argv.slice(3);
+  return (new NPM()).run('run', ['build:dev', '--', ... cleanArgs(args)]);
+}
 
-const config = webpackConfig({
-    production, server, extractCss, coverage,
-})
-const compiler = webpack(config)
-
-function onBuild(err, stats) {
-    if (err) {
-        console.error(err.stack || err)
-        if (err.details) console.error(err.details)
-        process.exit(1)
+// Cleanup --env prod to --env.production
+// for backwards compatibility
+function cleanArgs(args) {
+  const cleaned = [];
+  for (let i = 0, ii = args.length; i < ii; i++) {
+    if (args[i] === '--env' && i < ii - 1) {
+      const env = args[++i].toLowerCase();
+      if (env.startsWith('prod')) {
+        cleaned.push('--env.production');
+      } else if (env.startsWith('test')) {
+        cleaned.push('--tests');
+      }
     } else {
-        process.stdout.write(`${stats.toString({ colors: require("supports-color") })}\n`)
+      cleaned.push(args[i]);
     }
-}
-
-function buildWebpack(done) {
-    if (CLIOptions.hasFlag("watch")) {
-        compiler.watch({}, onBuild)
-    } else {
-        compiler.run(onBuild)
-        compiler.plugin("done", () => done())
-    }
-}
-
-function clearDist() {
-    return del([config.output.path])
-}
-
-const build = gulp.series(
-  clearDist,
-  configureEnvironment,
-  buildWebpack,
-)
-
-export {
-  config,
-  buildWebpack,
-  build as default,
+  }
+  return cleaned;
 }

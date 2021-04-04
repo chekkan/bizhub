@@ -3,17 +3,6 @@ const { series, crossEnv, rimraf } = require("nps-utils"); // eslint-disable-lin
 module.exports = {
     scripts: {
         default: "nps webpack",
-        test: {
-            default: "nps test.karma",
-            karma: {
-                default: series(
-                    rimraf("test/coverage-karma"),
-                    "karma start test/karma.conf.js"
-                ),
-                debug:
-                    "karma start test/karma.conf.js --auto-watch --no-single-run --debug",
-            },
-        },
         build: "nps webpack.build",
         webpack: {
             default: "nps webpack.server",
