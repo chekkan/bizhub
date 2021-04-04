@@ -20,6 +20,10 @@
       "coverage": false
     }
   },
+  "bundler": {
+    "id": "webpack",
+    "displayName": "Webpack"
+  },
   "platform": {
     "hmr": false,
     "open": false,
