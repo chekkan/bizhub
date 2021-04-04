@@ -1,4 +1,4 @@
-const { series, crossEnv, rimraf } = require("nps-utils") // eslint-disable-line import/no-extraneous-dependencies
+const { series, crossEnv, rimraf } = require("nps-utils"); // eslint-disable-line import/no-extraneous-dependencies
 
 module.exports = {
     scripts: {
@@ -8,8 +8,10 @@ module.exports = {
             karma: {
                 default: series(
                     rimraf("test/coverage-karma"),
-                    "karma start test/karma.conf.js"),
-                debug: "karma start test/karma.conf.js --auto-watch --no-single-run --debug",
+                    "karma start test/karma.conf.js"
+                ),
+                debug:
+                    "karma start test/karma.conf.js --auto-watch --no-single-run --debug",
             },
         },
         build: "nps webpack.build",
@@ -21,15 +23,17 @@ module.exports = {
                 development: {
                     default: series(
                         "nps webpack.build.before",
-                        "webpack --progress -d"),
-                    serve: series.nps(
-                        "webpack.build.development",
-                        "serve"),
+                        "webpack --progress -d"
+                    ),
+                    serve: series.nps("webpack.build.development", "serve"),
                 },
                 production: {
                     default: series(
                         "nps webpack.build.before",
-                        crossEnv("NODE_ENV=production webpack --progress -p --env.production --env.extractCss")),
+                        crossEnv(
+                            "NODE_ENV=production webpack --progress -p --env.production --env.extractCss"
+                        )
+                    ),
                 },
             },
             server: {
@@ -42,4 +46,4 @@ module.exports = {
         },
         serve: "pushstate-server dist",
     },
-}
+};
