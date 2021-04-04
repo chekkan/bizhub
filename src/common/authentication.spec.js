@@ -1,43 +1,43 @@
-import sinon from "sinon"
 import { Authentication } from "./authentication"
 
 describe("the authentication common module", () => {
+    let store = {};
+    
+    beforeEach(() => {
+        global.localStorage = {
+            getItem: (key) => store[key]
+        }
+        Object.defineProperty(window, 'localStorage', { 
+            value: global.localStorage, 
+            configurable:true,
+            enumerable:true,
+            writable:true 
+        });
+    })
+    
     describe("accessToken getter", () => {
-        afterEach(() => {
-            window.localStorage.getItem.restore()
-        })
-
         it("calls fetch with correct url and method", () => {
+            store["access_token"]= "blah blah"
+
             const sut = new Authentication()
-            sinon.stub(window.localStorage, "getItem").withArgs("access_token")
-                .returns("blah blah")
             const actual = sut.accessToken
+            
             expect(actual).toEqual("blah blah")
         })
     })
 
     describe("isAuthenticated getter", () => {
-        let getItemFromStorageStub
-        beforeEach(() => {
-            getItemFromStorageStub = sinon.stub(window.localStorage, "getItem")
-        })
-        afterEach(() => {
-            getItemFromStorageStub.restore()
-        })
-
         it("returns false if id_token not in local storage", () => {
             const sut = new Authentication()
-            getItemFromStorageStub.withArgs("id_token")
-                .returns(undefined)
             expect(sut.isAuthenticated).toBeFalsy()
         })
 
         it("json parse error returns false", () => {
             const payload = "invalid json"
             const base64payload = window.btoa(payload)
+            store["id_token"] = `eyJ0eXA.${base64payload}.j_7ncop-PfaCz`
+            
             const sut = new Authentication()
-            getItemFromStorageStub.withArgs("id_token")
-                .returns(`eyJ0eXA.${base64payload}.j_7ncop-PfaCz`)
             expect(sut.isAuthenticated).toBeFalsy()
         })
 
@@ -46,9 +46,9 @@ describe("the authentication common module", () => {
                 exp: Math.round(new Date().getTime() / 1000) - 30,
             })
             const base64payload = window.btoa(payload)
+            store["id_token"] = `eyJ0eXA.${base64payload}.j_7ncop-PfaCz`
+
             const sut = new Authentication()
-            getItemFromStorageStub.withArgs("id_token")
-                .returns(`eyJ0eXA.${base64payload}.j_7ncop-PfaCz`)
             expect(sut.isAuthenticated).toBeFalsy()
         })
 
@@ -58,10 +58,10 @@ describe("the authentication common module", () => {
                 nonce: "something",
             })
             const base64payload = window.btoa(payload)
+            store["id_token"] = `eyJ0eXA.${base64payload}.j_7ncop-PfaCz`
+            store["nonce"] = "something else"
+
             const sut = new Authentication()
-            getItemFromStorageStub.withArgs("id_token")
-                .returns(`eyJ0eXA.${base64payload}.j_7ncop-PfaCz`)
-                .withArgs("nonce").returns("something else")
             expect(sut.isAuthenticated).toBeFalsy()
         })
 
@@ -71,11 +71,10 @@ describe("the authentication common module", () => {
                 nonce: "something",
             })
             const base64payload = window.btoa(payload)
+            store["id_token"] = `eyJ0eXA.${base64payload}.j_7ncop-PfaCz`
+            store["nonce"] = "something"
+
             const sut = new Authentication()
-            getItemFromStorageStub.withArgs("id_token")
-                .returns(`eyJ0eXA.${base64payload}.j_7ncop-PfaCz`)
-            getItemFromStorageStub.withArgs("nonce")
-                .returns("something")
             expect(sut.isAuthenticated).toBeTruthy()
         })
     })

@@ -9,7 +9,7 @@ before_install:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 script:
-- npm test && cat ./test/coverage-karma/lcov.info | ./node_modules/.bin/codacy-coverage
+- npm test && cat ./test/coverage-jest/lcov.info | ./node_modules/.bin/codacy-coverage
 before_deploy:
 - npm start -- build
 deploy:
