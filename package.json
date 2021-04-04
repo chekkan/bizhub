@@ -36,7 +36,6 @@
     "popper.js": "^1.12.6",
     "whatwg-fetch": "^3.6.2"
   },
-  "peerDependencies": {},
   "devDependencies": {
     "@aurelia/babel-jest": "^2.0.0-alpha.2",
     "@babel/core": "^7.13.14",
