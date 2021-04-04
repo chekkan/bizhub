@@ -1,4 +1,3 @@
-import sinon from "sinon"
 import { ApiService } from "../services/api-service"
 import { OrgDetailViewModel } from "./detail"
 
@@ -9,17 +8,14 @@ describe("organizations modules", () => {
         const route = { navModel: {} }
 
         beforeEach(() => {
-            orgsService = sinon.createStubInstance(ApiService)
+            orgsService = { getById: jest.fn() }
             serviceFactory = () => orgsService
         })
 
-        afterEach(() => {
-            orgsService.getById.restore()
-        })
-
         it("activate sets route navModel title to org name", async () => {
-            orgsService.getById.resolves({ name: "foo" })
+            orgsService.getById.mockResolvedValue({ name: "foo" })
             const sut = new OrgDetailViewModel({}, serviceFactory)
+
             await sut.activate({}, route)
             expect(route.navModel.title).toBe("foo")
         })
@@ -27,11 +23,13 @@ describe("organizations modules", () => {
         it("activate sets organization field", async () => {
             const org = { id: 1, name: "foo" }
             const param = { id: org.id }
-            orgsService.getById.withArgs(sinon.match.number)
-                .resolves(org)
+            orgsService.getById.mockResolvedValue(org)
+            // (sinon.match.number).resolves(org)
             const sut = new OrgDetailViewModel({}, serviceFactory)
+            
             await sut.activate(param, route)
             expect(sut.organization).toBe(org)
+            expect(orgsService.getById).toHaveBeenCalledWith(org.id)
         })
     })
 })

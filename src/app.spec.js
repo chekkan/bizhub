@@ -35,7 +35,7 @@ describe("the App module", () => {
     })
 
     it("should have a home route", () => {
-        expect(sut.router.routes).toContain({
+        expect(sut.router.routes).toContainEqual({
             route: ["", "home"],
             name: "home",
             title: "Home",

@@ -1,6 +1,5 @@
 import { StageComponent } from "aurelia-testing"
 import { bootstrap } from "aurelia-bootstrapper"
-import sinon from "sinon"
 import { CreateOrgFormCustomElement } from "./create-org-form"
 
 describe("create-org-form", () => {
@@ -19,23 +18,26 @@ describe("create-org-form", () => {
         let element
         let controller
         beforeEach(() => {
-            element = sinon.createStubInstance(Element)
-            controller = { validate: () => {} }
+            element = { dispatchEvent: jest.fn() }
+            controller = { validate: jest.fn() }
         })
 
         it("emit submit event when validation passes", async () => {
-            sinon.stub(controller, "validate").resolves({ valid: true })
+            controller.validate.mockResolvedValue({ valid: true })
             const sut = new CreateOrgFormCustomElement(element, controller)
+
             await sut.createOrg()
+            
             expect(element.dispatchEvent).toHaveBeenCalled()
-            const event = element.dispatchEvent.lastCall.args[0]
+            const event = element.dispatchEvent.mock.calls[0][0]
             expect(event instanceof CustomEvent).toBeTruthy()
             expect(event.type).toEqual("submit")
             expect(event.bubbles).toBeFalsy()
         })
 
         it("doesn't emit submit event when validation fails", async () => {
-            sinon.stub(controller, "validate").resolves({ valid: false })
+            controller.validate.mockResolvedValue({ valid: false })
+
             const sut = new CreateOrgFormCustomElement(element, controller)
             await sut.createOrg()
             expect(element.dispatchEvent).not.toHaveBeenCalled()

@@ -1,7 +1,14 @@
-import { HttpClient, json } from "aurelia-fetch-client"
-import sinon from "sinon"
-import "jasmine-sinon"
+import { HttpClient } from "aurelia-fetch-client"
 import { ApiService } from "./api-service"
+
+jest.mock("aurelia-fetch-client", () => ({
+    HttpClient: function () {
+        return { fetch: jest.fn() }
+    }, 
+    json: function(data) { return JSON.stringify(data) }
+}))
+
+const { json } = jest.requireActual("aurelia-fetch-client");
 
 class HttpClientMock {
     href;
@@ -32,34 +39,36 @@ class HttpClientMock {
 describe("the ApiSerivce module", () => {
     describe("create method", () => {
         it("calls fetch with correct url and method", async () => {
-            const client = sinon.createStubInstance(HttpClient)
-            client.fetch.resolves({ headers: new Headers() })
+            const client = new HttpClient()
+            client.fetch.mockResolvedValue({ headers: new Headers() })
+
             const sut = new ApiService(client, "organization")
             await sut.create({ name: "bizhub" })
+            
             expect(client.fetch).toHaveBeenCalledWith(
                 "/organizations",
-                jasmine.objectContaining({ method: "post" }),
+                expect.objectContaining({ method: "post" }),
             )
         })
 
         it("calls fetch with correct body", async () => {
             const body = { name: "bizhub" }
-            const client = sinon.createStubInstance(HttpClient)
-            client.fetch.resolves({ headers: new Headers() })
+            const client = new HttpClient()
+            client.fetch.mockResolvedValue({ headers: new Headers() })
             const sut = new ApiService(client, "organization")
             await sut.create(body)
             expect(client.fetch).toHaveBeenCalledWith(
                 "/organizations",
-                jasmine.objectContaining({ body: json(body) }),
+                expect.objectContaining({ body: json(body) }),
             )
         })
 
         it("rejects with error", (done) => {
             const body = { }
-            const client = sinon.createStubInstance(HttpClient)
+            const client = new HttpClient()
             const error = new Error()
             error.json = () => Promise.resolve(new Error())
-            client.fetch.rejects(error)
+            client.fetch.mockRejectedValue(error)
 
             const sut = new ApiService(client, "organization")
             sut.create(body).catch(() => {
